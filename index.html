@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BioMarmita — Marmitas biológicas saudáveis por subscrição semanal no Grande Porto. Prontas a aquecer, com ingredientes locais e embalagens compostáveis.">
+  <title>BioMarmita — Da natureza ao prato, com sabor e confiança</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       CABEÇALHO & BARRA DE NAVEGAÇÃO
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo" aria-label="BioMarmita Página Inicial">
+        <img src="./assets/imagens/logo-biomarmita.jpeg" alt="Logótipo BioMarmita">
+        <div class="brand-info">
+          <span class="brand-title">Bio<span>Marmita</span></span>
+          <span class="brand-tagline">Alimentação Saudável & Sustentável</span>
+        </div>
+      </a>
+
+      <!-- Botão Hambúrguer para ecrãs móveis -->
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu de navegação" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Links de Navegação -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link active">Início</a>
+        <a href="sobre.html" class="nav-link">Sobre Nós</a>
+        <a href="menu.html" class="nav-link">Menu e Planos</a>
+        <a href="produtores.html" class="nav-link">Produtores Locais</a>
+        <a href="sustentabilidade.html" class="nav-link">Sustentabilidade</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contactos.html" class="nav-link">Contactos</a>
+        <a href="carrinho.html" class="btn btn-accent btn-sm nav-cta">Subscrever</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       SEÇÃO HERO PRINCIPAL
+       ====================================================================== -->
+  <main>
+    <section class="hero-home">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="badge">Grande Porto • Subscrição Semanal</span>
+          <h1>Alimentação biológica saudável no Porto, sem perder tempo na cozinha.</h1>
+          <p>
+            Ajudamos profissionais e famílias no Grande Porto a manter uma alimentação equilibrada e saborosa através da entrega de marmitas biológicas prontas a aquecer e consumir em 3 minutos. Ingredientes 100% de origem biológica certificada fornecidos por produtores locais parceiros identificados, acondicionados em embalagens de bioplástico renovável e compostável, entregues no horário e local da sua preferência e recolhidas na entrega seguinte para compostagem.
+          </p>
+          <div class="hero-actions">
+            <a href="menu.html" class="btn btn-accent">Ver Menus e Planos</a>
+            <a href="sobre.html" class="btn btn-outline">Proposta de Valor & Origem</a>
+          </div>
+          <div class="hero-badges-strip">
+            <div class="hero-badge-item">
+              <span>✓</span> Ingredientes 100% Biológicos Certificados
+            </div>
+            <div class="hero-badge-item">
+              <span>✓</span> Agendamento no Domicílio ou Trabalho
+            </div>
+            <div class="hero-badge-item">
+              <span>✓</span> Recolha de Embalagens para Compostagem
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image-wrapper">
+          <img src="./assets/imagens/banner-home.jpeg" alt="Tigela saudável com quinoa, frango biológico e brócolos" class="hero-img">
+          <div class="hero-floating-card">
+            <div class="floating-icon">🌱</div>
+            <div class="floating-text">
+              <strong>Pronto em 3 minutos</strong>
+              <span>Sem conservantes nem aditivos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         OS 4 PILARES DA BIOMARMITA
+         ====================================================================== -->
+    <section class="section section-white">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Porque Escolher a BioMarmita</span>
+          <h2 class="section-title">O que torna as nossas marmitas únicas?</h2>
+          <p class="section-subtitle">
+            Unimos nutrição consciente, conveniência diária e respeito rigoroso pelo meio ambiente.
+          </p>
+        </div>
+
+        <div class="features-grid-4">
+          <!-- Pilar 1 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <img src="./assets/icones/ingredientes_biologicos.jpeg" alt="Ícone Ingredientes Biológicos">
+            </div>
+            <h3 class="feature-title">Ingredientes 100% Biológicos</h3>
+            <p class="feature-desc">
+              Fornecidos exclusivamente por produtores parceiros identificados (Quinta da Serra, Horta do Vale e Sabor do Campo), sem pesticidas sintéticos nem aditivos artificiais.
+            </p>
+          </div>
+
+          <!-- Pilar 2 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <img src="./assets/icones/entrega_flexivel.jpeg" alt="Ícone Entrega Flexível">
+            </div>
+            <h3 class="feature-title">Entrega Agendada à Medida</h3>
+            <p class="feature-desc">
+              Horário, dia e morada combinados de acordo com a conveniência do cliente no Grande Porto (domicílio ou trabalho), com ajuste livre até 48h antes da entrega.
+            </p>
+          </div>
+
+          <!-- Pilar 3 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <img src="./assets/icones/embalagens_sustentaveis.jpeg" alt="Ícone Embalagens Sustentáveis">
+            </div>
+            <h3 class="feature-title">Embalagens com Recolha</h3>
+            <p class="feature-desc">
+              Bioplástico vegetal renovável e compostável com selagem hermética a vácuo, recolhido na entrega seguinte para compostagem industrial sem resíduos.
+            </p>
+          </div>
+
+          <!-- Pilar 4 -->
+          <div class="feature-card">
+            <div class="feature-icon-box">
+              <img src="./assets/icones/mais_saude_e_bem_estar.jpeg" alt="Ícone Mais Saúde e Bem-Estar">
+            </div>
+            <h3 class="feature-title">Pronto em 3 Minutos</h3>
+            <p class="feature-desc">
+              Refeições de 400 a 550 kcal desenhadas para manter saciedade e energia estável, com durabilidade de 7 dias no frigorífico (2°C a 4°C).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SEÇÃO: COMO FUNCIONA (4 PASSOS VISUAIS)
+         ====================================================================== -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Simples, Transparente & Sem Desperdício</span>
+          <h2 class="section-title">Como Funciona a Sua Subscrição</h2>
+          <p class="section-subtitle">
+            Em 4 passos simples, garante refeições biológicas frescas em casa ou no escritório, com total comodidade e respeito pelo planeta.
+          </p>
+        </div>
+
+        <div class="steps-visual-grid">
+          <!-- Passo 1 -->
+          <div class="step-card-visual">
+            <div class="step-visual-img-box">
+              <img src="./assets/imagens/passo-escolha-plano.jpeg" alt="Escolha do plano e marmitas no telemóvel">
+              <div class="step-visual-badge">1</div>
+            </div>
+            <div class="step-visual-body">
+              <h3>Escolha o Seu Plano</h3>
+              <p>
+                Selecione o plano ideal (Individual, Casal ou Família) e personalize os pratos da semana na loja online até 48 horas antes da entrega.
+              </p>
+            </div>
+          </div>
+
+          <!-- Passo 2 -->
+          <div class="step-card-visual">
+            <div class="step-visual-img-box">
+              <img src="./assets/imagens/passo-receba-marmitas.jpeg" alt="Entrega da caixa BioMarmita com flexibilidade de horário e morada">
+              <div class="step-visual-badge">2</div>
+            </div>
+            <div class="step-visual-body">
+              <h3>Receba Onde Quiser</h3>
+              <p>
+                Entregamos no domicílio ou no local de trabalho em todo o Grande Porto, em carrinha refrigerada, no dia e janela horária da sua conveniência.
+              </p>
+            </div>
+          </div>
+
+          <!-- Passo 3 -->
+          <div class="step-card-visual">
+            <div class="step-visual-img-box">
+              <img src="./assets/imagens/passo-aqueca-desfrute.jpeg" alt="Marmita a aquecer e pronta em 3 minutos">
+              <div class="step-visual-badge">3</div>
+            </div>
+            <div class="step-visual-body">
+              <h3>Aqueça 3 Minutos</h3>
+              <p>
+                Aqueça diretamente 3 minutos no micro-ondas. Desfrute de uma refeição equilibrada, rica em nutrientes e sem panelas para lavar.
+              </p>
+            </div>
+          </div>
+
+          <!-- Passo 4 -->
+          <div class="step-card-visual">
+            <div class="step-visual-img-box">
+              <img src="./assets/imagens/passo-compostagem.jpeg" alt="Recipiente bioplástico guardado para recolha e compostagem">
+              <div class="step-visual-badge">4</div>
+            </div>
+            <div class="step-visual-body">
+              <h3>Devolva as Embalagens</h3>
+              <p>
+                Guarde os recipientes vazios na caixa térmica. Nós recolhemo-los na entrega seguinte para compostagem industrial ecológica.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quadro de Condições Reais do Serviço -->
+        <div style="margin-top: 45px; background: #ffffff; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 32px 28px; box-shadow: var(--shadow-sm);">
+          <div style="text-align: center; margin-bottom: 24px;">
+            <span class="badge">Condições Contratuais & Operacionais</span>
+            <h3 style="font-size: 1.45rem; color: var(--color-primary-dark); margin-top: 6px;">Compromissos Reais e Limites do Serviço</h3>
+          </div>
+          <div class="features-grid-4">
+            <div style="text-align: left; padding: 12px; border-left: 3px solid var(--color-primary);">
+              <strong style="color: var(--color-primary-dark); font-size: 0.95rem; display: block; margin-bottom: 4px;">Área de Cobertura</strong>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5;">Exclusiva para os concelhos de Porto, Matosinhos, Gaia, Maia e Gondomar.</p>
+            </div>
+            <div style="text-align: left; padding: 12px; border-left: 3px solid var(--color-primary);">
+              <strong style="color: var(--color-primary-dark); font-size: 0.95rem; display: block; margin-bottom: 4px;">Prazos de Aviso</strong>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5;">Pausar, alterar pratos ou cancelar com 48 horas de antecedência, sem penalizações.</p>
+            </div>
+            <div style="text-align: left; padding: 12px; border-left: 3px solid var(--color-primary);">
+              <strong style="color: var(--color-primary-dark); font-size: 0.95rem; display: block; margin-bottom: 4px;">Conservação Testada</strong>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5;">Frescura garantida durante 7 dias em frio (2°C a 4°C) por selagem a vácuo.</p>
+            </div>
+            <div style="text-align: left; padding: 12px; border-left: 3px solid var(--color-primary);">
+              <strong style="color: var(--color-primary-dark); font-size: 0.95rem; display: block; margin-bottom: 4px;">Recolha Circular</strong>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5;">Embalagens 100% recolhidas na entrega seguinte para compostagem industrial.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 36px;">
+          <a href="menu.html" class="btn btn-primary">Ver Menus e Planos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         DESTAQUE DA PERSONA REAL: A ROTINA DA MARIANA FERREIRA
+         ====================================================================== -->
+    <section class="persona-showcase">
+      <div class="container">
+        <div class="persona-grid">
+          <!-- Coluna com a Foto Real da Mariana -->
+          <div class="persona-image-col">
+            <img src="./assets/imagens/persona-mariana-real.jpeg" alt="Mariana Ferreira na sua cozinha com portátil e refeição BioMarmita" class="persona-main-img">
+            <div class="persona-quote-card">
+              <p>«Ganhei mais de 5 horas por semana para brincar com a minha filha e deixei de encomendar fast-food por cansaço!»</p>
+              <span class="persona-quote-author">— Mariana Ferreira, Gestora de Projetos no Porto</span>
+            </div>
+          </div>
+
+          <!-- Coluna com a História e Impacto Real -->
+          <div class="persona-content-col">
+            <span class="badge">Caso Real • Quem Confia na BioMarmita</span>
+            <h2>Como a Mariana simplificou a rotina e começou a comer melhor</h2>
+            <p class="persona-story-lead">
+              Aos 34 anos, a Mariana concilia dias intensos de trabalho em regime híbrido com o cuidado da sua filha Matilde, de 4 anos. O dilema das refeições semanais gerava ansiedade constante: faltava tempo para ir ao supermercado biológico e a cozinha no fim do dia era um teste à paciência.
+            </p>
+
+            <div class="routine-comparison">
+              <div class="routine-box routine-before">
+                <strong>Antes da BioMarmita</strong>
+                Almoços apressados à frente do ecrã, compras de última hora, legumes esquecidos a estragar-se e sentimento de culpa pela falta de rotina alimentar saudável.
+              </div>
+              <div class="routine-box routine-after">
+                <strong>Depois da BioMarmita</strong>
+                5 refeições biológicas completas prontas em 3 minutos, lanches nutritivos para a Matilde e recolha de todas as embalagens sem produzir lixo plástico.
+              </div>
+            </div>
+
+            <div class="persona-metrics-strip">
+              <div class="persona-metric-pill">
+                <span>⏱️</span> <strong>+5 Horas Livres</strong> por semana
+              </div>
+              <div class="persona-metric-pill">
+                <span>🌱</span> <strong>100% Biológico</strong> de quintas do Norte
+              </div>
+              <div class="persona-metric-pill">
+                <span>♻️</span> <strong>Zero Plástico</strong> no lixo comum
+              </div>
+            </div>
+
+            <div style="margin-top: 24px;">
+              <a href="carrinho.html?plano=individual" class="btn btn-accent">Ver Plano Escolhido pela Mariana (Individual)</a>
+              <a href="menu.html" class="btn btn-outline" style="margin-left: 10px;">Explorar a Ementa</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         COMPARATIVO: BIOMARMITA VS. SERVIÇOS TRADICIONAIS (THE REVOLUTION FOOD)
+         ====================================================================== -->
+    <section class="section section-white">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Porquê a BioMarmita?</span>
+          <h2 class="section-title">A Escolha Mais Saudável e Consciente</h2>
+          <p class="section-subtitle">
+            Veja como nos diferenciamos das opções tradicionais de refeições prontas e marmitas de distribuição nacional (como The Revolution Food).
+          </p>
+        </div>
+
+        <div class="comparison-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Critério de Avaliação</th>
+                <th class="col-bio">🌱 BioMarmita (Grande Porto)</th>
+                <th>📦 Serviços Tradicionais / Concorrência Nacional</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Origem dos Ingredientes</strong></td>
+                <td class="col-bio"><span class="check-green">✓</span> <strong>100% Biológico Certificado</strong>, cultivado em quintas locais parceiras do Norte de Portugal.</td>
+                <td><span class="cross-neutral">✗</span> Ingredientes de agricultura convencional; sem garantia nem certificação de cultivo biológico.</td>
+              </tr>
+              <tr>
+                <td><strong>Embalagens & Impacto Ecológico</strong></td>
+                <td class="col-bio"><span class="check-green">✓</span> <strong>Bioplástico 100% Compostável (EN 13432)</strong>, recolhido gratuitamente na entrega seguinte para compostagem.</td>
+                <td><span class="cross-neutral">✗</span> Plástico fóssil comum (R-PET) para descarte no ecoponto amarelo, gerando resíduos plásticos domésticos.</td>
+              </tr>
+              <tr>
+                <td><strong>Flexibilidade de Entregas</strong></td>
+                <td class="col-bio"><span class="check-green">✓</span> <strong>Agendamento Personalizado no Grande Porto</strong>: entrega combinada no domicílio ou local de trabalho com horário flexível.</td>
+                <td><span class="cross-neutral">✗</span> Janelas rígidas de transportadoras gerais de mercadorias, sem flexibilidade de horário específico.</td>
+              </tr>
+              <tr>
+                <td><strong>Rastreabilidade dos Produtores</strong></td>
+                <td class="col-bio"><span class="check-green">✓</span> <strong>Totalmente Transparente</strong>: sabe o nome da quinta onde o legume foi colhido (Quinta da Serra, Horta do Vale, etc.).</td>
+                <td><span class="cross-neutral">✗</span> Fornecedores e distribuidores industriais em grande escala, sem ligação aos pequenos produtores.</td>
+              </tr>
+              <tr>
+                <td><strong>Circuito de Distribuição (Km 0)</strong></td>
+                <td class="col-bio"><span class="check-green">✓</span> <strong>Circuito Curto (&lt; 50 km)</strong>, confeção artesanal no Porto com mínima pegada carbónica.</td>
+                <td><span class="cross-neutral">✗</span> Logística centralizada de longo curso para todo o país, gerando elevada pegada de carbono.</td>
+              </tr>
+              <tr>
+                <td><strong>Rapidez no Dia a Dia</strong></td>
+                <td class="col-bio"><span class="check-green">✓</span> <strong>Pronto em 3 minutos</strong> no micro-ondas, preservando textura, sabor e nutrientes.</td>
+                <td><span class="check-green">✓</span> Pronto em 3 minutos no micro-ondas.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="text-align: center; margin-top: 32px;">
+          <a href="menu.html" class="btn btn-primary">Conhecer os Pratos & Lanches da Semana</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CHAMADA FINAL PARA AÇÃO (CTA)
+         ====================================================================== -->
+    <section class="section" style="background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%); color: #ffffff; text-align: center;">
+      <div class="container" style="max-width: 760px;">
+        <span class="badge" style="background: rgba(255,255,255,0.2); color: #fff;">Comece Hoje</span>
+        <h2 style="font-size: 2.3rem; margin: 16px 0; color: #fff;">Pronto para comer melhor e simplificar a sua rotina?</h2>
+        <p style="font-size: 1.15rem; opacity: 0.92; margin-bottom: 30px; line-height: 1.6;">
+          Experimente a primeira semana com 15% de desconto e sinta a diferença de uma alimentação genuinamente biológica e portuguesa.
+        </p>
+        <a href="carrinho.html" class="btn btn-accent" style="font-size: 1.1rem; padding: 14px 36px;">Subscrever a Minha Marmita</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       RODAPÉ CORPORATIVO UNIFICADO
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-about">
+          <div class="brand-logo" style="margin-bottom: 12px;">
+            <img src="./assets/imagens/logo-biomarmita.jpeg" alt="BioMarmita" style="width: 44px; height: 44px;">
+            <div class="brand-info">
+              <span class="brand-title" style="color: #ffffff;">Bio<span style="color: var(--color-primary-light);">Marmita</span></span>
+            </div>
+          </div>
+          <span class="footer-slogan">«Da natureza ao prato, com sabor e confiança.»</span>
+          <p>
+            Serviço de subscrição semanal de marmitas biológicas equilibradas, prontas a aquecer e consumir no Grande Porto. Respeitamos a sua saúde e o planeta.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Página Inicial</a></li>
+            <li><a href="sobre.html">Sobre a BioMarmita</a></li>
+            <li><a href="menu.html">Menu da Semana & Planos</a></li>
+            <li><a href="produtores.html">Quintas & Produtores Locais</a></li>
+            <li><a href="sustentabilidade.html">Compromisso Sustentável</a></li>
+            <li><a href="faq.html">Perguntas Frequentes</a></li>
+            <li><a href="blog.html">Blog & Dicas Saudáveis</a></li>
+            <li><a href="contactos.html">Fale Connosco</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Atendimento & Entregas</h4>
+          <p style="font-size: 0.92rem; color: rgba(255,255,255,0.78); margin-bottom: 12px;">
+            <strong>Área de Entrega:</strong><br>
+            Grande Porto (Porto, Matosinhos, Gaia, Maia e Gondomar).
+          </p>
+          <p style="font-size: 0.92rem; color: rgba(255,255,255,0.78); margin-bottom: 12px;">
+            <strong>Horário e Local de Entrega:</strong><br>
+            Agendamento flexível de acordo com a sua preferência (domicílio ou trabalho).
+          </p>
+          <p style="font-size: 0.92rem; color: rgba(255,255,255,0.78);">
+            <strong>Embalagens Vazias:</strong><br>
+            Recolhemos na entrega seguinte para compostagem ecológica.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contactos Diretos</h4>
+          <div class="footer-contact-item">
+            <span>📍</span>
+            <span>Porto, Portugal</span>
+          </div>
+          <div class="footer-contact-item">
+            <span>💬</span>
+            <a href="https://wa.me/351912345678" target="_blank" style="color: #ffffff;">WhatsApp: +351 912 345 678</a>
+          </div>
+          <div class="footer-contact-item">
+            <span>✉️</span>
+            <a href="mailto:biomarmita.portugal@gmail.com" style="color: #ffffff;">biomarmita.portugal@gmail.com</a>
+          </div>
+          <div class="footer-social-links">
+            <a href="https://instagram.com/biomarmita.portugal" target="_blank" class="social-btn" aria-label="Instagram">IG</a>
+            <a href="https://linkedin.com" target="_blank" class="social-btn" aria-label="LinkedIn">IN</a>
+            <a href="https://facebook.com" target="_blank" class="social-btn" aria-label="Facebook">FB</a>
+            <a href="https://wa.me/351912345678" target="_blank" class="social-btn" aria-label="WhatsApp">WA</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 BioMarmita — Projeto Escolar UFCD 11007. Todos os direitos reservados.</p>
+        <div class="footer-legal-links">
+          <a href="faq.html">Política de Entrega</a>
+          <a href="sustentabilidade.html">Certificação Biológica</a>
+          <a href="contactos.html">Apoio ao Cliente</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script JS para menu mobile e interatividades -->
+    <!-- Botão Flutuante de WhatsApp -->
+  <a href="https://wa.me/351912345678?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20planos%20da%20BioMarmita." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.27 7.49C9.09 7.49 8.89 7.56 8.73 7.74C8.57 7.92 8.08 8.38 8.08 9.32C8.08 10.26 8.76 11.16 8.86 11.29C8.95 11.43 10.2 13.36 12.12 14.19C13.68 14.86 14 14.73 14.34 14.69C14.68 14.66 15.44 14.24 15.6 13.79C15.76 13.34 15.76 12.95 15.71 12.87C15.66 12.79 15.53 12.74 15.34 12.65C15.16 12.55 14.25 12.11 14.08 12.05C13.91 11.98 13.78 11.95 13.66 12.13C13.53 12.31 13.16 12.74 13.05 12.87C12.94 13 12.83 13.02 12.64 12.92C12.46 12.83 11.87 12.64 11.17 12.02C10.63 11.53 10.26 10.93 10.15 10.75C10.05 10.57 10.14 10.47 10.23 10.37C10.32 10.28 10.42 10.15 10.52 10.04C10.62 9.93 10.65 9.85 10.72 9.72C10.78 9.59 10.75 9.47 10.7 9.38C10.66 9.29 10.26 8.32 10.09 7.92C9.93 7.52 9.76 7.58 9.63 7.58C9.51 7.57 9.38 7.49 9.27 7.49Z"/>
+    </svg>
+    <span>Fale Connosco</span>
+  </a>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>

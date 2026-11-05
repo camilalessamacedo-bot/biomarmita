@@ -1,0 +1,30 @@
+# ==============================================================================
+# .gitignore — Website BioMarmita (UFCD 11007)
+# Mantém no repositório apenas o essencial para a publicação e execução do website.
+# ==============================================================================
+
+# Sistema Operativo (macOS / Windows)
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+Desktop.ini
+
+# Pastas Brutas de Imagens Originais na raiz (Todo o site consome de assets/imagens)
+/imagens/
+/imagens2/
+
+# Documentos Académicos Word / Recursos de Rascunho
+/doc/
+/skills-projeto-site/
+
+# Notas de Sessão e Planeamento Interno
+/CONTEXTO_PROXIMA_SESSAO.md
+/PLANO_EXECUCAO.md
+
+# Ficheiros de Configuração de Editores e Logs
+.vscode/
+.idea/
+*.log
+*.tmp

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conheça os menus da semana e planos de subscrição da BioMarmita: Vegetariano, Tradicional e Fitness. Opções Individual, Casal e Família no Porto.">
+  <title>Menu e Planos — BioMarmita</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       CABEÇALHO & BARRA DE NAVEGAÇÃO
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo" aria-label="BioMarmita Página Inicial">
+        <img src="./assets/imagens/logo-biomarmita.jpeg" alt="Logótipo BioMarmita">
+        <div class="brand-info">
+          <span class="brand-title">Bio<span>Marmita</span></span>
+          <span class="brand-tagline">Alimentação Saudável & Sustentável</span>
+        </div>
+      </a>
+
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu de navegação" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Início</a>
+        <a href="sobre.html" class="nav-link">Sobre Nós</a>
+        <a href="menu.html" class="nav-link active">Menu e Planos</a>
+        <a href="produtores.html" class="nav-link">Produtores Locais</a>
+        <a href="sustentabilidade.html" class="nav-link">Sustentabilidade</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contactos.html" class="nav-link">Contactos</a>
+        <a href="carrinho.html" class="btn btn-accent btn-sm nav-cta">Subscrever</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ======================================================================
+         BANNER DE APRESENTAÇÃO
+         ====================================================================== -->
+    <section class="subpage-hero">
+      <div class="container">
+        <span class="badge">Ementa Semanal & Preços</span>
+        <h1>Menu e Planos de Subscrição</h1>
+        <p>Refeições confecionadas com ingredientes biológicos frescos, prontas em 3 minutos para facilitar a sua semana.</p>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         EMENTA COMPLETA & LANCHES SAUDÁVEIS (BENCHMARK REVOLUTION FOOD)
+         ====================================================================== -->
+    <section class="section section-white">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Ementa Semanal & Lanches</span>
+          <h2 class="section-title">As Nossas Marmitas & Lanches Saudáveis</h2>
+          <p class="section-subtitle">
+            Ingredientes 100% biológicos certificados de produtores locais do Norte, com tabelas nutricionais transparentes e embalagens bioplásticas com recolha gratuita.
+          </p>
+        </div>
+
+        <!-- Banner Explicativo de Fluxo e Subscrição -->
+        <div class="menu-intro-banner">
+          <div class="intro-icon">💡</div>
+          <div class="intro-content">
+            <strong>Como funciona a escolha dos pratos na sua subscrição?</strong>
+            <p>
+              Ao subscrever qualquer plano (Individual, Casal ou Família), tem <strong>total liberdade para personalizar as refeições da sua 1ª semana</strong> no passo seguinte ou optar com 1 clique pela <em>Sugestão Equilibrada do Chef</em>. As semanas seguintes podem ser alteradas livremente até 48h antes da entrega.
+            </p>
+          </div>
+        </div>
+
+        <!-- Barra de Filtros Interativos por Categoria -->
+        <div class="menu-filter-bar">
+          <button type="button" class="filter-btn active" data-filter="all">🍽️ Todos (10 Opções)</button>
+          <button type="button" class="filter-btn" data-filter="carne">🍗 Carne Magra</button>
+          <button type="button" class="filter-btn" data-filter="peixe">🐟 Peixe Sustentável</button>
+          <button type="button" class="filter-btn" data-filter="vegetariano">🌱 Vegetariano & Vegan</button>
+          <button type="button" class="filter-btn" data-filter="lanches">🥪 Lanches & Pequenos-Almoços</button>
+        </div>
+
+        <div class="meals-grid" id="mealsGrid">
+          <!-- Item 1: Carne - Peru Recheado -->
+          <div class="meal-card" data-category="carne">
+            <div class="meal-img-wrapper">
+              <img src="./assets/imagens/prato-peru-espinafres.jpeg" alt="Peito de Peru Recheado com Espinafres e Batata Doce">
+              <span class="meal-badge">Carne Magra • Conforto</span>
+            </div>
+            <div class="meal-body">
+              <h3 class="meal-title">Peito de Peru Recheado</h3>
+              <span class="meal-subtitle">Com espinafres frescos e batata-doce assada</span>
+              <p class="meal-desc">
+                Peito de peru de criação livre recheado com espinafres biológicos salteados em azeite virgem extra, acompanhado de cubos de batata-doce assada no forno e legumes da época.
+              </p>
+              <div class="macros-bar">
+                <div class="macro-item"><span class="macro-value">460</span><span class="macro-label">Kcal</span></div>
+                <div class="macro-item"><span class="macro-value">41g</span><span class="macro-label">Proteína</span></div>
+                <div class="macro-item"><span class="macro-value">34g</span><span class="macro-label">Hidratos</span></div>
+                <div class="macro-item"><span class="macro-value">12g</span><span class="macro-label">Gordura</span></div>
+              </div>
+              <div class="meal-origin-badge">📍 Quinta da Serra (Paredes)</div>
+              <div class="meal-tags">
+                <span class="meal-tag">Sem Glúten</span>
+                <span class="meal-tag">Baixo Sal</span>
+                <span class="meal-tag">Pronto em 3 min</span>
+              </div>
+              <a href="carrinho.html?plano=individual&item=peru" class="btn btn-outline btn-sm">🍱 Escolher no Meu Plano</a>
+            </div>
+          </div>
+
+          <!-- Item 2: Peixe - Bacalhau em Cama de Grão -->
+          <div class="meal-card" data-category="peixe">
+            <div class="meal-img-wrapper">
+              <img src="./assets/imagens/prato-bacalhau-grao.jpeg" alt="Lombo de Bacalhau em Cama de Esmagada de Grão">
+              <span class="meal-badge">Peixe Tradicional • Nobre</span>
+            </div>
+            <div class="meal-body">
+              <h3 class="meal-title">Lombo de Bacalhau com Grão</h3>
+              <span class="meal-subtitle">Em cama de esmagada de grão e couve portuguesa</span>
+              <p class="meal-desc">
+                Lombo nobre de bacalhau confitado em azeite biológico e alho, servido sobre esmagada rústica de grão-de-bico biológico e couve coração fresca da Horta do Vale.
+              </p>
+              <div class="macros-bar">
+                <div class="macro-item"><span class="macro-value">490</span><span class="macro-label">Kcal</span></div>
+                <div class="macro-item"><span class="macro-value">39g</span><span class="macro-label">Proteína</span></div>
+                <div class="macro-item"><span class="macro-value">40g</span><span class="macro-label">Hidratos</span></div>
+                <div class="macro-item"><span class="macro-value">13g</span><span class="macro-label">Gordura</span></div>
+              </div>
+              <div class="meal-origin-badge">📍 Horta do Vale (Vila do Conde)</div>
+              <div class="meal-tags">
+                <span class="meal-tag">Rico em Fibras</span>
+                <span class="meal-tag">Ómega-3</span>
+                <span class="meal-tag">Sem Glúten</span>
+              </div>
+              <a href="carrinho.html?plano=individual&item=bacalhau" class="btn btn-outline btn-sm">🍱 Escolher no Meu Plano</a>
+            </div>
+          </div>
+
+          <!-- Item 3: Vegetariano - Caril de Grão e Espinafres -->
+          <div class="meal-card" data-category="vegetariano">
+            <div class="meal-img-wrapper">
+              <img src="./assets/imagens/prato-caril-grao.jpeg" alt="Caril de Grão e Espinafres com Arroz Basmati">
+              <span class="meal-badge">100% Vegan • Aromático</span>
+            </div>
+            <div class="meal-body">
+              <h3 class="meal-title">Caril de Grão & Espinafres</h3>
+              <span class="meal-subtitle">Com arroz basmati perfumado e leite de coco bio</span>
+              <p class="meal-desc">
+                Grão-de-bico biológico estufado suavemente com espinafres tenros, especiarias orientais equilibradas e leite de coco biológico, servido com arroz basmati aromático.
+              </p>
+              <div class="macros-bar">
+                <div class="macro-item"><span class="macro-value">430</span><span class="macro-label">Kcal</span></div>
+                <div class="macro-item"><span class="macro-value">17g</span><span class="macro-label">Proteína</span></div>
+                <div class="macro-item"><span class="macro-value">58g</span><span class="macro-label">Hidratos</span></div>
+                <div class="macro-item"><span class="macro-value">11g</span><span class="macro-label">Gordura</span></div>
+              </div>
+              <div class="meal-origin-badge">📍 Sabor do Campo (Penafiel)</div>
+              <div class="meal-tags">
+                <span class="meal-tag">Plant-Based</span>
+                <span class="meal-tag">Sem Lactose</span>
+                <span class="meal-tag">Pronto em 3 min</span>
+              </div>
+              <a href="carrinho.html?plano=individual&item=caril" class="btn btn-outline btn-sm">🍱 Escolher no Meu Plano</a>
+            </div>
+          </div>
+
+          <!-- Item 4: Carne - Frango Grelhado Biológico -->
+          <div class="meal-card" data-category="carne">
+            <div class="meal-img-wrapper">
+              <img src="./assets/imagens/menu-tradicional.jpeg" alt="Frango biológico grelhado com arroz integral e legumes assados">
+              <span class="meal-badge">Receita Clássica</span>
+            </div>
+            <div class="meal-body">
+              <h3 class="meal-title">Frango do Campo Grelhado</h3>
+              <span class="meal-subtitle">Com arroz integral e legumes rústicos assados</span>
+              <p class="meal-desc">
+                Peito de frango biológico nacional marinado com alecrim e azeite virgem extra, acompanhado de arroz integral e legumes colhidos na manhã de confeção.
+              </p>
+              <div class="macros-bar">
+                <div class="macro-item"><span class="macro-value">480</span><span class="macro-label">Kcal</span></div>
+                <div class="macro-item"><span class="macro-value">38g</span><span class="macro-label">Proteína</span></div>
+                <div class="macro-item"><span class="macro-value">42g</span><span class="macro-label">Hidratos</span></div>
+                <div class="macro-item"><span class="macro-value">11g</span><span class="macro-label">Gordura</span></div>
+              </div>
+              <div class="meal-origin-badge">📍 Quinta da Serra (Paredes)</div>
+              <div class="meal-tags">
+                <span class="meal-tag">Rico em Proteína</span>
+                <span class="meal-tag">Baixo Sal</span>
+                <span class="meal-tag">Sem Conservantes</span>
+              </div>
+              <a href="carrinho.html?plano=individual&item=frango" class="btn btn-outline btn-sm">🍱 Escolher no Meu Plano</a>
+            </div>
+          </div>
+
+          <!-- Item 5: Peixe - Salmão Fresco & Quinoa -->
+          <div class="meal-card" data-category="peixe">
+            <div class="meal-img-wrapper">
+              <img src="./assets/imagens/menu-fitness.jpeg" alt="Salmão grelhado com quinoa real e brócolos ao vapor">
+              <span class="meal-badge">Fitness • Alto Teor Proteico</span>
+            </div>
+            <div class="meal-body">
+              <h3 class="meal-title">Salmão Fresco & Quinoa Real</h3>
+              <span class="meal-subtitle">Ao perfume de limão com brócolos ao vapor</span>
+              <p class="meal-desc">
+                Lombo de salmão fresco grelhado ao ponto, acompanhado de timbale de quinoa real biológica e raminhos de brócolos frescos cozidos ao vapor estaladiço.
+              </p>
+              <div class="macros-bar">
+                <div class="macro-item"><span class="macro-value">510</span><span class="macro-label">Kcal</span></div>
+                <div class="macro-item"><span class="macro-value">42g</span><span class="macro-label">Proteína</span></div>
+                <div class="macro-item"><span class="macro-value">32g</span><span class="macro-label">Hidratos</span></div>
+                <div class="macro-item"><span class="macro-value">16g</span><span class="macro-label">Gordura</span></div>
+              </div>
+              <div class="meal-origin-badge">📍 Horta do Vale (Vila do Conde)</div>
+              <div class="meal-tags">
+                <span class="meal-tag">Ómega-3 Puro</span>
+                <span class="meal-tag">Superalimento</span>
+                <span class="meal-tag">Sem Glúten</span>
+              </div>
+              <a href="carrinho.html?plano=individual&item=salmao" class="btn btn-outline btn-sm">🍱 Escolher no Meu Plano</a>
+            </div>
+          </div>
+
+          <!-- Item 6: Vegetariano - Bowl de Tofu e Abacate -->
+          <div class="meal-card" data-category="vegetariano">
+            <div class="meal-img-wrapper">
+              <img src="./assets/imagens/menu-vegetariano.jpeg" alt="Bowl Vegetariano com tofu grelhado, abacate e legumes">
+              <span class="meal-badge">Plant-Based Bowl</span>
+            </div>
+            <div class="meal-body">
+              <h3 class="meal-title">Bowl de Tofu & Abacate</h3>
+              <span class="meal-subtitle">Com edamame, batata-doce e molho sésamo</span>
+              <p class="meal-desc">
+                Tofu bio marinado em ervas portuguesas e grelhado, fatias de abacate fresco, edamame crocante, cubos de batata-doce assada e fio de vinagre balsâmico biológico.
+              </p>
+              <div class="macros-bar">
+                <div class="macro-item"><span class="macro-value">420</span><span class="macro-label">Kcal</span></div>
+                <div class="macro-item"><span class="macro-value">18g</span><span class="macro-label">Proteína</span></div>
+                <div class="macro-item"><span class="macro-value">46g</span><span class="macro-label">Hidratos</span></div>
+                <div class="macro-item"><span class="macro-value">14g</span><span class="macro-label">Gordura</span></div>
+              </div>
+              <div class="meal-origin-badge">📍 Sabor do Campo (Penafiel)</div>
+              <div class="meal-tags">
+                <span class="meal-tag">Vegan</span>
+                <span class="meal-tag">Sem Glúten</span>
+                <span class="meal-tag">Fibras Vivas</span>
+              </div>
+              <a href="carrinho.html?plano=individual&item=tofu" class="btn btn-outline btn-sm">🍱 Escolher no Meu Plano</a>
+            </div>
+          </div>
+
+          <!-- Item 7: Lanche 1 - Pudim de Chia com Frutos Vermelhos -->
+          <div class="meal-card" data-category="lanches">
+            <div class="meal-img-wrapper">
+              <img src="./assets/imagens/lanche-pudim-chia.jpeg" alt="Pudim de Chia com Frutos Vermelhos Silvestres">
+              <span class="meal-badge" style="background-color: var(--color-accent);">Lanche • Prático & Premium</span>
+            </div>
+            <div class="meal-body">
+              <h3 class="meal-title">Pudim de Chia com Frutos Vermelhos</h3>
+              <span class="meal-subtitle">Leite vegetal de amêndoa e framboesas biológicas</span>
+              <p class="meal-desc">
+                Sementes de chia biológica hidratadas em leite de amêndoa sem açúcar adicionado, cobertas com coulis artesanal de amoras e framboesas frescas do Norte.
+              </p>
+              <div class="macros-bar">
+                <div class="macro-item"><span class="macro-value">210</span><span class="macro-label">Kcal</span></div>
+                <div class="macro-item"><span class="macro-value">6g</span><span class="macro-label">Proteína</span></div>
+                <div class="macro-item"><span class="macro-value">18g</span><span class="macro-label">Hidratos</span></div>
+                <div class="macro-item"><span class="macro-value">11g</span><span class="macro-label">Gordura</span></div>
+              </div>
+              <div class="meal-origin-badge">📍 Sabor do Campo (Penafiel)</div>
+              <div class="meal-tags">
+                <span class="meal-tag">Vegan</span>
+                <span class="meal-tag">Sem Açúcar Adicionado</span>
+                <span class="meal-tag">Antioxidante</span>
+              </div>
+              <a href="carrinho.html?plano=individual&item=chia" class="btn btn-outline btn-sm">🍱 Escolher no Meu Plano</a>
+            </div>
+          </div>
+
+          <!-- Item 8: Lanche 2 - Tostas de Centeio com Abacate e Ovo -->
+          <div class="meal-card" data-category="lanches">
+            <div class="meal-img-wrapper">
+              <img src="./assets/imagens/lanche-tostas-abacate.jpeg" alt="Tostas de Centeio com Abacate e Ovo Escalfado">
+              <span class="meal-badge" style="background-color: var(--color-accent);">Pequeno-Almoço • Energético</span>
+            </div>
+            <div class="meal-body">
+              <h3 class="meal-title">Tostas de Centeio com Abacate e Ovo</h3>
+              <span class="meal-subtitle">Pão artesanal de centeio, abacate fresco e ovo biológico</span>
+              <p class="meal-desc">
+                Fatia de pão de centeio de fermentação lenta com puré rústico de abacate fresco, sementes de abóbora tostadas e ovo escalfado biológico da Quinta da Serra.
+              </p>
+              <div class="macros-bar">
+                <div class="macro-item"><span class="macro-value">290</span><span class="macro-label">Kcal</span></div>
+                <div class="macro-item"><span class="macro-value">13g</span><span class="macro-label">Proteína</span></div>
+                <div class="macro-item"><span class="macro-value">24g</span><span class="macro-label">Hidratos</span></div>
+                <div class="macro-item"><span class="macro-value">15g</span><span class="macro-label">Gordura</span></div>
+              </div>
+              <div class="meal-origin-badge">📍 Quinta da Serra & Horta do Vale</div>
+              <div class="meal-tags">
+                <span class="meal-tag">Energia Limpa</span>
+                <span class="meal-tag">Rico em Proteína</span>
+                <span class="meal-tag">Gorduras Boas</span>
+              </div>
+              <a href="carrinho.html?plano=individual&item=tostas" class="btn btn-outline btn-sm">🍱 Escolher no Meu Plano</a>
+            </div>
+          </div>
+
+          <!-- Item 9: Lanche 3 - Panquecas de Aveia e Banana com Mel -->
+          <div class="meal-card" data-category="lanches">
+            <div class="meal-img-wrapper">
+              <img src="./assets/imagens/lanche-panquecas-aveia.jpeg" alt="Panquecas de Aveia e Banana com Mel">
+              <span class="meal-badge" style="background-color: #3b82f6;">Kids Friendly • Familiar</span>
+            </div>
+            <div class="meal-body">
+              <h3 class="meal-title">Panquecas de Aveia & Banana com Mel</h3>
+              <span class="meal-subtitle">Aprovado por crianças (como a Matilde, 4 anos!)</span>
+              <p class="meal-desc">
+                Panquecas fofas preparadas com farinha de aveia integral, banana madura e canela biológica, acompanhadas por um fio de mel puro de urze do Parque Natural das Serras do Porto.
+              </p>
+              <div class="macros-bar">
+                <div class="macro-item"><span class="macro-value">240</span><span class="macro-label">Kcal</span></div>
+                <div class="macro-item"><span class="macro-value">8g</span><span class="macro-label">Proteína</span></div>
+                <div class="macro-item"><span class="macro-value">38g</span><span class="macro-label">Hidratos</span></div>
+                <div class="macro-item"><span class="macro-value">5g</span><span class="macro-label">Gordura</span></div>
+              </div>
+              <div class="meal-origin-badge">📍 Sabor do Campo (Penafiel)</div>
+              <div class="meal-tags">
+                <span class="meal-tag">Sem Açúcar Refinado</span>
+                <span class="meal-tag">Ideal para Crianças</span>
+                <span class="meal-tag">Fibras Suaves</span>
+              </div>
+              <a href="carrinho.html?plano=individual&item=panquecas" class="btn btn-outline btn-sm">🍱 Escolher no Meu Plano</a>
+            </div>
+          </div>
+
+          <!-- Item 10: Lanche 4 - Húmus de Pimento Vermelho com Vegetais -->
+          <div class="meal-card" data-category="lanches">
+            <div class="meal-img-wrapper">
+              <img src="./assets/imagens/lanche-humus-vegetais.jpeg" alt="Húmus de Pimento Vermelho com Palitos de Vegetais">
+              <span class="meal-badge" style="background-color: var(--color-accent);">Snack de Trabalho • Fresco</span>
+            </div>
+            <div class="meal-body">
+              <h3 class="meal-title">Húmus de Pimento com Palitos de Vegetais</h3>
+              <span class="meal-subtitle">Crocante, refrescante e ideal para levar para o escritório</span>
+              <p class="meal-desc">
+                Húmus artesanal de grão-de-bico com pimento vermelho assado e azeite virgem extra, servido com palitos frescos de cenoura doce e pepino biológicos da horta.
+              </p>
+              <div class="macros-bar">
+                <div class="macro-item"><span class="macro-value">180</span><span class="macro-label">Kcal</span></div>
+                <div class="macro-item"><span class="macro-value">7g</span><span class="macro-label">Proteína</span></div>
+                <div class="macro-item"><span class="macro-value">19g</span><span class="macro-label">Hidratos</span></div>
+                <div class="macro-item"><span class="macro-value">8g</span><span class="macro-label">Gordura</span></div>
+              </div>
+              <div class="meal-origin-badge">📍 Horta do Vale (Vila do Conde)</div>
+              <div class="meal-tags">
+                <span class="meal-tag">Vegan</span>
+                <span class="meal-tag">Sem Glúten</span>
+                <span class="meal-tag">Snack de Escritório</span>
+              </div>
+              <a href="carrinho.html?plano=individual&item=humus" class="btn btn-outline btn-sm">🍱 Escolher no Meu Plano</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         PLANOS DE SUBSCRIÇÃO SEMANAL
+         ====================================================================== -->
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Condições Contratuais Transparentes</span>
+          <h2 class="section-title">Escolha o Seu Plano Semanal</h2>
+          <p class="section-subtitle">
+            Subscrição semanal sem qualquer período de fidelização. Agendamento com dia, horário e morada (domicílio ou trabalho) à sua escolha no Grande Porto, com pausa ou cancelamento gratuito com 48h de aviso prévio.
+          </p>
+        </div>
+
+        <div class="plans-grid">
+          <!-- Plano Individual -->
+          <div class="plan-card">
+            <div class="plan-icon-box">
+              <img src="./assets/icones/individual.jpeg" alt="Ícone Plano Individual">
+            </div>
+            <h3 class="plan-name">Plano Individual</h3>
+            <p class="plan-sub">5 refeições semanais • 7,98 € / dose</p>
+            <div class="plan-price">
+              <span class="currency">€</span>
+              <span class="amount">39,90</span>
+              <span class="period">/ semana</span>
+            </div>
+            <ul class="plan-features">
+              <li>5 marmitas ou lanches biológicos à escolha do menu completo</li>
+              <li><strong>🎁 2 lanches biológicos de brinde incluídos grátis</strong></li>
+              <li>Perfeito para almoços e snacks de segunda a sexta</li>
+              <li>Entrega flexível incluída em todo o Grande Porto</li>
+              <li>Embalagens a vácuo (conservam 7 dias a 2°C–4°C)</li>
+              <li>Recolha gratuita das embalagens na entrega seguinte</li>
+            </ul>
+            <a href="carrinho.html?plano=individual" class="btn btn-outline">Subscrever Individual</a>
+          </div>
+
+          <!-- Plano Casal -->
+          <div class="plan-card popular">
+            <div class="plan-badge-top">Mais Popular</div>
+            <div class="plan-icon-box">
+              <img src="./assets/icones/casal.jpeg" alt="Ícone Plano Casal">
+            </div>
+            <h3 class="plan-name">Plano Casal</h3>
+            <p class="plan-sub">10 refeições semanais • 7,49 € / dose</p>
+            <div class="plan-price">
+              <span class="currency">€</span>
+              <span class="amount">74,90</span>
+              <span class="period">/ semana</span>
+            </div>
+            <ul class="plan-features">
+              <li>10 marmitas ou lanches biológicos à sua escolha</li>
+              <li><strong>🎁 2 lanches biológicos de brinde incluídos grátis</strong></li>
+              <li>Almoços, jantares e snacks sem preocupações para dois</li>
+              <li>Horário e local de entrega combinados à medida</li>
+              <li>Recolha e encaminhamento circular para compostagem</li>
+              <li>Pausa ou cancelamento com 48h de aviso prévio</li>
+            </ul>
+            <a href="carrinho.html?plano=casal" class="btn btn-accent">Subscrever Plano Casal</a>
+          </div>
+
+          <!-- Plano Família -->
+          <div class="plan-card">
+            <div class="plan-icon-box">
+              <img src="./assets/icones/familiar.jpeg" alt="Ícone Plano Família">
+            </div>
+            <h3 class="plan-name">Plano Família</h3>
+            <p class="plan-sub">15 refeições semanais • 6,99 € / dose</p>
+            <div class="plan-price">
+              <span class="currency">€</span>
+              <span class="amount">104,90</span>
+              <span class="period">/ semana</span>
+            </div>
+            <ul class="plan-features">
+              <li>15 marmitas ou lanches adaptados para adultos e crianças</li>
+              <li><strong>🎁 2 lanches biológicos de brinde incluídos grátis</strong></li>
+              <li>Possibilidade de entrega fracionada em 2 vezes por semana</li>
+              <li>Ingredientes 100% de quintas parceiras locais</li>
+              <li>Canal de apoio preferencial via WhatsApp</li>
+              <li>Recolha sistemática de todas as embalagens vazias</li>
+            </ul>
+            <a href="carrinho.html?plano=familia" class="btn btn-outline">Subscrever Plano Família</a>
+          </div>
+        </div>
+
+        <!-- Tabela Resumo de Condições Reais de Serviço -->
+        <div style="margin-top: 40px; background: #ffffff; border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 28px; box-shadow: var(--shadow-sm);">
+          <h4 style="color: var(--color-primary-dark); font-size: 1.2rem; margin-bottom: 14px; text-align: center;">Resumo das Condições Comerciais & Limites do Serviço</h4>
+          <div class="nutrition-grid" style="text-align: left;">
+            <div style="padding: 10px;">
+              <strong style="color: var(--color-primary); display: block; margin-bottom: 4px; font-size: 0.95rem;">📍 Território</strong>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted);">Entregas restritas à área metropolitana do Grande Porto (Porto, Gaia, Matosinhos, Maia, Gondomar).</p>
+            </div>
+            <div style="padding: 10px;">
+              <strong style="color: var(--color-primary); display: block; margin-bottom: 4px; font-size: 0.95rem;">⏱️ Pré-Aviso de 48h</strong>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted);">Qualquer pausa, troca de pratos ou cancelamento deve ser solicitada até 48h antes da entrega.</p>
+            </div>
+            <div style="padding: 10px;">
+              <strong style="color: var(--color-primary); display: block; margin-bottom: 4px; font-size: 0.95rem;">💳 Métodos de Pagamento</strong>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted);">Pagamentos seguros via MB WAY, Referência Multibanco e Cartão de Débito/Crédito.</p>
+            </div>
+            <div style="padding: 10px;">
+              <strong style="color: var(--color-primary); display: block; margin-bottom: 4px; font-size: 0.95rem;">♻️ Devolução Obrigatória</strong>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted);">As embalagens vazias são entregues ao estafeta na semana seguinte para compostagem industrial.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparativo: BioMarmita vs Serviços Nacionais Convencionais (ex: The Revolution Food) -->
+        <div class="comparison-wrapper" style="margin-top: 40px;">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Vantagem Competitiva</th>
+                <th class="col-bio">🌱 BioMarmita (Grande Porto)</th>
+                <th>📦 Serviços Tradicionais / Concorrência Nacional</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Ingredientes Biológicos</strong></td>
+                <td class="col-bio"><span class="check-green">✓</span> <strong>100% Biológicos Certificados</strong> de quintas do Norte</td>
+                <td><span class="cross-neutral">✗</span> Convencionais, sem certificação biológica global</td>
+              </tr>
+              <tr>
+                <td><strong>Embalagens & Descarte</strong></td>
+                <td class="col-bio"><span class="check-green">✓</span> <strong>Bioplástico Compostável (EN 13432)</strong> com recolha gratuita</td>
+                <td><span class="cross-neutral">✗</span> Plástico fóssil comum descartável no lixo/ecoponto</td>
+              </tr>
+              <tr>
+                <td><strong>Logística de Entrega</strong></td>
+                <td class="col-bio"><span class="check-green">✓</span> <strong>Horário e morada flexíveis</strong> (domicílio ou escritório no Grande Porto)</td>
+                <td><span class="cross-neutral">✗</span> Janelas rígidas de transportadora geral sem agendamento à medida</td>
+              </tr>
+              <tr>
+                <td><strong>Rastreabilidade</strong></td>
+                <td class="col-bio"><span class="check-green">✓</span> <strong>Quintas parceiras identificadas</strong> em cada refeição</td>
+                <td><span class="cross-neutral">✗</span> Fornecedores industriais anónimos</td>
+              </tr>
+              <tr>
+                <td><strong>Preparação</strong></td>
+                <td class="col-bio"><span class="check-green">✓</span> <strong>Pronto em 3 minutos</strong> no micro-ondas</td>
+                <td><span class="check-green">✓</span> Pronto em 3 minutos no micro-ondas</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         INFORMAÇÃO NUTRICIONAL
+         ====================================================================== -->
+    <section class="section section-white">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">Rigor & Saúde</span>
+          <h2 class="section-title">Informação Nutricional Transparente</h2>
+          <p class="section-subtitle">
+            Acreditamos que deve saber com exatidão o que coloca no seu prato.
+          </p>
+        </div>
+
+        <div class="nutrition-grid">
+          <!-- Calorias -->
+          <div class="nutrition-card">
+            <div class="nutrition-icon">
+              <img src="./assets/icones/calorias.jpeg" alt="Ícone Calorias">
+            </div>
+            <h4>Calorias Controladas</h4>
+            <p>Porções calculadas entre 400 e 550 kcal para saciedade duradoura sem peso.</p>
+          </div>
+
+          <!-- Proteínas -->
+          <div class="nutrition-card">
+            <div class="nutrition-icon">
+              <img src="./assets/icones/proteina.jpeg" alt="Ícone Proteínas">
+            </div>
+            <h4>Proteínas Nobres</h4>
+            <p>Fontes limpas e naturais: carnes biológicas, peixe sustentável e leguminosas.</p>
+          </div>
+
+          <!-- Ingredientes -->
+          <div class="nutrition-card">
+            <div class="nutrition-icon">
+              <img src="./assets/icones/ingredientes.jpeg" alt="Ícone Ingredientes">
+            </div>
+            <h4>Sem Aditivos Artificiais</h4>
+            <p>Zero conservantes químicos, sem gorduras hidrogenadas e sem açúcares adicionados.</p>
+          </div>
+
+          <!-- Origem dos Produtos -->
+          <div class="nutrition-card">
+            <div class="nutrition-icon">
+              <img src="./assets/icones/origem_produtos.jpeg" alt="Ícone Origem dos Produtos">
+            </div>
+            <h4>Origem Rastreada</h4>
+            <p>Cada prato indica as quintas parceiras onde os seus ingredientes foram cultivados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       RODAPÉ CORPORATIVO UNIFICADO
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col footer-about">
+          <div class="brand-logo" style="margin-bottom: 12px;">
+            <img src="./assets/imagens/logo-biomarmita.jpeg" alt="BioMarmita" style="width: 44px; height: 44px;">
+            <div class="brand-info">
+              <span class="brand-title" style="color: #ffffff;">Bio<span style="color: var(--color-primary-light);">Marmita</span></span>
+            </div>
+          </div>
+          <span class="footer-slogan">«Da natureza ao prato, com sabor e confiança.»</span>
+          <p>
+            Serviço de subscrição semanal de marmitas biológicas equilibradas, prontas a aquecer e consumir no Grande Porto. Respeitamos a sua saúde e o planeta.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Página Inicial</a></li>
+            <li><a href="sobre.html">Sobre a BioMarmita</a></li>
+            <li><a href="menu.html">Menu da Semana & Planos</a></li>
+            <li><a href="produtores.html">Quintas & Produtores Locais</a></li>
+            <li><a href="sustentabilidade.html">Compromisso Sustentável</a></li>
+            <li><a href="faq.html">Perguntas Frequentes</a></li>
+            <li><a href="blog.html">Blog & Dicas Saudáveis</a></li>
+            <li><a href="contactos.html">Fale Connosco</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Atendimento & Entregas</h4>
+          <p style="font-size: 0.92rem; color: rgba(255,255,255,0.78); margin-bottom: 12px;">
+            <strong>Área de Entrega:</strong><br>
+            Grande Porto (Porto, Matosinhos, Gaia, Maia e Gondomar).
+          </p>
+          <p style="font-size: 0.92rem; color: rgba(255,255,255,0.78); margin-bottom: 12px;">
+            <strong>Horário e Local de Entrega:</strong><br>
+            Agendamento flexível de acordo com a sua preferência (domicílio ou trabalho).
+          </p>
+          <p style="font-size: 0.92rem; color: rgba(255,255,255,0.78);">
+            <strong>Embalagens Vazias:</strong><br>
+            Recolhemos na entrega seguinte para compostagem ecológica.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contactos Diretos</h4>
+          <div class="footer-contact-item">
+            <span>📍</span>
+            <span>Porto, Portugal</span>
+          </div>
+          <div class="footer-contact-item">
+            <span>💬</span>
+            <a href="https://wa.me/351912345678" target="_blank" style="color: #ffffff;">WhatsApp: +351 912 345 678</a>
+          </div>
+          <div class="footer-contact-item">
+            <span>✉️</span>
+            <a href="mailto:biomarmita.portugal@gmail.com" style="color: #ffffff;">biomarmita.portugal@gmail.com</a>
+          </div>
+          <div class="footer-social-links">
+            <a href="https://instagram.com/biomarmita.portugal" target="_blank" class="social-btn" aria-label="Instagram">IG</a>
+            <a href="https://linkedin.com" target="_blank" class="social-btn" aria-label="LinkedIn">IN</a>
+            <a href="https://facebook.com" target="_blank" class="social-btn" aria-label="Facebook">FB</a>
+            <a href="https://wa.me/351912345678" target="_blank" class="social-btn" aria-label="WhatsApp">WA</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 BioMarmita — Projeto Escolar UFCD 11007. Todos os direitos reservados.</p>
+        <div class="footer-legal-links">
+          <a href="faq.html">Política de Entrega</a>
+          <a href="sustentabilidade.html">Certificação Biológica</a>
+          <a href="contactos.html">Apoio ao Cliente</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- Botão Flutuante de WhatsApp -->
+  <a href="https://wa.me/351912345678?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20planos%20da%20BioMarmita." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.27 7.49C9.09 7.49 8.89 7.56 8.73 7.74C8.57 7.92 8.08 8.38 8.08 9.32C8.08 10.26 8.76 11.16 8.86 11.29C8.95 11.43 10.2 13.36 12.12 14.19C13.68 14.86 14 14.73 14.34 14.69C14.68 14.66 15.44 14.24 15.6 13.79C15.76 13.34 15.76 12.95 15.71 12.87C15.66 12.79 15.53 12.74 15.34 12.65C15.16 12.55 14.25 12.11 14.08 12.05C13.91 11.98 13.78 11.95 13.66 12.13C13.53 12.31 13.16 12.74 13.05 12.87C12.94 13 12.83 13.02 12.64 12.92C12.46 12.83 11.87 12.64 11.17 12.02C10.63 11.53 10.26 10.93 10.15 10.75C10.05 10.57 10.14 10.47 10.23 10.37C10.32 10.28 10.42 10.15 10.52 10.04C10.62 9.93 10.65 9.85 10.72 9.72C10.78 9.59 10.75 9.47 10.7 9.38C10.66 9.29 10.26 8.32 10.09 7.92C9.93 7.52 9.76 7.58 9.63 7.58C9.51 7.57 9.38 7.49 9.27 7.49Z"/>
+    </svg>
+    <span>Fale Connosco</span>
+  </a>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>

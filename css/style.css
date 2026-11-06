@@ -3661,7 +3661,7 @@ textarea.form-control {
 .cert-detailed-header {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
   margin-bottom: 16px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--color-border);
@@ -3678,6 +3678,53 @@ textarea.form-control {
   background: #f0fdf4;
   border: 1px solid #bbf7d0;
   flex-shrink: 0;
+}
+
+/* Novo Contentor Dedicado para os Logótipos Oficiais das Certificações */
+.cert-detailed-header .cert-logo-box {
+  width: 76px;
+  height: 76px;
+  min-width: 76px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1.5px solid #e5e7eb;
+  padding: 8px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cert-detailed-card:hover .cert-logo-box {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 14px rgba(45, 90, 39, 0.12);
+}
+
+.cert-logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.cert-badge-pill-img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .cert-detailed-header .cert-logo-box {
+    width: 64px;
+    height: 64px;
+    min-width: 64px;
+    padding: 6px;
+  }
 }
 
 .cert-detailed-header .cert-title-group h3 {

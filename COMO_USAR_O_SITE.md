@@ -171,6 +171,10 @@ Existem duas formas fáceis de trocar qualquer foto:
 | **Sabor do Campo** | `sabor-do-campo.jpeg` | No cartão do produtor (`produtores.html`) |
 | **Caixa com Marmitas** | `caixa-entrega.jpeg` | Na secção de entrega e embalagens |
 | **Embalagens Sustentáveis** | `embalagem-eco.jpeg` | Na página de Sustentabilidade (`sustentabilidade.html`) |
+| **Selo Euro-Folha UE** | `selo-euro-folha.png` | Em Sustentabilidade (`#certificacoes`) e Trust Bar da Home |
+| **Selo Higiene HACCP** | `selo-haccp.png` | Em Sustentabilidade (`#certificacoes`) e Trust Bar da Home |
+| **Selo Norma EN 13432** | `selo-en-13432.png` | Em Sustentabilidade (`#certificacoes`) e Trust Bar da Home |
+| **Selo Cadeia Curta / Clean**| `selo-cadeia-curta.png` | Em Sustentabilidade (`#certificacoes`) e Trust Bar da Home |
 
 ---
 

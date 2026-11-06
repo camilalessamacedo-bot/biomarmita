@@ -3001,3 +3001,186 @@ textarea.form-control {
     grid-template-columns: 1fr;
   }
 }
+
+/* --------------------------------------------------------------------------
+   24. ÁREA DE CLIENTE (PORTAL DO SUBSCRIBITOR)
+   -------------------------------------------------------------------------- */
+.account-hero-card {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 30px 32px;
+  margin-bottom: 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  box-shadow: var(--shadow-md);
+}
+
+.account-user-info h2 {
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin: 0 0 6px 0;
+}
+
+.account-user-meta {
+  font-size: 0.95rem;
+  opacity: 0.92;
+  margin: 0;
+}
+
+.account-quick-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.account-stat-pill {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 8px 16px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  color: #ffffff;
+}
+
+.account-dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.account-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 26px 28px;
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.account-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.account-card-header h3 {
+  font-size: 1.25rem;
+  color: var(--color-primary-dark);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.account-details-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 20px;
+  margin-bottom: 22px;
+}
+
+.account-detail-item strong {
+  display: block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--color-text-muted);
+  margin-bottom: 3px;
+}
+
+.account-detail-item span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.account-actions-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding-top: 14px;
+  border-top: 1px dashed var(--color-border);
+}
+
+.account-meals-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.account-meal-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background-color: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+}
+
+.account-meal-item.gift {
+  background-color: #fff9f6;
+  border-color: #f3e5c8;
+}
+
+.account-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.account-table th,
+.account-table td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.account-table th {
+  background-color: var(--color-bg-alt);
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+
+.account-table tr:last-child td {
+  border-bottom: none;
+}
+
+.account-alert-box {
+  background-color: #ecfdf5;
+  border: 1px solid #10b981;
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  color: #065f46;
+  font-size: 0.92rem;
+  display: none;
+  align-items: center;
+  gap: 12px;
+}
+
+.account-alert-box.active {
+  display: flex;
+}
+
+@media (max-width: 900px) {
+  .account-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .account-details-list {
+    grid-template-columns: 1fr;
+  }
+}

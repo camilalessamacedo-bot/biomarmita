@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Área de Cliente da BioMarmita: gira a sua subscrição semanal, salte semanas, altere pratos e consulte o histórico de entregas.">
+  <title>Área de Cliente — BioMarmita</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       CABEÇALHO E NAVEGAÇÃO
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo" aria-label="Página inicial BioMarmita">
+        <div class="logo-symbol">🌱</div>
+        <div class="brand-text">
+          <span class="brand-title">Bio<span>Marmita</span></span>
+          <span class="brand-tagline">Alimentação Saudável & Sustentável</span>
+        </div>
+      </a>
+
+      <!-- Botão Hambúrguer para ecrãs móveis -->
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu de navegação" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+
+      <!-- Links de Navegação -->
+      <nav class="nav-menu" id="navMenu">
+        <a href="index.html" class="nav-link">Início</a>
+        <a href="sobre.html" class="nav-link">Sobre Nós</a>
+        <a href="menu.html" class="nav-link">Menu e Planos</a>
+        <a href="produtores.html" class="nav-link">Produtores Locais</a>
+        <a href="sustentabilidade.html" class="nav-link">Sustentabilidade</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="blog.html" class="nav-link">Blog</a>
+        <a href="contactos.html" class="nav-link">Contactos</a>
+        <a href="area-cliente.html" class="nav-link active">Área de Cliente</a>
+        <a href="carrinho.html" class="btn btn-accent btn-sm nav-cta">Subscrever</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" style="padding-top: 40px; background-color: var(--color-bg-alt);">
+      <div class="container">
+
+        <!-- Banner Superior com Perfil do Subscritor -->
+        <div class="account-hero-card">
+          <div class="account-user-info">
+            <span class="badge" style="background: rgba(255,255,255,0.2); color: #ffffff; margin-bottom: 8px;">Subscritora Ativa</span>
+            <h2>Olá, Mariana Ferreira! 🌱</h2>
+            <p class="account-user-meta">Membro desde Outubro 2026 • Entrega no Grande Porto (Rua de Santa Catarina)</p>
+          </div>
+          <div class="account-quick-stats">
+            <div class="account-stat-pill">📦 Plano Individual (5 Refeições)</div>
+            <div class="account-stat-pill">🚚 Entrega: Segundas 09h-12h</div>
+            <div class="account-stat-pill">♻️ 15 Embalagens Devolvidas</div>
+          </div>
+        </div>
+
+        <!-- Caixa de Alerta Interativo (Feedback de Ações) -->
+        <div id="accountAlert" class="account-alert-box">
+          <span style="font-size: 1.3rem;">✅</span>
+          <div id="accountAlertMsg">Ação executada com sucesso.</div>
+        </div>
+
+        <!-- Grid Principal do Painel -->
+        <div class="account-dashboard-grid">
+
+          <!-- Coluna Esquerda: Subscrição e Pratos -->
+          <div class="account-main-col">
+
+            <!-- Card 1: Subscrição Atual -->
+            <div class="account-card">
+              <div class="account-card-header">
+                <h3><span>📦</span> A Sua Subscrição Semanal</h3>
+                <span class="badge" style="background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9;">● Ativa • Renovação Automática</span>
+              </div>
+
+              <div class="account-details-list">
+                <div class="account-detail-item">
+                  <strong>Plano Contratado</strong>
+                  <span>Plano Individual (5 Refeições + 2 Lanches Grátis)</span>
+                </div>
+                <div class="account-detail-item">
+                  <strong>Valor Semanal</strong>
+                  <span>39,90 € / semana</span>
+                </div>
+                <div class="account-detail-item">
+                  <strong>Próxima Entrega</strong>
+                  <span id="nextDeliveryDate">Segunda-feira, 11 de Novembro (09:00 - 12:00)</span>
+                </div>
+                <div class="account-detail-item">
+                  <strong>Método de Pagamento</strong>
+                  <span>MB WAY (+351 912 *** 678)</span>
+                </div>
+                <div class="account-detail-item">
+                  <strong>Morada de Entrega</strong>
+                  <span>Rua de Santa Catarina, 4000-447 Porto</span>
+                </div>
+                <div class="account-detail-item">
+                  <strong>Prazo para Alterações</strong>
+                  <span>Até 48h antes da entrega (Sábado às 09:00)</span>
+                </div>
+              </div>
+
+              <div class="account-actions-bar">
+                <button type="button" id="btnSkipWeek" class="btn btn-outline btn-sm">
+                  ⏭️ Saltar Próxima Semana
+                </button>
+                <button type="button" id="btnPauseSub" class="btn btn-outline btn-sm">
+                  ⏸️ Pausar Subscrição
+                </button>
+                <a href="menu.html" class="btn btn-accent btn-sm">
+                  ✏️ Personalizar Próximo Menu
+                </a>
+                <button type="button" id="btnEditAddress" class="btn btn-outline btn-sm">
+                  📍 Alterar Horário / Morada
+                </button>
+              </div>
+            </div>
+
+            <!-- Card 2: Pratos Selecionados para a Próxima Entrega -->
+            <div class="account-card">
+              <div class="account-card-header">
+                <h3><span>🥗</span> Menu Escolhido para a Próxima Entrega</h3>
+                <a href="menu.html" style="font-size: 0.85rem; font-weight: 600; color: var(--color-primary); text-decoration: none;">Trocar Pratos →</a>
+              </div>
+
+              <p style="font-size: 0.88rem; color: var(--color-text-muted); margin-bottom: 14px;">
+                Estas são as refeições e lanches biológicos que serão confecionados e embalados a vácuo para si:
+              </p>
+
+              <ul class="account-meals-list">
+                <li class="account-meal-item">
+                  <span>🍗 <strong>1x</strong> Frango do Campo com Quinoa Real e Legumes Salteados</span>
+                  <span class="badge" style="background: #eaf2e8; color: var(--color-primary);">495 kcal</span>
+                </li>
+                <li class="account-meal-item">
+                  <span>🐟 <strong>1x</strong> Salmão Selvagem com Puré de Batata-Doce e Espinafres Bio</span>
+                  <span class="badge" style="background: #eaf2e8; color: var(--color-primary);">510 kcal</span>
+                </li>
+                <li class="account-meal-item">
+                  <span>🌱 <strong>1x</strong> Caril Aromático de Grão-de-Bico com Arroz Basmati</span>
+                  <span class="badge" style="background: #eaf2e8; color: var(--color-primary);">460 kcal</span>
+                </li>
+                <li class="account-meal-item">
+                  <span>🍔 <strong>1x</strong> Hambúrguer Artesanal de Lentilhas com Legumes Grelhados</span>
+                  <span class="badge" style="background: #eaf2e8; color: var(--color-primary);">440 kcal</span>
+                </li>
+                <li class="account-meal-item">
+                  <span>🥗 <strong>1x</strong> Bowl Mediterrânica de Frango Bio e Húmus Artesanal</span>
+                  <span class="badge" style="background: #eaf2e8; color: var(--color-primary);">480 kcal</span>
+                </li>
+                <li class="account-meal-item gift">
+                  <span>🎁 <strong>1x (Brinde Grátis)</strong> Muffin de Aveia e Mirtilos Biológicos de Amarante</span>
+                  <strong style="color: #b45309; font-size: 0.85rem;">0,00 € Oferta</strong>
+                </li>
+                <li class="account-meal-item gift">
+                  <span>🎁 <strong>1x (Brinde Grátis)</strong> Granola Crocante Biológica com Iogurte Vegetal</span>
+                  <strong style="color: #b45309; font-size: 0.85rem;">0,00 € Oferta</strong>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Card 3: Histórico de Entregas & Faturas -->
+            <div class="account-card">
+              <div class="account-card-header">
+                <h3><span>📜</span> Histórico de Entregas & Faturas</h3>
+              </div>
+
+              <table class="account-table">
+                <thead>
+                  <tr>
+                    <th>Data</th>
+                    <th>Plano / Refeições</th>
+                    <th>Total</th>
+                    <th>Estado</th>
+                    <th>Recibo</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>04/11/2026</td>
+                    <td>5 Marmitas + 2 Lanches</td>
+                    <td>39,90 €</td>
+                    <td><span style="color: #2e7d32; font-weight: 700;">✓ Entregue</span></td>
+                    <td><a href="#" onclick="alert('Download de recibo simulado em formato PDF!'); return false;" style="color: var(--color-primary); font-weight: 600;">Descarregar</a></td>
+                  </tr>
+                  <tr>
+                    <td>28/10/2026</td>
+                    <td>5 Marmitas + 2 Lanches</td>
+                    <td>39,90 €</td>
+                    <td><span style="color: #2e7d32; font-weight: 700;">✓ Entregue</span></td>
+                    <td><a href="#" onclick="alert('Download de recibo simulado em formato PDF!'); return false;" style="color: var(--color-primary); font-weight: 600;">Descarregar</a></td>
+                  </tr>
+                  <tr>
+                    <td>21/10/2026</td>
+                    <td>5 Marmitas + 2 Lanches</td>
+                    <td>39,90 €</td>
+                    <td><span style="color: #2e7d32; font-weight: 700;">✓ Entregue</span></td>
+                    <td><a href="#" onclick="alert('Download de recibo simulado em formato PDF!'); return false;" style="color: var(--color-primary); font-weight: 600;">Descarregar</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+          <!-- Coluna Direita: Sustentabilidade e Apoio -->
+          <div class="account-sidebar-col">
+
+            <!-- Card Sustentabilidade Circular -->
+            <div class="account-card" style="background: linear-gradient(180deg, #f3f8f1 0%, #ffffff 100%); border-color: rgba(45,90,39,0.25);">
+              <h4 style="color: var(--color-primary-dark); font-size: 1.15rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                <span>♻️</span> O Seu Impacto Circular
+              </h4>
+              <p style="font-size: 0.88rem; color: var(--color-text-muted); line-height: 1.5; margin-bottom: 16px;">
+                A devolução não é obrigatória, mas a sua participação tem gerado um contributo ecológico real:
+              </p>
+
+              <div style="background: #ffffff; padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--color-border); margin-bottom: 12px; text-align: center;">
+                <span style="font-size: 2rem; font-weight: 800; color: var(--color-primary); display: block;">15</span>
+                <span style="font-size: 0.82rem; font-weight: 600; color: var(--color-text);">Embalagens Bioplásticas Devolvidas</span>
+              </div>
+
+              <div style="background: #ffffff; padding: 14px; border-radius: var(--radius-md); border: 1px solid var(--color-border); text-align: center;">
+                <span style="font-size: 1.5rem; font-weight: 800; color: #2e7d32; display: block;">~3,2 kg</span>
+                <span style="font-size: 0.82rem; font-weight: 600; color: var(--color-text);">De resíduos plásticos comuns poupados</span>
+              </div>
+
+              <p style="font-size: 0.8rem; color: var(--color-text-muted); margin-top: 14px; text-align: center;">
+                Próxima recolha gratuita na entrega de segunda-feira.
+              </p>
+            </div>
+
+            <!-- Card Dados de Contacto & Preferências -->
+            <div class="account-card">
+              <h4 style="color: var(--color-primary-dark); font-size: 1.15rem; margin-bottom: 14px;">
+                <span>👤</span> Dados Pessoais
+              </h4>
+              <div style="font-size: 0.88rem; line-height: 1.7; color: var(--color-text);">
+                <strong>Nome:</strong> Mariana Ferreira<br>
+                <strong>E-mail:</strong> mariana.ferreira@email.pt<br>
+                <strong>Telemóvel:</strong> +351 912 345 678<br>
+                <strong>Preferência:</strong> Refeições ricas em proteína e legumes frescos
+              </div>
+              <button type="button" onclick="alert('Simulação: formulário de edição de perfil aberto!');" class="btn btn-outline btn-sm" style="width: 100%; margin-top: 16px;">
+                Editar Perfil
+              </button>
+            </div>
+
+            <!-- Card Apoio Personalizado -->
+            <div class="account-card" style="text-align: center;">
+              <span style="font-size: 2rem; display: block; margin-bottom: 6px;">💬</span>
+              <h4 style="color: var(--color-primary-dark); font-size: 1.1rem; margin-bottom: 6px;">Precisa de Ajuda?</h4>
+              <p style="font-size: 0.86rem; color: var(--color-text-muted); margin-bottom: 16px;">
+                O seu assistente BioMarmita dedicado responde no WhatsApp em menos de 1 hora.
+              </p>
+              <a href="https://wa.me/351912345678" target="_blank" rel="noopener noreferrer" class="btn btn-accent btn-sm" style="width: 100%;">
+                Falar com o Apoio
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       RODAPÉ CORPORATIVO UNIFICADO
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col footer-brand-col">
+        <div class="footer-logo">
+          <div class="brand-logo">
+            <div class="logo-symbol">🌱</div>
+            <span class="brand-title" style="color: #ffffff;">Bio<span style="color: var(--color-primary-light);">Marmita</span></span>
+          </div>
+        </div>
+        <span class="footer-slogan">Da natureza ao prato, com sabor e confiança.</span>
+        <p>
+          Serviço de subscrição semanal de marmitas biológicas equilibradas, prontas a aquecer e consumir no Grande Porto. Respeitamos a sua saúde e o planeta.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre Nós</a></li>
+          <li><a href="menu.html">Menu e Planos</a></li>
+          <li><a href="produtores.html">Produtores Locais</a></li>
+          <li><a href="sustentabilidade.html">Sustentabilidade</a></li>
+          <li><a href="area-cliente.html">Área de Cliente</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Apoio e Legal</h4>
+        <ul class="footer-links">
+          <li><a href="faq.html">Perguntas Frequentes</a></li>
+          <li><a href="contactos.html">Contactos e Apoio</a></li>
+          <li><a href="blog.html">Blog e Notícias</a></li>
+          <li><a href="termos.html">Termos e Condições</a></li>
+          <li><a href="privacidade.html">Política de Privacidade</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Entrega e Horários</h4>
+        <div class="footer-hours">
+          <p>
+            <strong>Área de Distribuição:</strong><br>
+            Grande Porto (Porto, Matosinhos, Gaia, Maia, Gondomar).
+          </p>
+          <p>
+            <strong>Atendimento WhatsApp:</strong><br>
+            Segunda a Sexta: 08:30 às 19:30
+          </p>
+          <p>
+            <strong>Embalagens Vazias:</strong><br>
+            Recolha facultativa para sustentabilidade circular.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>&copy; 2026 BioMarmita Lda. Todos os direitos reservados.</p>
+      <div class="footer-legal-links">
+        <a href="privacidade.html">Privacidade</a>
+        <a href="termos.html">Termos</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão Flutuante de WhatsApp -->
+  <a href="https://wa.me/351912345678?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20planos%20da%20BioMarmita." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.81 13.47 3.81 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.27 7.49C9.09 7.49 8.89 7.56 8.73 7.74C8.57 7.92 8.08 8.38 8.08 9.32C8.08 10.26 8.76 11.16 8.86 11.29C8.95 11.43 10.2 13.36 12.12 14.19C13.68 14.86 14 14.73 14.34 14.69C14.68 14.66 15.44 14.24 15.6 13.79C15.76 13.34 15.76 12.95 15.71 12.87C15.66 12.79 15.53 12.74 15.34 12.65C15.16 12.55 14.25 12.11 14.08 12.05C13.91 11.98 13.78 11.95 13.66 12.13C13.53 12.31 13.16 12.74 13.05 12.87C12.94 13 12.83 13.02 12.64 12.92C12.46 12.83 11.87 12.64 11.17 12.02C10.63 11.53 10.26 10.93 10.15 10.75C10.05 10.57 10.14 10.47 10.23 10.37C10.32 10.28 10.42 10.15 10.52 10.04C10.62 9.93 10.65 9.85 10.72 9.72C10.78 9.59 10.75 9.47 10.7 9.38C10.66 9.29 10.26 8.32 10.09 7.92C9.93 7.52 9.76 7.58 9.63 7.58C9.51 7.57 9.38 7.49 9.27 7.49Z"/>
+    </svg>
+    <span>Fale Connosco</span>
+  </a>
+
+  <!-- Botão Flutuante Voltar ao Topo -->
+  <button type="button" id="backToTopBtn" class="back-to-top-btn" aria-label="Voltar ao topo da página" title="Voltar ao topo">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="19" x2="12" y2="5"></line>
+      <polyline points="5 12 12 5 19 12"></polyline>
+    </svg>
+  </button>
+
+  <script src="./js/script.js"></script>
+
+  <!-- Script Interativo Exclusivo da Área de Cliente -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const alertBox = document.getElementById('accountAlert');
+      const alertMsg = document.getElementById('accountAlertMsg');
+      const btnSkip = document.getElementById('btnSkipWeek');
+      const btnPause = document.getElementById('btnPauseSub');
+      const btnAddress = document.getElementById('btnEditAddress');
+      const nextDate = document.getElementById('nextDeliveryDate');
+
+      function showAlert(msg) {
+        alertMsg.textContent = msg;
+        alertBox.classList.add('active');
+        alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      if (btnSkip) {
+        let isSkipped = false;
+        btnSkip.addEventListener('click', function () {
+          isSkipped = !isSkipped;
+          if (isSkipped) {
+            btnSkip.textContent = '↩️ Desfazer e Receber Semana';
+            btnSkip.classList.remove('btn-outline');
+            btnSkip.classList.add('btn-accent');
+            nextDate.innerHTML = '<span style="color:#d97724;">Semana saltada (0,00 €)</span> • Retoma a 18 de Novembro';
+            showAlert('Semana de 11 de Novembro saltada com sucesso! Não haverá qualquer cobrança e as entregas serão retomadas automaticamente a 18 de Novembro.');
+          } else {
+            btnSkip.textContent = '⏭️ Saltar Próxima Semana';
+            btnSkip.classList.remove('btn-accent');
+            btnSkip.classList.add('btn-outline');
+            nextDate.textContent = 'Segunda-feira, 11 de Novembro (09:00 - 12:00)';
+            showAlert('A sua entrega de 11 de Novembro foi reativada com sucesso. Bom apetite!');
+          }
+        });
+      }
+
+      if (btnPause) {
+        let isPaused = false;
+        btnPause.addEventListener('click', function () {
+          isPaused = !isPaused;
+          if (isPaused) {
+            btnPause.textContent = '▶️ Retomar Subscrição';
+            showAlert('Subscrição pausada temporariamente. O seu plano está congelado e não haverá cobranças até que decida reativá-lo.');
+          } else {
+            btnPause.textContent = '⏸️ Pausar Subscrição';
+            showAlert('Subscrição reativada! A sua rotina de refeições biológicas frescas está pronta.');
+          }
+        });
+      }
+
+      if (btnAddress) {
+        btnAddress.addEventListener('click', function () {
+          showAlert('Simulação: janela de alteração de morada e horário para o Grande Porto aberta com sucesso.');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

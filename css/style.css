@@ -2290,8 +2290,197 @@ textarea.form-control {
 }
 
 /* --------------------------------------------------------------------------
-   22. CONSTRUTOR DE CAIXA SEMANAL (BOX BUILDER UX)
+   22. CONSTRUTOR DE CAIXA SEMANAL (BOX BUILDER UX) & BANNER COMO FUNCIONA
    -------------------------------------------------------------------------- */
+.how-it-works-banner {
+  background: linear-gradient(135deg, #ffffff 0%, #f7faf6 100%);
+  border: 1px solid rgba(45, 90, 39, 0.2);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  margin-bottom: 35px;
+  box-shadow: 0 8px 24px rgba(45, 90, 39, 0.06);
+}
+
+.how-banner-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+  flex-wrap: wrap;
+}
+
+.how-banner-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.how-banner-pill {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+  border: 1px solid rgba(45, 90, 39, 0.2);
+}
+
+.how-banner-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin: 0;
+}
+
+.how-banner-action-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 16px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  background-color: #ffffff;
+  border: 1px solid var(--color-primary);
+  border-radius: 20px;
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.how-banner-action-btn:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(45, 90, 39, 0.2);
+}
+
+.how-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.how-step-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.how-step-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(45, 90, 39, 0.35);
+}
+
+.how-step-card.is-highlight {
+  background: linear-gradient(180deg, #f3f8f1 0%, #ffffff 100%);
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 14px rgba(45, 90, 39, 0.12);
+}
+
+.how-step-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.how-step-icon-wrap {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.how-step-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(135deg, #d97724, #e65100);
+  padding: 3px 8px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+
+.how-step-title {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 6px 0;
+}
+
+.how-step-text {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.how-step-text strong {
+  color: var(--color-text);
+}
+
+.how-banner-footer {
+  background-color: var(--color-primary-soft);
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 4px solid var(--color-primary);
+}
+
+.how-footer-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.how-footer-text {
+  font-size: 0.88rem;
+  color: var(--color-primary-dark);
+  line-height: 1.45;
+  margin: 0;
+}
+
+.how-footer-text strong {
+  color: var(--color-primary-dark);
+}
+
+@media (max-width: 900px) {
+  .how-steps-grid {
+    grid-template-columns: 1fr;
+  }
+  .how-banner-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 .menu-intro-banner {
   background-color: var(--color-primary-soft);
   border: 1px solid rgba(45, 90, 39, 0.25);

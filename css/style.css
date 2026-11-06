@@ -3664,6 +3664,7 @@ textarea.form-control {
     width: 100%;
     white-space: normal;
     padding: 12px 14px;
+    min-height: 48px;
   }
   .account-actions-footer {
     flex-direction: column;
@@ -3675,6 +3676,7 @@ textarea.form-control {
   .sub-action-reactivate {
     width: 100%;
     justify-content: center;
+    min-height: 44px;
   }
   .account-actions-note {
     justify-content: center;

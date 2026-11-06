@@ -191,61 +191,27 @@ button, input, textarea, select {
   border: 2px solid var(--color-primary-light);
 }
 
-/* Novo Logótipo Oficial Atualizado no Cabeçalho (com Slogan Altamente Legível) */
+/* Novo Logótipo Oficial Horizontal no Cabeçalho */
 .header-top-row .brand-logo {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
   text-decoration: none;
 }
 
-.header-top-row .brand-logo .brand-logo-icon {
-  width: auto;
-  height: 48px;
-  border-radius: 0;
-  border: none;
-  object-fit: contain;
-  display: block;
-  flex-shrink: 0;
-}
-
-.header-top-row .brand-logo .brand-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 3px;
-}
-
-.header-top-row .brand-logo .brand-logo-wordmark {
-  height: 24px;
-  width: auto;
-  max-width: 148px;
-  object-fit: contain;
-  display: block;
-  border: none;
-  border-radius: 0;
-}
-
-.header-top-row .brand-logo .brand-slogan {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--color-primary-dark);
-  line-height: 1.1;
-  letter-spacing: 0.15px;
-  white-space: nowrap;
-  display: block;
-  margin: 0;
-}
-
-/* Fallback para imagem horizontal completa */
 .header-top-row .brand-logo img.brand-logo-horizontal {
-  height: 58px;
+  height: 56px;
   width: auto;
-  max-width: 240px;
+  max-width: 260px;
   border-radius: 0;
   border: none;
   object-fit: contain;
   display: block;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.header-top-row .brand-logo:hover img.brand-logo-horizontal {
+  transform: translateY(-1px) scale(1.02);
+  opacity: 0.96;
 }
 
 .brand-info {
@@ -1752,26 +1718,9 @@ textarea.form-control {
     gap: 8px;
   }
 
-  .header-top-row .brand-logo {
-    gap: 8px;
-  }
-
-  .header-top-row .brand-logo .brand-logo-icon {
-    height: 40px;
-  }
-
-  .header-top-row .brand-logo .brand-logo-wordmark {
-    height: 20px;
-    max-width: 125px;
-  }
-
-  .header-top-row .brand-logo .brand-slogan {
-    font-size: 0.62rem;
-  }
-
   .header-top-row .brand-logo img.brand-logo-horizontal {
-    height: 42px;
-    max-width: 175px;
+    height: 44px;
+    max-width: 205px;
   }
 
   .brand-title {
@@ -3919,22 +3868,9 @@ textarea.form-control {
 }
 
 @media (max-width: 480px) {
-  .header-top-row .brand-logo .brand-logo-icon {
-    height: 35px;
-  }
-
-  .header-top-row .brand-logo .brand-logo-wordmark {
-    height: 18px;
-    max-width: 110px;
-  }
-
-  .header-top-row .brand-logo .brand-slogan {
-    font-size: 0.55rem;
-  }
-
   .header-top-row .brand-logo img.brand-logo-horizontal {
-    height: 36px;
-    max-width: 150px;
+    height: 38px;
+    max-width: 175px;
   }
 
   .cert-detailed-header .cert-logo-box {

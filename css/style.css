@@ -671,6 +671,34 @@ button, input, textarea, select {
   line-height: 1.55;
 }
 
+.strategic-subtitle {
+  display: block;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-top: -4px;
+  margin-bottom: 14px;
+}
+
+.strategic-badge {
+  display: inline-block;
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: auto;
+  border: 1px solid rgba(45, 90, 39, 0.16);
+  letter-spacing: 0.3px;
+}
+
+.feature-card.strategic-card {
+  display: flex;
+  flex-direction: column;
+}
+
 /* --------------------------------------------------------------------------
    7. SEÇÃO "COMO FUNCIONA" (3 PASSOS)
    -------------------------------------------------------------------------- */

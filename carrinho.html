@@ -452,6 +452,22 @@
             </div>
           </div>
 
+          <!-- Bloco de Consentimento Legal e RGPD Obrigatório -->
+          <div style="background-color: #ffffff; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 18px 20px; margin-bottom: 24px; box-shadow: var(--shadow-sm);">
+            <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.88rem; color: var(--color-text-main); cursor: pointer; line-height: 1.5; margin-bottom: 10px;">
+              <input type="checkbox" id="rgpdCheckoutConsent" required style="margin-top: 3px; accent-color: var(--color-primary); width: 16px; height: 16px; cursor: pointer;">
+              <span>
+                Li e aceito as Condições de Serviço e a <a href="privacidade.html" target="_blank" style="color: var(--color-primary); font-weight: 700; text-decoration: underline;">Política de Privacidade &amp; RGPD</a> para gestão da minha subscrição semanal, faturação e entregas no Grande Porto. *
+              </span>
+            </label>
+            <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.84rem; color: var(--color-text-muted); cursor: pointer; line-height: 1.5;">
+              <input type="checkbox" id="rgpdNewsletterConsent" style="margin-top: 3px; accent-color: var(--color-primary); width: 16px; height: 16px; cursor: pointer;">
+              <span>
+                (Opcional) Desejo receber por e-mail a ementa semanal da época, sugestões do Chef e novidades dos produtores parceiros.
+              </span>
+            </label>
+          </div>
+
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
             <button type="button" id="btnBackToStep1" class="btn btn-outline">← Voltar ao Passo 1</button>
             <button type="submit" class="btn btn-primary" style="padding: 14px 36px; font-size: 1.05rem;">
@@ -580,7 +596,8 @@
       <div class="footer-bottom">
         <p>© 2026 BioMarmita — Projeto Escolar UFCD 11007. Todos os direitos reservados.</p>
         <div class="footer-legal-links">
-          <a href="faq.html">Política de Entrega</a>
+          <a href="privacidade.html">Política de Privacidade &amp; RGPD</a>
+          <a href="faq.html">Política de Entrega &amp; FAQ</a>
           <a href="sustentabilidade.html">Certificação Biológica</a>
           <a href="contactos.html">Apoio ao Cliente</a>
         </div>

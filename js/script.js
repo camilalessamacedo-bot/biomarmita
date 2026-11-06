@@ -912,4 +912,67 @@ document.addEventListener('DOMContentLoaded', function () {
       behavior: 'smooth'
     });
   });
+
+  // ========================================================================
+  // BANNER DE GESTÃO DE COOKIES & RGPD (CONFORMIDADE COM A CNPD)
+  // ========================================================================
+  const cookieConsentKey = 'biomarmita_cookie_consent';
+  let hasConsented = false;
+  try {
+    hasConsented = localStorage.getItem(cookieConsentKey);
+  } catch (e) {
+    hasConsented = false;
+  }
+
+  if (!hasConsented) {
+    const cookieBanner = document.createElement('div');
+    cookieBanner.id = 'cookieConsentBanner';
+    cookieBanner.className = 'cookie-banner-container';
+    cookieBanner.setAttribute('role', 'region');
+    cookieBanner.setAttribute('aria-label', 'Gestão de Cookies e Privacidade');
+    cookieBanner.innerHTML = `
+      <div class="cookie-banner-header">
+        <span style="font-size: 1.4rem;" aria-hidden="true">🍪</span>
+        <h4>Privacidade &amp; Cookies</h4>
+      </div>
+      <p class="cookie-banner-text">
+        Valorizamos a sua privacidade tanto quanto os ingredientes biológicos. Utilizamos cookies essenciais para o funcionamento do seu carrinho e da sua conta, e cookies analíticos para melhorar a sua experiência, em conformidade com o <strong>RGPD</strong>.
+      </p>
+      <div class="cookie-banner-actions">
+        <button type="button" id="btnAcceptAllCookies" class="cookie-btn-primary">Aceitar Todos</button>
+        <button type="button" id="btnEssentialCookies" class="cookie-btn-outline">Apenas Essenciais</button>
+        <a href="privacidade.html#cookies" style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-left: 6px;">Saber Mais</a>
+      </div>
+    `;
+    document.body.appendChild(cookieBanner);
+
+    function dismissCookieBanner(consentType) {
+      try {
+        localStorage.setItem(cookieConsentKey, consentType);
+      } catch (e) {
+        // Fallback caso localStorage esteja bloqueado no browser
+      }
+      cookieBanner.classList.add('hide-banner');
+      setTimeout(function () {
+        if (cookieBanner.parentNode) {
+          cookieBanner.parentNode.removeChild(cookieBanner);
+        }
+      }, 350);
+    }
+
+    const btnAccept = document.getElementById('btnAcceptAllCookies');
+    const btnEssential = document.getElementById('btnEssentialCookies');
+
+    if (btnAccept) {
+      btnAccept.addEventListener('click', function () {
+        dismissCookieBanner('all');
+      });
+    }
+
+    if (btnEssential) {
+      btnEssential.addEventListener('click', function () {
+        dismissCookieBanner('essential');
+      });
+    }
+  }
 });

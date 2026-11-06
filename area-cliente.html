@@ -348,20 +348,29 @@
               </p>
             </div>
 
-            <!-- Card Dados de Contacto & Preferências -->
+            <!-- Card Dados de Contacto & Preferências (com Ferramentas RGPD) -->
             <div class="account-card">
               <h4 style="color: var(--color-primary-dark); font-size: 1.15rem; margin-bottom: 14px;">
-                <span>👤</span> Dados Pessoais
+                <span>👤</span> Dados Pessoais &amp; RGPD
               </h4>
-              <div style="font-size: 0.88rem; line-height: 1.7; color: var(--color-text);">
+              <div style="font-size: 0.88rem; line-height: 1.7; color: var(--color-text); margin-bottom: 14px;">
                 <strong>Nome:</strong> Mariana Ferreira<br>
                 <strong>E-mail:</strong> mariana.ferreira@email.pt<br>
                 <strong>Telemóvel:</strong> +351 912 345 678<br>
-                <strong>Preferência:</strong> Refeições ricas em proteína e legumes frescos
+                <strong>Preferência:</strong> Plano Família (15 Refeições + Lanches Matilde)<br>
+                <strong>Consentimento RGPD:</strong> Ativo desde 28/10/2026
               </div>
-              <button type="button" onclick="alert('Simulação: formulário de edição de perfil aberto!');" class="btn btn-outline btn-sm" style="width: 100%; margin-top: 16px;">
-                Editar Perfil
+              <button type="button" onclick="alert('Simulação: formulário de edição de perfil aberto!');" class="btn btn-outline btn-sm" style="width: 100%; margin-bottom: 10px;">
+                ✏️ Editar Perfil
               </button>
+              <div style="display: flex; gap: 8px;">
+                <button type="button" id="btnExportData" class="btn btn-outline btn-sm" style="flex: 1; font-size: 0.78rem; padding: 7px 4px;" title="Direito de Portabilidade dos Dados (Art. 20.º RGPD)">
+                  📥 Exportar Dados
+                </button>
+                <button type="button" id="btnDeleteAccount" class="btn btn-outline btn-sm" style="flex: 1; font-size: 0.78rem; padding: 7px 4px; color: #b91c1c; border-color: #fca5a5; background-color: #fff5f5;" title="Direito ao Apagamento (Art. 17.º RGPD)">
+                  🗑️ Esquecimento
+                </button>
+              </div>
             </div>
 
             <!-- Card Apoio Personalizado -->
@@ -457,7 +466,8 @@
       <div class="footer-bottom">
         <p>© 2026 BioMarmita — Projeto Escolar UFCD 11007. Todos os direitos reservados.</p>
         <div class="footer-legal-links">
-          <a href="faq.html">Política de Entrega</a>
+          <a href="privacidade.html">Política de Privacidade &amp; RGPD</a>
+          <a href="faq.html">Política de Entrega &amp; FAQ</a>
           <a href="sustentabilidade.html">Certificação Biológica</a>
           <a href="contactos.html">Apoio ao Cliente</a>
         </div>
@@ -628,6 +638,34 @@
               nextDate.textContent = 'Segunda-feira, 11 de Novembro (09:00 - 12:00)';
             }
             showAlert('Subscrição reativada com sucesso! Bem-vinda de volta ao plano semanal de refeições biológicas 🌱');
+          }
+        });
+      }
+
+      // Ferramentas RGPD: Portabilidade e Direito ao Esquecimento
+      const btnExport = document.getElementById('btnExportData');
+      const btnDelete = document.getElementById('btnDeleteAccount');
+
+      if (btnExport) {
+        btnExport.addEventListener('click', function () {
+          showAlert('Direito de Portabilidade (Art. 20.º RGPD): O download do arquivo encriptado com os seus dados cadastrais, histórico de entregas e faturas foi iniciado com sucesso!');
+        });
+      }
+
+      if (btnDelete) {
+        btnDelete.addEventListener('click', function () {
+          const confirmForget = confirm(
+            "AVISO LEGAL DE PROTEÇÃO DE DADOS (Art. 17.º RGPD):\n\n" +
+            "Ao exercer o Direito ao Esquecimento, a sua conta da BioMarmita será cancelada e todos os seus dados pessoais (nome, morada no Grande Porto, telefone e histórico) serão anonimizados e eliminados permanentemente dos nossos servidores.\n\n" +
+            "Deseja confirmar a eliminação definitiva dos seus dados?"
+          );
+          if (confirmForget) {
+            alert("Os seus dados pessoais foram eliminados com sucesso ao abrigo do RGPD. A sessão será agora terminada.");
+            if (loginView && dashboardView) {
+              dashboardView.style.display = 'none';
+              loginView.style.display = 'block';
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
           }
         });
       }

@@ -19,7 +19,7 @@ Você não precisa instalar nenhum programa especial nem servidor para ver o sit
 
 ---
 
-## 2. Mapa das 13 Páginas Criadas
+## 2. Mapa das 14 Páginas Criadas
 
 | Página | Arquivo | O Que Mostra |
 | :--- | :--- | :--- |
@@ -30,12 +30,13 @@ Você não precisa instalar nenhum programa especial nem servidor para ver o sit
 | **Sustentabilidade** | [sustentabilidade.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/sustentabilidade.html) | Embalagens bioplásticas, ciclo ilustrado de devolução facultativa em 3 passos e **secção detalhada com fichas técnicas de certificações (Euro-Folha UE, HACCP, EN 13432, Cadeia Curta)**. |
 | **FAQ** | [faq.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/faq.html) | Perguntas frequentes com sanfona interativa, esclarecimento de 48h de antecedência mínima e opção de saltar semanas sem custos. |
 | **Blog Principal** | [blog.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/blog.html) | Vitrine dos 3 artigos educativos com cards interativos direcionando para as páginas de artigos dedicadas. |
-| **Contactos** | [contactos.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/contactos.html) | Formulário com mensagem de envio imediata, canais de suporte e botão direto para o WhatsApp. |
-| **Área de Cliente** | [area-cliente.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/area-cliente.html) | **Portal da persona Mariana Ferreira**: tela de login simples em 1 clique (sem validação obrigatória), gestão da subscrição semanal, escolha de pratos, saltar semana, pausar plano, métricas de impacto circular, botão interativo para **Cancelar Subscrição** com confirmação e botão para terminar sessão. |
-| **Carrinho & Checkout** | [carrinho.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/carrinho.html) | Fluxo guiado em 3 passos com **cálculo dinâmico de entrega em tempo real (+48h)**: (1) Escolha do plano + Construtor de Caixa + Brindes de 2 Lanches; (2) Morada no Grande Porto + Pagamento seguro e selos de garantia; (3) Ecrã de confirmação com código `#BIO-XXXX`. |
+| **Contactos** | [contactos.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/contactos.html) | Formulário com consentimento RGPD obrigatório, mensagem de envio imediata, canais de suporte e botão direto para o WhatsApp. |
+| **Área de Cliente** | [area-cliente.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/area-cliente.html) | **Portal da persona Mariana Ferreira**: tela de login simples em 1 clique, gestão do Plano Família semanal, escolha de pratos, saltar semana, pausar plano, métricas de impacto circular, ferramentas de portabilidade e esquecimento RGPD, botão interativo para **Cancelar Subscrição** com confirmação e botão para terminar sessão. |
+| **Carrinho & Checkout** | [carrinho.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/carrinho.html) | Fluxo guiado em 3 passos com **cálculo dinâmico de entrega em tempo real (+48h)**: (1) Escolha do plano + Construtor de Caixa + Brindes de 2 Lanches; (2) Morada no Grande Porto + Consentimento legal RGPD + Pagamento seguro e selos de garantia; (3) Ecrã de confirmação com código `#BIO-XXXX`. |
 | **Artigo 1: Trabalho** | [artigo-alimentacao-trabalho.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/artigo-alimentacao-trabalho.html) | *5 Dicas Para Uma Alimentação Mais Saudável no Dia a Dia de Trabalho* (Dra. Inês Matos — regra do prato, quebra pós-almoço e energia). |
 | **Artigo 2: Produtos Locais** | [artigo-produtos-locais.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/artigo-produtos-locais.html) | *Os Benefícios dos Produtos Locais Para a Saúde e o Planeta* (Eng. Tiago Ribeiro — 3x mais vitaminas e redução de CO₂). |
 | **Artigo 3: Receita Sopa** | [artigo-receita-sopa-abobora.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/artigo-receita-sopa-abobora.html) | *Receitas Biológicas: O Segredo da Sopa de Abóbora* (Chef Afonso Ribeiro — ficha técnica completa e método de assar no forno). |
+| **Privacidade & RGPD** | [privacidade.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/privacidade.html) | Política formal de proteção de dados, direitos do titular, tabela transparente de cookies com botão de redefinição e enquadramento legal CNPD. |
 
 ---
 

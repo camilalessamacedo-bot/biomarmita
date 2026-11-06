@@ -19,19 +19,23 @@ Você não precisa instalar nenhum programa especial nem servidor para ver o sit
 
 ---
 
-## 2. Mapa das 8 Páginas Criadas
+## 2. Mapa das 13 Páginas Criadas
 
 | Página | Arquivo | O Que Mostra |
 | :--- | :--- | :--- |
-| **Início** | [index.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/index.html) | Apresentação da BioMarmita, 4 pilares com ícones, **os 4 passos com fotos reais**, **Showcase com a foto real da Mariana Ferreira em teletrabalho**, quadro de rotina Antes vs Depois e **Tabela Comparativa com concorrência** (The Revolution Food). |
+| **Início** | [index.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/index.html) | Proposta de valor, novo cabeçalho de 2 linhas, **barra de certificações oficiais**, **enquadramento perfeito do prato**, 4 pilares, **Como Funciona em 4 passos com fotos reais**, **Showcase da Mariana Ferreira em teletrabalho**, quadro de rotina e **Tabela Comparativa com concorrência** (incluindo tecnologia a vácuo). |
 | **Sobre Nós** | [sobre.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/sobre.html) | História da marca, cartões de Missão, Visão e Valores com ícones, e compromisso ético. |
-| **Menu e Planos** | [menu.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/menu.html) | **Ementa interativa com filtro por categorias** (Carne, Peixe, Vegetariano, Lanches), **10 opções (6 pratos principais + 4 lanches saudáveis)**, macros nutricionais (Kcal, Proteína, Hidratos, Gorduras), quintas de origem e planos semanais. |
-| **Produtores Locais** | [produtores.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/produtores.html) | Quinta da Serra, Horta do Vale e Sabor do Campo, valorizando a agricultura do Norte de Portugal. |
-| **Sustentabilidade** | [sustentabilidade.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/sustentabilidade.html) | Embalagens bioplásticas, desperdício zero e **o passo a passo ilustrado com fotos reais de como lavar, devolver e compostar**. |
-| **FAQ** | [faq.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/faq.html) | Perguntas frequentes com efeito de sanfona (clique na pergunta para ler a resposta) e condições reais de funcionamento. |
-| **Blog** | [blog.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/blog.html) | 3 artigos sobre nutrição, produtos locais e receitas de família, mais dica de poupança de tempo. |
-| **Contactos** | [contactos.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/contactos.html) | Formulário com mensagem de envio imediata e botão direto para o WhatsApp. |
-| **Carrinho & Checkout** | [carrinho.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/carrinho.html) | Fluxo guiado em 3 passos: (1) Escolha do plano + **Construtor de Caixa Semanal** (seleção das doses/lanches com contadores, barras de progresso e botão "Sugestão do Chef") + Forma de Pagamento; (2) Registo/Login + Morada no Grande Porto + Cadastro seguro de pagamento; (3) Ecrã de confirmação com código de subscrição e lista das refeições escolhidas para a 1ª semana. |
+| **Menu e Planos** | [menu.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/menu.html) | **Guia rápido horizontal compacto (Slim Stepper Ribbon)**, faixa de garantia biológica, ementa interativa com filtro por categorias, 10 opções (6 pratos + 4 lanches), macros completas, quintas de origem e 3 planos com 2 lanches de oferta semanal. |
+| **Produtores Locais** | [produtores.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/produtores.html) | Quinta da Serra, Horta do Vale e Sabor do Campo, valorizando a agricultura familiar do Norte de Portugal. |
+| **Sustentabilidade** | [sustentabilidade.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/sustentabilidade.html) | Embalagens bioplásticas, ciclo ilustrado de devolução facultativa em 3 passos e **secção detalhada com fichas técnicas de certificações (Euro-Folha UE, HACCP, EN 13432, Cadeia Curta)**. |
+| **FAQ** | [faq.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/faq.html) | Perguntas frequentes com sanfona interativa, esclarecimento de 48h de antecedência mínima e opção de saltar semanas sem custos. |
+| **Blog Principal** | [blog.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/blog.html) | Vitrine dos 3 artigos educativos com cards interativos direcionando para as páginas de artigos dedicadas. |
+| **Contactos** | [contactos.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/contactos.html) | Formulário com mensagem de envio imediata, canais de suporte e botão direto para o WhatsApp. |
+| **Área de Cliente** | [area-cliente.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/area-cliente.html) | **Portal da persona Mariana Ferreira**: tela de login simples em 1 clique (sem validação obrigatória), gestão da subscrição semanal, escolha de pratos, saltar semana, pausar plano, métricas de impacto circular, botão interativo para **Cancelar Subscrição** com confirmação e botão para terminar sessão. |
+| **Carrinho & Checkout** | [carrinho.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/carrinho.html) | Fluxo guiado em 3 passos com **cálculo dinâmico de entrega em tempo real (+48h)**: (1) Escolha do plano + Construtor de Caixa + Brindes de 2 Lanches; (2) Morada no Grande Porto + Pagamento seguro e selos de garantia; (3) Ecrã de confirmação com código `#BIO-XXXX`. |
+| **Artigo 1: Trabalho** | [artigo-alimentacao-trabalho.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/artigo-alimentacao-trabalho.html) | *5 Dicas Para Uma Alimentação Mais Saudável no Dia a Dia de Trabalho* (Dra. Inês Matos — regra do prato, quebra pós-almoço e energia). |
+| **Artigo 2: Produtos Locais** | [artigo-produtos-locais.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/artigo-produtos-locais.html) | *Os Benefícios dos Produtos Locais Para a Saúde e o Planeta* (Eng. Tiago Ribeiro — 3x mais vitaminas e redução de CO₂). |
+| **Artigo 3: Receita Sopa** | [artigo-receita-sopa-abobora.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/artigo-receita-sopa-abobora.html) | *Receitas Biológicas: O Segredo da Sopa de Abóbora* (Chef Afonso Ribeiro — ficha técnica completa e método de assar no forno). |
 
 ---
 

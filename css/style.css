@@ -200,6 +200,15 @@ button, input, textarea, select {
   color: var(--color-primary-light);
 }
 
+.brand-slogan {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  line-height: 1.2;
+  margin-top: 3px;
+  letter-spacing: 0.1px;
+}
+
 /* Ações Topo: Contactos, Área de Cliente, Carrinho */
 .header-top-actions {
   display: flex;
@@ -1680,6 +1689,10 @@ textarea.form-control {
 
   .brand-title {
     font-size: 1.3rem;
+  }
+
+  .brand-slogan {
+    font-size: 0.62rem;
   }
   .section {
     padding: 50px 0;

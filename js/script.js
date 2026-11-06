@@ -844,4 +844,43 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   }
+
+  // ------------------------------------------------------------------------
+  // 6. BOTÃO VOLTAR AO TOPO (SCROLL TO TOP COM ROLAGEM SUAVE)
+  // ------------------------------------------------------------------------
+  let backToTopBtn = document.getElementById('backToTopBtn');
+
+  // Criar dinamicamente caso não exista no HTML
+  if (!backToTopBtn) {
+    backToTopBtn = document.createElement('button');
+    backToTopBtn.id = 'backToTopBtn';
+    backToTopBtn.className = 'back-to-top-btn';
+    backToTopBtn.setAttribute('type', 'button');
+    backToTopBtn.setAttribute('aria-label', 'Voltar ao topo da página');
+    backToTopBtn.setAttribute('title', 'Voltar ao topo');
+    backToTopBtn.innerHTML = `
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+      </svg>
+    `;
+    document.body.appendChild(backToTopBtn);
+  }
+
+  // Mostrar botão apenas ao rolar a página para baixo (> 350px)
+  window.addEventListener('scroll', function () {
+    if (window.scrollY > 350) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  // Ao clicar, sobe suavemente até o topo da página
+  backToTopBtn.addEventListener('click', function () {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 });

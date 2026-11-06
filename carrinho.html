@@ -216,6 +216,18 @@
           </tbody>
         </table>
 
+        <!-- Estimativa Dinâmica de Entrega (48h após a subscrição) -->
+        <div class="delivery-estimate-pill" style="margin-top: 16px; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 14px 18px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 1.5rem;">🚚</span>
+            <div>
+              <strong style="color: #166534; font-size: 0.95rem; display: block;">Data Prevista da 1ª Entrega (48h após o seu pedido):</strong>
+              <span id="estimatedDeliveryText" style="color: #15803d; font-weight: 800; font-size: 1.05rem;">A calcular...</span>
+            </div>
+          </div>
+          <span class="badge" style="background: #2e7d32; color: #fff; font-size: 0.8rem;">Carrinha Refrigerada (0°C a 4°C)</span>
+        </div>
+
         <!-- Escolha da Forma de Pagamento -->
         <h3 style="font-size: 1.25rem; color: var(--color-primary-dark); margin-top: 30px;">Escolha a Forma de Pagamento:</h3>
         <p style="font-size: 0.9rem; color: var(--color-text-muted);">Selecione o método pretendido. Os dados de cobrança e endereço serão solicitados no passo seguinte.</p>
@@ -318,7 +330,16 @@
 
           <!-- Bloco B: Morada e Agendamento no Grande Porto -->
           <div style="margin-bottom: 28px;">
-            <h3 style="font-size: 1.25rem; color: var(--color-primary-dark); margin-bottom: 16px;">Morada e Agendamento no Grande Porto</h3>
+            <h3 style="font-size: 1.25rem; color: var(--color-primary-dark); margin-bottom: 12px;">Morada e Agendamento no Grande Porto</h3>
+
+            <!-- Aviso de data de entrega em 48h -->
+            <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: var(--radius-md); padding: 12px 16px; margin-bottom: 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+              <div>
+                <strong style="color: #166534; font-size: 0.9rem; display: block;">📅 A sua 1ª entrega será em 48h:</strong>
+                <span id="step2DeliveryDate" style="color: #15803d; font-size: 1.05rem; font-weight: 800;">A calcular...</span>
+              </div>
+              <span style="font-size: 0.8rem; color: #166534; background: #dcfce7; padding: 4px 10px; border-radius: 20px; font-weight: 600;">Confecionado fresco a frio</span>
+            </div>
 
             <div class="form-grid-2">
               <div class="form-group">
@@ -408,7 +429,8 @@
           <p style="font-size: 0.95rem; margin-bottom: 6px;"><strong>Plano:</strong> <span id="confPlanName">Plano Casal (10 Refeições)</span></p>
           <p style="font-size: 0.95rem; margin-bottom: 6px;"><strong>Valor da 1ª Semana:</strong> <span id="confPlanPrice">63,66 €</span> (15% de desconto incluído)</p>
           <p style="font-size: 0.95rem; margin-bottom: 6px;"><strong>Forma de Pagamento:</strong> <span id="confPayMethod">MB WAY</span></p>
-          <p style="font-size: 0.95rem; margin-bottom: 14px;"><strong>Destino:</strong> <span id="confAddress">Grande Porto</span></p>
+          <p style="font-size: 0.95rem; margin-bottom: 6px;"><strong>Destino:</strong> <span id="confAddress">Grande Porto</span></p>
+          <p style="font-size: 0.95rem; margin-bottom: 14px;"><strong>Data da 1ª Entrega (48h):</strong> <span id="confDeliveryDate" style="color: #2e7d32; font-weight: 800;">A carregar...</span></p>
 
           <!-- Lista de Pratos Confirmados para a 1ª Entrega -->
           <div class="confirmed-meals-box">

@@ -120,6 +120,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const paymentFieldsContainer = document.getElementById('paymentFieldsContainer');
     const checkoutFinalForm = document.getElementById('checkoutFinalForm');
 
+    // Cálculo dinâmico da Data de Entrega (48 horas após a subscrição)
+    function calculate48hDeliveryDate() {
+      const now = new Date();
+      const delivery = new Date(now.getTime() + 48 * 60 * 60 * 1000);
+      const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+      let str = delivery.toLocaleDateString('pt-PT', options);
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    const estimatedDeliveryDateStr = calculate48hDeliveryDate();
+
+    const estimatedDeliveryText = document.getElementById('estimatedDeliveryText');
+    if (estimatedDeliveryText) {
+      estimatedDeliveryText.textContent = estimatedDeliveryDateStr;
+    }
+
+    const step2DeliveryDate = document.getElementById('step2DeliveryDate');
+    if (step2DeliveryDate) {
+      step2DeliveryDate.textContent = estimatedDeliveryDateStr;
+    }
+
     // Elementos do Construtor de Caixa Semanal
     const boxItemsGrid = document.getElementById('boxItemsGrid');
     const giftItemsGrid = document.getElementById('giftItemsGrid');
@@ -780,6 +801,14 @@ document.addEventListener('DOMContentLoaded', function () {
       document.getElementById('confPlanPrice').innerText = totalStr;
       document.getElementById('confPayMethod').innerText = methodLabels[method] || 'MB WAY';
       document.getElementById('confAddress').innerText = rua + ', ' + concelhoLabel + ' (Grande Porto)';
+
+      // Horário preferencial agendado e data de entrega calculada em 48h
+      const entregaJanelaSelect = document.getElementById('entregaJanela');
+      const janelaText = entregaJanelaSelect ? entregaJanelaSelect.options[entregaJanelaSelect.selectedIndex].text : '';
+      const confDeliveryDate = document.getElementById('confDeliveryDate');
+      if (confDeliveryDate) {
+        confDeliveryDate.textContent = `${estimatedDeliveryDateStr} • ${janelaText}`;
+      }
 
       // Preencher a lista de refeições da subscrição
       const confMealsList = document.getElementById('confMealsList');

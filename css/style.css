@@ -3255,11 +3255,21 @@ textarea.form-control {
   padding: 30px 32px;
   margin-bottom: 35px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
+  flex-direction: column;
+  gap: 18px;
   box-shadow: var(--shadow-md);
+}
+
+.account-hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+.account-user-info {
+  flex: 1;
 }
 
 .account-user-info h2 {
@@ -3274,10 +3284,44 @@ textarea.form-control {
   margin: 0;
 }
 
+.account-hero-actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.btn-logout {
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.12);
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(4px);
+}
+
+.btn-logout:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-1px);
+}
+
+.account-hero-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  width: 100%;
+}
+
 .account-quick-stats {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .account-stat-pill {
@@ -3425,6 +3469,24 @@ textarea.form-control {
   }
   .account-details-list {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .account-hero-card {
+    padding: 22px 20px;
+  }
+  .account-hero-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .account-hero-actions {
+    width: 100%;
+  }
+  .btn-logout {
+    width: 100%;
+    justify-content: center;
   }
 }
 

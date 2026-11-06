@@ -3403,3 +3403,209 @@ textarea.form-control {
     text-align: center;
   }
 }
+
+/* --------------------------------------------------------------------------
+   26. SELOS E CERTIFICAÇÕES OFICIAIS (TRUST & QUALITY SEALS)
+   -------------------------------------------------------------------------- */
+.certifications-trust-bar {
+  background: #ffffff;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 30px 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.cert-bar-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.cert-bar-header span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: var(--color-primary-soft);
+  padding: 4px 14px;
+  border-radius: 20px;
+}
+
+.cert-bar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.cert-badge-pill {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background-color: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  transition: var(--transition);
+}
+
+.cert-badge-pill:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-sm);
+  background-color: #ffffff;
+}
+
+.cert-badge-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.cert-badge-icon.euroleaf {
+  background: #008837;
+  color: #ffffff;
+  border-color: #00702d;
+}
+
+.cert-badge-icon.haccp {
+  background: #1e3a8a;
+  color: #ffffff;
+  border-color: #172554;
+}
+
+.cert-badge-icon.compost {
+  background: #15803d;
+  color: #ffffff;
+  border-color: #166534;
+}
+
+.cert-badge-icon.local {
+  background: #c2410c;
+  color: #ffffff;
+  border-color: #9a3412;
+}
+
+.cert-badge-text h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin: 0 0 2px 0;
+  line-height: 1.25;
+}
+
+.cert-badge-text p {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  line-height: 1.35;
+}
+
+/* Grelha de Certificações Detalhada (em sustentabilidade.html) */
+.cert-detailed-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  margin-top: 30px;
+}
+
+.cert-detailed-card {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 30px 28px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: var(--transition);
+}
+
+.cert-detailed-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
+}
+
+.cert-detailed-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cert-detailed-header .cert-icon {
+  font-size: 2.2rem;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  flex-shrink: 0;
+}
+
+.cert-detailed-header .cert-title-group h3 {
+  font-size: 1.25rem;
+  color: var(--color-primary-dark);
+  margin: 0 0 3px 0;
+}
+
+.cert-detailed-header .cert-norm {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cert-detailed-body p {
+  font-size: 0.94rem;
+  color: var(--color-text-main);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.cert-guarantee-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cert-guarantee-list li {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.cert-guarantee-list li strong {
+  color: var(--color-text-main);
+}
+
+@media (max-width: 992px) {
+  .cert-bar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .cert-bar-grid {
+    grid-template-columns: 1fr;
+  }
+  .cert-detailed-grid {
+    grid-template-columns: 1fr;
+  }
+}

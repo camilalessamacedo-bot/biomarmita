@@ -113,7 +113,7 @@
           <!-- Banner Superior com Perfil do Subscritor -->
           <div class="account-hero-card">
             <div class="account-user-info">
-              <span class="badge" style="background: rgba(255,255,255,0.2); color: #ffffff; margin-bottom: 8px;">Subscritora Ativa</span>
+              <span class="badge" id="heroStatusBadge" style="background: rgba(255,255,255,0.2); color: #ffffff; margin-bottom: 8px;">Subscritora Ativa</span>
               <h2>Olá, Mariana Ferreira! 🌱</h2>
               <p class="account-user-meta">Membro desde Outubro 2026 • Entrega no Grande Porto (Rua de Santa Catarina)</p>
             </div>
@@ -145,7 +145,7 @@
             <div class="account-card">
               <div class="account-card-header">
                 <h3><span>📦</span> A Sua Subscrição Semanal</h3>
-                <span class="badge" style="background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9;">● Ativa • Renovação Automática</span>
+                <span class="badge" id="subStatusBadge" style="background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9;">● Ativa • Renovação Automática</span>
               </div>
 
               <div class="account-details-list">
@@ -187,6 +187,9 @@
                 </a>
                 <button type="button" id="btnEditAddress" class="btn btn-outline btn-sm">
                   📍 Alterar Horário / Morada
+                </button>
+                <button type="button" id="btnCancelSub" class="btn btn-outline btn-sm" style="color: #b91c1c; border-color: #fca5a5; background-color: #fff5f5;">
+                  🚫 Cancelar Subscrição
                 </button>
               </div>
             </div>
@@ -444,6 +447,9 @@
       const btnSkip = document.getElementById('btnSkipWeek');
       const btnPause = document.getElementById('btnPauseSub');
       const btnAddress = document.getElementById('btnEditAddress');
+      const btnCancel = document.getElementById('btnCancelSub');
+      const subStatusBadge = document.getElementById('subStatusBadge');
+      const heroStatusBadge = document.getElementById('heroStatusBadge');
       const nextDate = document.getElementById('nextDeliveryDate');
 
       function showAlert(msg) {
@@ -514,6 +520,66 @@
       if (btnAddress) {
         btnAddress.addEventListener('click', function () {
           showAlert('Simulação: janela de alteração de morada e horário para o Grande Porto aberta com sucesso.');
+        });
+      }
+
+      // Cancelar Subscrição com confirmação e opção de reversão/reativação
+      if (btnCancel) {
+        let isCancelled = false;
+        btnCancel.addEventListener('click', function () {
+          if (!isCancelled) {
+            const confirmed = confirm(
+              "Tem a certeza de que deseja cancelar a sua subscrição semanal da BioMarmita?\n\n" +
+              "Lembre-se: não há qualquer fidelização. Se vai viajar ou precisa de uma pausa, pode simplesmente saltar uma semana ou pausar a subscrição temporariamente sem perder o histórico nem as ofertas."
+            );
+            if (confirmed) {
+              isCancelled = true;
+              btnCancel.textContent = '🔄 Reativar Subscrição';
+              btnCancel.classList.remove('btn-outline');
+              btnCancel.classList.add('btn-primary');
+              btnCancel.style.color = '#ffffff';
+              btnCancel.style.borderColor = 'var(--color-primary)';
+              btnCancel.style.backgroundColor = 'var(--color-primary)';
+
+              if (subStatusBadge) {
+                subStatusBadge.style.background = '#fee2e2';
+                subStatusBadge.style.color = '#991b1b';
+                subStatusBadge.style.borderColor = '#fca5a5';
+                subStatusBadge.textContent = '● Cancelada • Sem Cobrança';
+              }
+              if (heroStatusBadge) {
+                heroStatusBadge.textContent = 'Subscrição Cancelada';
+                heroStatusBadge.style.background = 'rgba(239, 68, 68, 0.4)';
+              }
+              if (nextDate) {
+                nextDate.innerHTML = '<span style="color:#b91c1c;">Nenhuma entrega agendada (Subscrição cancelada)</span>';
+              }
+              showAlert('A sua subscrição semanal foi cancelada com sucesso. Não haverá novas cobranças nem entregas. Poderá reativar o seu plano a qualquer momento!');
+            }
+          } else {
+            isCancelled = false;
+            btnCancel.textContent = '🚫 Cancelar Subscrição';
+            btnCancel.classList.remove('btn-primary');
+            btnCancel.classList.add('btn-outline');
+            btnCancel.style.color = '#b91c1c';
+            btnCancel.style.borderColor = '#fca5a5';
+            btnCancel.style.backgroundColor = '#fff5f5';
+
+            if (subStatusBadge) {
+              subStatusBadge.style.background = '#e8f5e9';
+              subStatusBadge.style.color = '#2e7d32';
+              subStatusBadge.style.borderColor = '#c8e6c9';
+              subStatusBadge.textContent = '● Ativa • Renovação Automática';
+            }
+            if (heroStatusBadge) {
+              heroStatusBadge.textContent = 'Subscritora Ativa';
+              heroStatusBadge.style.background = 'rgba(255,255,255,0.2)';
+            }
+            if (nextDate) {
+              nextDate.textContent = 'Segunda-feira, 11 de Novembro (09:00 - 12:00)';
+            }
+            showAlert('Subscrição reativada com sucesso! Bem-vinda de volta ao plano semanal de refeições biológicas 🌱');
+          }
         });
       }
     });

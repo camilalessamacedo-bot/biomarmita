@@ -175,12 +175,36 @@ button, input, textarea, select {
   text-decoration: none;
 }
 
+/* Logótipo Circular Padrão (mantido para o rodapé) */
 .brand-logo img {
   width: 44px;
   height: 44px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--color-primary-light);
+}
+
+/* Novo Logótipo Horizontal Oficial no Cabeçalho */
+.header-top-row .brand-logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header-top-row .brand-logo img.brand-logo-horizontal {
+  height: 52px;
+  width: auto;
+  max-width: 215px;
+  border-radius: 0;
+  border: none;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.header-top-row .brand-logo:hover img.brand-logo-horizontal {
+  transform: translateY(-1px) scale(1.02);
+  opacity: 0.95;
 }
 
 .brand-info {
@@ -1685,6 +1709,11 @@ textarea.form-control {
 @media (max-width: 640px) {
   .header-top-actions {
     gap: 8px;
+  }
+
+  .header-top-row .brand-logo img.brand-logo-horizontal {
+    height: 42px;
+    max-width: 175px;
   }
 
   .brand-title {
@@ -3832,6 +3861,11 @@ textarea.form-control {
 }
 
 @media (max-width: 480px) {
+  .header-top-row .brand-logo img.brand-logo-horizontal {
+    height: 36px;
+    max-width: 150px;
+  }
+
   .cert-detailed-header .cert-logo-box {
     width: 62px;
     height: 62px;

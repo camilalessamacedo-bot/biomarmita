@@ -158,7 +158,8 @@ Existem duas formas fáceis de trocar qualquer foto:
 
 | Imagem no Site | Nome do Arquivo na Pasta `assets/imagens/` | Onde Ela Aparece |
 | :--- | :--- | :--- |
-| **Logótipo Oficial** | `logo-biomarmita.jpeg` | No cabeçalho e rodapé de todas as páginas |
+| **Logótipo Header (Horizontal)** | `logo-biomarmita-horizontal.png` | No cabeçalho oficial de todas as 13 páginas |
+| **Logótipo Redondo (Rodapé)** | `logo-biomarmita.jpeg` | No rodapé corporativo de todas as páginas |
 | **Prato Principal da Home** | `banner-home.jpeg` | No topo da página inicial (`index.html`) |
 | **Foto da Mariana (Persona)**| `persona-mariana.jpeg` | No depoimento da página inicial (`index.html`) |
 | **Mãos com Broto de Planta**| `banner-sobre.jpeg` | No topo da página Sobre Nós (`sobre.html`) |

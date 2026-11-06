@@ -10,40 +10,59 @@
 <body>
 
   <!-- ======================================================================
-       CABEÇALHO & BARRA DE NAVEGAÇÃO
+       CABEÇALHO & BARRA DE NAVEGAÇÃO DE 2 LINHAS
        ====================================================================== -->
   <header class="site-header">
-    <div class="container navbar">
-      <a href="index.html" class="brand-logo" aria-label="BioMarmita Página Inicial">
-        <img src="./assets/imagens/logo-biomarmita.jpeg" alt="Logótipo BioMarmita">
-        <div class="brand-info">
-          <span class="brand-title">Bio<span>Marmita</span></span>
-          <span class="brand-tagline">Alimentação Saudável & Sustentável</span>
+    <!-- Linha 1: Topo (Logo na esquerda e Contactos, Área do Cliente e Carrinho na direita) -->
+    <div class="header-top-row">
+      <div class="container header-top-container">
+        <a href="index.html" class="brand-logo" aria-label="BioMarmita Página Inicial">
+          <img src="./assets/imagens/logo-biomarmita.jpeg" alt="Logótipo BioMarmita">
+          <div class="brand-info">
+            <span class="brand-title">Bio<span>Marmita</span></span>
+          </div>
+        </a>
+
+        <div class="header-top-actions">
+          <a href="contactos.html" class="header-action-btn" title="Contactos e Apoio ao Cliente">
+            <span class="action-icon">💬</span>
+            <span class="action-label">Contactos</span>
+          </a>
+          <a href="area-cliente.html" class="header-action-btn" title="Área de Cliente">
+            <span class="action-icon">👤</span>
+            <span class="action-label">Área de Cliente</span>
+          </a>
+          <a href="carrinho.html" class="header-action-btn cart-btn" title="Ver Carrinho de Compras">
+            <span class="action-icon">🛒</span>
+            <span class="action-label">Carrinho</span>
+          </a>
+
+          <!-- Botão Hambúrguer para ecrãs móveis -->
+          <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu de navegação" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
         </div>
-      </a>
+      </div>
+    </div>
 
-      <!-- Botão Hambúrguer para ecrãs móveis -->
-      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu de navegação" aria-expanded="false">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="3" y1="12" x2="21" y2="12"></line>
-          <line x1="3" y1="6" x2="21" y2="6"></line>
-          <line x1="3" y1="18" x2="21" y2="18"></line>
-        </svg>
-      </button>
-
-      <!-- Links de Navegação -->
-      <nav class="nav-menu" id="navMenu">
-        <a href="index.html" class="nav-link active">Início</a>
-        <a href="sobre.html" class="nav-link">Sobre Nós</a>
-        <a href="menu.html" class="nav-link">Menu e Planos</a>
-        <a href="produtores.html" class="nav-link">Produtores Locais</a>
-        <a href="sustentabilidade.html" class="nav-link">Sustentabilidade</a>
-        <a href="faq.html" class="nav-link">FAQ</a>
-        <a href="blog.html" class="nav-link">Blog</a>
-        <a href="contactos.html" class="nav-link">Contactos</a>
-        <a href="area-cliente.html" class="nav-link">Área de Cliente</a>
-        <a href="carrinho.html" class="btn btn-accent btn-sm nav-cta">Subscrever</a>
-      </nav>
+    <!-- Linha 2: Menu de Navegação com Botão de Subscrição -->
+    <div class="header-bottom-row">
+      <div class="container header-bottom-container">
+        <nav class="nav-menu" id="navMenu">
+          <a href="index.html" class="nav-link active">Início</a>
+          <a href="sobre.html" class="nav-link">Sobre Nós</a>
+          <a href="menu.html" class="nav-link">Menu e Planos</a>
+          <a href="produtores.html" class="nav-link">Produtores Locais</a>
+          <a href="sustentabilidade.html" class="nav-link">Sustentabilidade</a>
+          <a href="faq.html" class="nav-link">FAQ</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="carrinho.html" class="btn btn-accent btn-sm nav-cta">Subscrever</a>
+        </nav>
+      </div>
     </div>
   </header>
 

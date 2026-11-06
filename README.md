@@ -1,6 +1,6 @@
 # 🌿 BioMarmita — Refeições Saudáveis & Sustentáveis por Subscrição
 
-> **Slogan:** *«Da natureza ao prato, com sabor e confiança.»*  
+> **Slogan:** *"Da natureza ao prato, com sabor e confiança."*  
 > **Contexto:** Projeto Prático — UFCD 11007 (Plano de Marketing Digital)  
 > **Âmbito Territorial:** Grande Porto (Porto, Vila Nova de Gaia, Matosinhos, Maia e Gondomar)  
 > **Stack:** HTML5 Semântico, CSS3 Moderno e Responsivo, JavaScript Vanilla (sem dependências pesadas, 100% estático).

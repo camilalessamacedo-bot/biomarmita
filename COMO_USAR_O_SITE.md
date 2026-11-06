@@ -31,7 +31,7 @@ Você não precisa instalar nenhum programa especial nem servidor para ver o sit
 | **FAQ** | [faq.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/faq.html) | Perguntas frequentes com efeito de sanfona (clique na pergunta para ler a resposta) e condições reais de funcionamento. |
 | **Blog** | [blog.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/blog.html) | 3 artigos sobre nutrição, produtos locais e receitas de família, mais dica de poupança de tempo. |
 | **Contactos** | [contactos.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/contactos.html) | Formulário com mensagem de envio imediata e botão direto para o WhatsApp. |
-| **Carrinho & Checkout** | [carrinho.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/carrinho.html) | Fluxo guiado em 3 passos: (1) Escolha do plano + **Construtor de Caixa Semanal** (seleção das doses/lanches com contadores, barras de progresso e botão «Sugestão do Chef») + Forma de Pagamento; (2) Registo/Login + Morada no Grande Porto + Cadastro seguro de pagamento; (3) Ecrã de confirmação com código de subscrição e lista das refeições escolhidas para a 1ª semana. |
+| **Carrinho & Checkout** | [carrinho.html](file:///Users/camilalessa/Downloads/SiteBioMarmita/carrinho.html) | Fluxo guiado em 3 passos: (1) Escolha do plano + **Construtor de Caixa Semanal** (seleção das doses/lanches com contadores, barras de progresso e botão "Sugestão do Chef") + Forma de Pagamento; (2) Registo/Login + Morada no Grande Porto + Cadastro seguro de pagamento; (3) Ecrã de confirmação com código de subscrição e lista das refeições escolhidas para a 1ª semana. |
 
 ---
 

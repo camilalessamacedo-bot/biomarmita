@@ -499,7 +499,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (selectedMeals.length === 0 && selectedGifts.length === 0) {
           boxSelectionTags.innerHTML = `
             <span style="font-size: 0.88rem; color: var(--color-text-muted); font-style: italic;">
-              Nenhum item selecionado ainda. Clique no [ + ] acima ou no botão «Sugestão do Chef»!
+              Nenhum item selecionado ainda. Clique no [ + ] acima ou no botão "Sugestão do Chef"!
             </span>
           `;
         } else {

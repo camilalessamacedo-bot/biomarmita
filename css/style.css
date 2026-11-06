@@ -2375,14 +2375,14 @@ textarea.form-control {
 }
 
 .stepper-gift-tag {
-  background: linear-gradient(135deg, #d97724, #b45309);
-  color: #ffffff;
-  font-size: 0.65rem;
-  font-weight: 800;
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+  border: 1px solid rgba(45, 90, 39, 0.25);
+  font-size: 0.72rem;
+  font-weight: 700;
   padding: 1px 6px;
   border-radius: 10px;
   margin-left: 5px;
-  letter-spacing: 0.2px;
 }
 
 .stepper-arrow {

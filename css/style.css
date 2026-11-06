@@ -1532,7 +1532,7 @@ textarea.form-control {
   font-size: 0.92rem;
   color: rgba(255, 255, 255, 0.78);
   line-height: 1.6;
-  margin-top: 14px;
+  margin-top: 0;
   margin-bottom: 18px;
 }
 
@@ -1542,6 +1542,32 @@ textarea.form-control {
   font-size: 0.88rem;
   color: var(--color-primary-light);
   font-weight: 600;
+}
+
+/* Logótipo Oficial no Rodapé (mesmo do cabeçalho) */
+.footer-brand-logo {
+  display: inline-flex;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-decoration: none;
+}
+
+.footer-brand-logo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.24);
+}
+
+.footer-brand-logo-img {
+  height: 46px;
+  width: auto;
+  max-width: 220px;
+  display: block;
+  object-fit: contain;
 }
 
 .footer-links li {
@@ -1721,6 +1747,16 @@ textarea.form-control {
   .header-top-row .brand-logo img.brand-logo-horizontal {
     height: 44px;
     max-width: 205px;
+  }
+
+  .footer-brand-logo {
+    padding: 6px 12px;
+    margin-bottom: 14px;
+  }
+
+  .footer-brand-logo-img {
+    height: 40px;
+    max-width: 190px;
   }
 
   .brand-title {
@@ -3888,6 +3924,11 @@ textarea.form-control {
   .header-top-row .brand-logo img.brand-logo-horizontal {
     height: 38px;
     max-width: 175px;
+  }
+
+  .footer-brand-logo-img {
+    height: 36px;
+    max-width: 170px;
   }
 
   .cert-detailed-header .cert-logo-box {

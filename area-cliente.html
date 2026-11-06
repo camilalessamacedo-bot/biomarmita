@@ -216,22 +216,38 @@
                 </div>
               </div>
 
-              <div class="account-actions-bar">
-                <button type="button" id="btnSkipWeek" class="btn btn-outline btn-sm">
-                  ⏭️ Saltar Próxima Semana
-                </button>
-                <button type="button" id="btnPauseSub" class="btn btn-outline btn-sm">
-                  ⏸️ Pausar Subscrição
-                </button>
-                <a href="menu.html" class="btn btn-accent btn-sm">
-                  ✏️ Personalizar Próximo Menu
-                </a>
-                <button type="button" id="btnEditAddress" class="btn btn-outline btn-sm">
-                  📍 Alterar Horário / Morada
-                </button>
-                <button type="button" id="btnCancelSub" class="btn btn-outline btn-sm" style="color: #b91c1c; border-color: #fca5a5; background-color: #fff5f5;">
-                  🚫 Cancelar Subscrição
-                </button>
+              <!-- Barra de Gestão Rápida da Subscrição -->
+              <div class="account-actions-box">
+                <div class="account-actions-header">
+                  <h4 class="account-actions-title">
+                    <span>⚡</span> Gestão da Subscrição
+                  </h4>
+                  <span class="account-actions-badge">Sem fidelização</span>
+                </div>
+
+                <div class="account-actions-grid">
+                  <a href="menu.html" id="btnCustomMenu" class="sub-action-btn sub-action-primary" title="Personalizar refeições da próxima entrega">
+                    ✏️ Personalizar Próximo Menu
+                  </a>
+                  <button type="button" id="btnSkipWeek" class="sub-action-btn sub-action-outline" title="Saltar entrega da próxima semana">
+                    ⏭️ Saltar Próxima Semana
+                  </button>
+                  <button type="button" id="btnPauseSub" class="sub-action-btn sub-action-outline" title="Pausar entregas temporariamente">
+                    ⏸️ Pausar Subscrição
+                  </button>
+                  <button type="button" id="btnEditAddress" class="sub-action-btn sub-action-outline" title="Alterar horário ou morada de entrega no Grande Porto">
+                    📍 Alterar Horário / Morada
+                  </button>
+                </div>
+
+                <div class="account-actions-footer">
+                  <p class="account-actions-note">
+                    <span>🌱</span> Precisa de uma pausa? Pode pausar ou saltar semanas sem perder o histórico nem ofertas.
+                  </p>
+                  <button type="button" id="btnCancelSub" class="btn-cancel-sub" title="Cancelar subscrição semanal sem custos">
+                    🚫 Cancelar Subscrição
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -553,14 +569,14 @@
           isSkipped = !isSkipped;
           if (isSkipped) {
             btnSkip.textContent = '↩️ Desfazer e Receber Semana';
-            btnSkip.classList.remove('btn-outline');
-            btnSkip.classList.add('btn-accent');
+            btnSkip.classList.remove('sub-action-outline');
+            btnSkip.classList.add('sub-action-accent');
             nextDate.innerHTML = '<span style="color:#d97724;">Semana saltada (0,00 €)</span> • Retoma a 18 de Novembro';
             showAlert('Semana de 11 de Novembro saltada com sucesso! Não haverá qualquer cobrança e as entregas serão retomadas automaticamente a 18 de Novembro.');
           } else {
             btnSkip.textContent = '⏭️ Saltar Próxima Semana';
-            btnSkip.classList.remove('btn-accent');
-            btnSkip.classList.add('btn-outline');
+            btnSkip.classList.remove('sub-action-accent');
+            btnSkip.classList.add('sub-action-outline');
             nextDate.textContent = 'Segunda-feira, 11 de Novembro (09:00 - 12:00)';
             showAlert('A sua entrega de 11 de Novembro foi reativada com sucesso. Bom apetite!');
           }
@@ -573,9 +589,13 @@
           isPaused = !isPaused;
           if (isPaused) {
             btnPause.textContent = '▶️ Retomar Subscrição';
+            btnPause.classList.remove('sub-action-outline');
+            btnPause.classList.add('sub-action-accent');
             showAlert('Subscrição pausada temporariamente. O seu plano está congelado e não haverá cobranças até que decida reativá-lo.');
           } else {
             btnPause.textContent = '⏸️ Pausar Subscrição';
+            btnPause.classList.remove('sub-action-accent');
+            btnPause.classList.add('sub-action-outline');
             showAlert('Subscrição reativada! A sua rotina de refeições biológicas frescas está pronta.');
           }
         });
@@ -599,11 +619,7 @@
             if (confirmed) {
               isCancelled = true;
               btnCancel.textContent = '🔄 Reativar Subscrição';
-              btnCancel.classList.remove('btn-outline');
-              btnCancel.classList.add('btn-primary');
-              btnCancel.style.color = '#ffffff';
-              btnCancel.style.borderColor = 'var(--color-primary)';
-              btnCancel.style.backgroundColor = 'var(--color-primary)';
+              btnCancel.className = 'sub-action-reactivate';
 
               if (subStatusBadge) {
                 subStatusBadge.style.background = '#fee2e2';
@@ -623,11 +639,7 @@
           } else {
             isCancelled = false;
             btnCancel.textContent = '🚫 Cancelar Subscrição';
-            btnCancel.classList.remove('btn-primary');
-            btnCancel.classList.add('btn-outline');
-            btnCancel.style.color = '#b91c1c';
-            btnCancel.style.borderColor = '#fca5a5';
-            btnCancel.style.backgroundColor = '#fff5f5';
+            btnCancel.className = 'btn-cancel-sub';
 
             if (subStatusBadge) {
               subStatusBadge.style.background = '#e8f5e9';

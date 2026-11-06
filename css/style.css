@@ -3390,12 +3390,180 @@ textarea.form-control {
   color: var(--color-text);
 }
 
-.account-actions-bar {
+.account-actions-box {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 20px;
+  margin-top: 10px;
+  border-top: 1px dashed var(--color-border);
+}
+
+.account-actions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.account-actions-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.account-actions-badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  background-color: var(--color-primary-soft);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.2px;
+}
+
+.account-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.sub-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition);
+  border: 1.5px solid transparent;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Ação Principal: Personalizar Menu */
+.sub-action-btn.sub-action-primary {
+  background: linear-gradient(135deg, var(--color-accent) 0%, #d46347 100%);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 3px 10px rgba(224, 122, 95, 0.28);
+}
+
+.sub-action-btn.sub-action-primary:hover {
+  background: linear-gradient(135deg, #d46347 0%, #b85037 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(224, 122, 95, 0.38);
+  color: #ffffff;
+}
+
+/* Ações Secundárias / Controlo */
+.sub-action-btn.sub-action-outline {
+  background-color: #fbfdfa;
+  border-color: #cde0cc;
+  color: var(--color-primary-dark);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.sub-action-btn.sub-action-outline:hover {
+  background-color: #edf5ed;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(45, 90, 39, 0.12);
+}
+
+/* Estado Ativado / Acento (Semana Saltada ou Pausada) */
+.sub-action-btn.sub-action-accent {
+  background: #fff8f5;
+  border-color: #fbd0c0;
+  color: #c2410c;
+  box-shadow: 0 2px 6px rgba(194, 65, 12, 0.1);
+}
+
+.sub-action-btn.sub-action-accent:hover {
+  background: #fdeee7;
+  border-color: #f97316;
+  color: #c2410c;
+  transform: translateY(-2px);
+}
+
+/* Rodapé de Gestão e Cancelamento */
+.account-actions-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding-top: 14px;
   border-top: 1px dashed var(--color-border);
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.account-actions-note {
+  font-size: 0.83rem;
+  color: var(--color-text-muted);
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+/* Botão Cancelar Subscrição */
+.btn-cancel-sub {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 0.83rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1px solid #fecaca;
+  background-color: #fff5f5;
+  color: #b91c1c;
+  cursor: pointer;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.btn-cancel-sub:hover {
+  background-color: #fee2e2;
+  border-color: #f87171;
+  color: #991b1b;
+  transform: translateY(-1px);
+}
+
+/* Estado Reativar Subscrição */
+.sub-action-reactivate {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--color-primary);
+  background-color: var(--color-primary);
+  color: #ffffff;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 2px 8px rgba(45, 90, 39, 0.25);
+  flex-shrink: 0;
+}
+
+.sub-action-reactivate:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .account-meals-list {
@@ -3486,6 +3654,29 @@ textarea.form-control {
   }
   .btn-logout {
     width: 100%;
+    justify-content: center;
+  }
+  .account-actions-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .sub-action-btn {
+    width: 100%;
+    white-space: normal;
+    padding: 12px 14px;
+  }
+  .account-actions-footer {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 12px;
+  }
+  .btn-cancel-sub,
+  .sub-action-reactivate {
+    width: 100%;
+    justify-content: center;
+  }
+  .account-actions-note {
     justify-content: center;
   }
 }

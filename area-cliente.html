@@ -51,19 +51,83 @@
     <section class="section" style="padding-top: 40px; background-color: var(--color-bg-alt);">
       <div class="container">
 
-        <!-- Banner Superior com Perfil do Subscritor -->
-        <div class="account-hero-card">
-          <div class="account-user-info">
-            <span class="badge" style="background: rgba(255,255,255,0.2); color: #ffffff; margin-bottom: 8px;">Subscritora Ativa</span>
-            <h2>Olá, Mariana Ferreira! 🌱</h2>
-            <p class="account-user-meta">Membro desde Outubro 2026 • Entrega no Grande Porto (Rua de Santa Catarina)</p>
-          </div>
-          <div class="account-quick-stats">
-            <div class="account-stat-pill">📦 Plano Individual (5 Refeições)</div>
-            <div class="account-stat-pill">🚚 Entrega: Segundas 09h-12h</div>
-            <div class="account-stat-pill">♻️ 15 Embalagens Devolvidas</div>
+        <!-- ==================================================================
+             VISÃO 1: TELA DE LOGIN RÁPIDO (1-CLIQUE)
+             ================================================================== -->
+        <div id="loginView" style="max-width: 480px; margin: 30px auto 60px auto;">
+          <div class="account-card" style="padding: 38px 32px; box-shadow: var(--shadow-md); border-radius: var(--radius-lg); text-align: left;">
+            <div style="text-align: center; margin-bottom: 24px;">
+              <div style="width: 58px; height: 58px; background: #eaf2e8; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 12px auto;">🌱</div>
+              <h1 style="font-size: 1.65rem; color: var(--color-primary-dark); margin: 0 0 8px 0;">Área de Cliente</h1>
+              <p style="font-size: 0.92rem; color: var(--color-text-muted); margin: 0; line-height: 1.5;">
+                Inicie sessão para gerir a sua subscrição semanal, personalizar refeições ou consultar entregas.
+              </p>
+            </div>
+
+            <!-- Caixa de Destaque Demo 1-Clique -->
+            <div style="background-color: #f0f7ef; border: 1px solid #c8e6c9; border-left: 4px solid var(--color-primary); border-radius: var(--radius-sm); padding: 13px 15px; margin-bottom: 24px; font-size: 0.88rem; color: var(--color-primary-dark); line-height: 1.5;">
+              <div style="font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+                <span>💡</span> Acesso Rápido de Demonstração
+              </div>
+              Basta clicar em <strong>"Entrar na Conta"</strong> sem preencher nada para aceder de imediato ao perfil de subscritora da <strong>Mariana Ferreira</strong>.
+            </div>
+
+            <form id="clientLoginForm">
+              <div class="form-group" style="margin-bottom: 18px;">
+                <label for="loginEmail">E-mail ou Telemóvel</label>
+                <input type="text" id="loginEmail" class="form-control" placeholder="mariana.ferreira@email.pt" value="mariana.ferreira@email.pt" autocomplete="email">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 14px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                  <label for="loginPassword" style="margin-bottom: 0;">Palavra-passe</label>
+                  <a href="#" onclick="alert('Simulação de recuperação de palavra-passe: um link de acesso foi enviado para o seu e-mail.'); return false;" style="font-size: 0.82rem; color: var(--color-primary); font-weight: 600; text-decoration: none;">Esqueceu-se?</a>
+                </div>
+                <input type="password" id="loginPassword" class="form-control" placeholder="••••••••" value="••••••••" autocomplete="current-password">
+              </div>
+
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; font-size: 0.85rem; color: var(--color-text-muted);">
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none;">
+                  <input type="checkbox" id="rememberMe" checked style="accent-color: var(--color-primary); width: 16px; height: 16px;">
+                  Lembrar neste navegador
+                </label>
+              </div>
+
+              <button type="submit" id="btnSubmitLogin" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: var(--shadow-sm); cursor: pointer;">
+                Entrar na Conta <span>→</span>
+              </button>
+            </form>
+
+            <div style="margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--color-border); text-align: center; font-size: 0.9rem; color: var(--color-text-muted);">
+              Ainda não subscreveu um plano semanal?<br>
+              <a href="menu.html" style="color: var(--color-primary); font-weight: 700; text-decoration: none; display: inline-block; margin-top: 6px;">Ver Menus e Subscrever →</a>
+            </div>
           </div>
         </div>
+
+        <!-- ==================================================================
+             VISÃO 2: PAINEL DO SUBSCRIBITOR (DASHBOARD)
+             ================================================================== -->
+        <div id="dashboardView" style="display: none;">
+
+          <!-- Banner Superior com Perfil do Subscritor -->
+          <div class="account-hero-card">
+            <div class="account-user-info">
+              <span class="badge" style="background: rgba(255,255,255,0.2); color: #ffffff; margin-bottom: 8px;">Subscritora Ativa</span>
+              <h2>Olá, Mariana Ferreira! 🌱</h2>
+              <p class="account-user-meta">Membro desde Outubro 2026 • Entrega no Grande Porto (Rua de Santa Catarina)</p>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 12px;">
+              <button type="button" id="btnLogout" class="btn btn-outline btn-sm" style="color: #ffffff; border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.12); display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">
+                <span>🚪</span> Terminar Sessão
+              </button>
+              <div class="account-quick-stats">
+                <div class="account-stat-pill">📦 Plano Individual (5 Refeições)</div>
+                <div class="account-stat-pill">🚚 Entrega: Segundas 09h-12h</div>
+                <div class="account-stat-pill">♻️ 15 Embalagens Devolvidas</div>
+              </div>
+            </div>
+          </div>
 
         <!-- Caixa de Alerta Interativo (Feedback de Ações) -->
         <div id="accountAlert" class="account-alert-box">
@@ -273,6 +337,8 @@
 
         </div>
 
+      </div><!-- /#dashboardView -->
+
       </div>
     </section>
   </main>
@@ -368,6 +434,11 @@
   <!-- Script Interativo Exclusivo da Área de Cliente -->
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+      const loginView = document.getElementById('loginView');
+      const dashboardView = document.getElementById('dashboardView');
+      const loginForm = document.getElementById('clientLoginForm');
+      const btnLogout = document.getElementById('btnLogout');
+
       const alertBox = document.getElementById('accountAlert');
       const alertMsg = document.getElementById('accountAlertMsg');
       const btnSkip = document.getElementById('btnSkipWeek');
@@ -376,9 +447,34 @@
       const nextDate = document.getElementById('nextDeliveryDate');
 
       function showAlert(msg) {
+        if (!alertBox || !alertMsg) return;
         alertMsg.textContent = msg;
         alertBox.classList.add('active');
         alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      // Login de 1-clique (sem validação obrigatória: entra direto na conta da persona)
+      if (loginForm) {
+        loginForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (loginView && dashboardView) {
+            loginView.style.display = 'none';
+            dashboardView.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showAlert('Sessão iniciada com sucesso! Bem-vinda de volta, Mariana Ferreira 🌱');
+          }
+        });
+      }
+
+      // Terminar sessão (volta à tela de login)
+      if (btnLogout) {
+        btnLogout.addEventListener('click', function () {
+          if (loginView && dashboardView) {
+            dashboardView.style.display = 'none';
+            loginView.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }
+        });
       }
 
       if (btnSkip) {

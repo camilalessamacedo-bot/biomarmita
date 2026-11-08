@@ -1128,35 +1128,8 @@ document.addEventListener('DOMContentLoaded', function () {
   if (weeklyViewport) {
     const weeklyCards = weeklyViewport.querySelectorAll('.weekly-dish-card');
     const totalCards = weeklyCards.length;
-
-    // Criar indicadores de navegação (dots)
-    if (weeklyDotsContainer && totalCards > 0) {
-      weeklyDotsContainer.innerHTML = '';
-      weeklyCards.forEach(function (_, idx) {
-        const dot = document.createElement('button');
-        dot.type = 'button';
-        dot.className = 'weekly-dot' + (idx === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', 'Ir para o prato ' + (idx + 1));
-        dot.setAttribute('data-index', idx);
-        dot.addEventListener('click', function (e) {
-          e.preventDefault();
-          scrollToCard(idx);
-        });
-        weeklyDotsContainer.appendChild(dot);
-      });
-    }
-
-    const dots = weeklyDotsContainer ? weeklyDotsContainer.querySelectorAll('.weekly-dot') : [];
-
-    function updateActiveDot(activeIndex) {
-      dots.forEach(function (dot, idx) {
-        if (idx === activeIndex) {
-          dot.classList.add('active');
-        } else {
-          dot.classList.remove('active');
-        }
-      });
-    }
+    let maxStops = 1;
+    let dots = [];
 
     function getCardWidth() {
       if (weeklyCards.length === 0) return 320;
@@ -1170,39 +1143,104 @@ document.addEventListener('DOMContentLoaded', function () {
       return card.getBoundingClientRect().width + gap;
     }
 
-    function scrollToCard(index) {
-      if (index < 0) index = 0;
-      if (index >= totalCards) index = totalCards - 1;
-      const card = weeklyCards[index];
+    function calculateMaxStops() {
+      if (totalCards === 0) return 1;
+      const cardWidth = getCardWidth();
+      const clientWidth = weeklyViewport.clientWidth;
+      const visibleCards = Math.max(1, Math.round((clientWidth + 24) / cardWidth));
+      return Math.max(1, totalCards - visibleCards + 1);
+    }
+
+    function buildDots() {
+      if (!weeklyDotsContainer) return;
+      maxStops = calculateMaxStops();
+      weeklyDotsContainer.innerHTML = '';
+      dots = [];
+
+      for (let i = 0; i < maxStops; i++) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'weekly-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Ver prato ' + (i + 1) + ' de ' + maxStops);
+        dot.setAttribute('data-slide', i);
+        dot.addEventListener('click', function (e) {
+          e.preventDefault();
+          scrollToSlide(i);
+        });
+        weeklyDotsContainer.appendChild(dot);
+        dots.push(dot);
+      }
+    }
+
+    function updateActiveDot(activeIndex) {
+      if (activeIndex < 0) activeIndex = 0;
+      if (activeIndex >= maxStops) activeIndex = maxStops - 1;
+      dots.forEach(function (dot, idx) {
+        if (idx === activeIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    function scrollToSlide(slideIndex) {
+      if (slideIndex < 0) slideIndex = 0;
+      if (slideIndex >= maxStops) slideIndex = maxStops - 1;
+      const maxScroll = weeklyViewport.scrollWidth - weeklyViewport.clientWidth;
+      const card = weeklyCards[slideIndex];
       if (card) {
-        const offset = card.offsetLeft - weeklyViewport.offsetLeft;
+        let targetLeft = card.offsetLeft - weeklyViewport.offsetLeft;
+        if (slideIndex === maxStops - 1 || targetLeft > maxScroll) {
+          targetLeft = maxScroll;
+        }
         weeklyViewport.scrollTo({
-          left: offset,
+          left: targetLeft,
           behavior: 'smooth'
         });
-        updateActiveDot(index);
+        updateActiveDot(slideIndex);
       }
     }
 
     if (weeklyPrevBtn) {
       weeklyPrevBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        const cardWidth = getCardWidth();
-        weeklyViewport.scrollBy({
-          left: -cardWidth,
-          behavior: 'smooth'
-        });
+        const maxScroll = weeklyViewport.scrollWidth - weeklyViewport.clientWidth;
+        // Se estiver no início (<= 15px), dá a volta para o fim
+        if (weeklyViewport.scrollLeft <= 15) {
+          weeklyViewport.scrollTo({
+            left: maxScroll,
+            behavior: 'smooth'
+          });
+          updateActiveDot(maxStops - 1);
+        } else {
+          const cardWidth = getCardWidth();
+          weeklyViewport.scrollBy({
+            left: -cardWidth,
+            behavior: 'smooth'
+          });
+        }
       });
     }
 
     if (weeklyNextBtn) {
       weeklyNextBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        const cardWidth = getCardWidth();
-        weeklyViewport.scrollBy({
-          left: cardWidth,
-          behavior: 'smooth'
-        });
+        const maxScroll = weeklyViewport.scrollWidth - weeklyViewport.clientWidth;
+        // Se estiver no fim (>= maxScroll - 15px), dá a volta para o início
+        if (weeklyViewport.scrollLeft >= maxScroll - 15) {
+          weeklyViewport.scrollTo({
+            left: 0,
+            behavior: 'smooth'
+          });
+          updateActiveDot(0);
+        } else {
+          const cardWidth = getCardWidth();
+          weeklyViewport.scrollBy({
+            left: cardWidth,
+            behavior: 'smooth'
+          });
+        }
       });
     }
 
@@ -1212,18 +1250,41 @@ document.addEventListener('DOMContentLoaded', function () {
       clearTimeout(scrollDebounce);
       scrollDebounce = setTimeout(function () {
         const scrollLeft = weeklyViewport.scrollLeft;
-        let closestIndex = 0;
-        let minDiff = Infinity;
-        weeklyCards.forEach(function (card, idx) {
-          const cardOffset = card.offsetLeft - weeklyViewport.offsetLeft;
-          const diff = Math.abs(cardOffset - scrollLeft);
-          if (diff < minDiff) {
-            minDiff = diff;
-            closestIndex = idx;
-          }
-        });
+        const maxScroll = weeklyViewport.scrollWidth - weeklyViewport.clientWidth;
+
+        if (scrollLeft <= 15) {
+          updateActiveDot(0);
+          return;
+        }
+        if (scrollLeft >= maxScroll - 15) {
+          updateActiveDot(maxStops - 1);
+          return;
+        }
+
+        const cardWidth = getCardWidth();
+        const closestIndex = Math.min(maxStops - 1, Math.max(0, Math.round(scrollLeft / cardWidth)));
         updateActiveDot(closestIndex);
       }, 50);
     }, { passive: true });
+
+    // Recalcular os dots ao redimensionar o ecrã
+    let resizeDebounce;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeDebounce);
+      resizeDebounce = setTimeout(function () {
+        const oldMaxStops = maxStops;
+        const newMaxStops = calculateMaxStops();
+        if (oldMaxStops !== newMaxStops) {
+          buildDots();
+          const scrollLeft = weeklyViewport.scrollLeft;
+          const cardWidth = getCardWidth();
+          const closestIndex = Math.min(newMaxStops - 1, Math.max(0, Math.round(scrollLeft / cardWidth)));
+          updateActiveDot(closestIndex);
+        }
+      }, 100);
+    });
+
+    // Inicializar os dots com a contagem exata de slides
+    buildDots();
   }
 });

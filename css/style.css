@@ -4874,3 +4874,249 @@ textarea.form-control {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   CARROSSEL MINIMALISTA DE PRODUTOS — MENU SEMANAL (HOMEPAGE)
+   ========================================================================== */
+.weekly-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 36px;
+}
+
+.weekly-carousel-viewport {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 12px 4px 22px 4px;
+}
+
+.weekly-carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.weekly-carousel-track {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+}
+
+.weekly-dish-card {
+  flex: 0 0 calc((100% - 48px) / 3);
+  min-width: 0;
+  scroll-snap-align: start;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.weekly-dish-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.09);
+  border-color: rgba(45, 90, 39, 0.35);
+}
+
+.weekly-dish-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+  background-color: #edf2eb;
+}
+
+.weekly-dish-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform 0.5s ease;
+  display: block;
+}
+
+.weekly-dish-card:hover .weekly-dish-img-wrap img {
+  transform: scale(1.05);
+}
+
+.weekly-dish-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(26, 67, 20, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  letter-spacing: 0.2px;
+  z-index: 1;
+}
+
+.weekly-dish-body {
+  padding: 20px 22px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.weekly-dish-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  margin: 0 0 6px 0;
+  line-height: 1.35;
+}
+
+.weekly-dish-desc {
+  font-size: 0.90rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin: 0 0 16px 0;
+  flex-grow: 1;
+}
+
+.weekly-dish-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid #edf2ec;
+  margin-top: auto;
+}
+
+.weekly-dish-meta {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  background-color: var(--color-primary-soft);
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.weekly-dish-link {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.weekly-dish-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: 18px;
+}
+
+.weekly-dish-card:hover .weekly-dish-link {
+  color: var(--color-accent-hover);
+  transform: translateX(3px);
+}
+
+.weekly-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  color: var(--color-primary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  z-index: 5;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.weekly-nav-btn:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 18px rgba(45, 90, 39, 0.28);
+}
+
+.weekly-nav-btn.prev {
+  left: -22px;
+}
+
+.weekly-nav-btn.next {
+  right: -22px;
+}
+
+.weekly-carousel-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.weekly-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background-color: #cbd5e1;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.weekly-dot:hover {
+  background-color: #94a3b8;
+}
+
+.weekly-dot.active {
+  width: 26px;
+  background-color: var(--color-primary);
+}
+
+@media (max-width: 991px) {
+  .weekly-dish-card {
+    flex: 0 0 calc((100% - 24px) / 2);
+  }
+
+  .weekly-nav-btn.prev {
+    left: -12px;
+  }
+
+  .weekly-nav-btn.next {
+    right: -12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .weekly-dish-card {
+    flex: 0 0 85%;
+  }
+
+  .weekly-nav-btn {
+    display: none;
+  }
+
+  .weekly-carousel-viewport {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+}

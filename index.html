@@ -260,70 +260,9 @@
 
 
     <!-- ======================================================================
-         OS 4 PILARES DA BIOMARMITA
+         SEÇÃO: COMO FUNCIONA (4 PASSOS SIMPLES)
          ====================================================================== -->
-    <section class="section section-white">
-      <div class="container">
-        <div class="section-header">
-          <span class="badge">Porque Escolher a BioMarmita</span>
-          <h2 class="section-title">O que torna as nossas marmitas únicas?</h2>
-          <p class="section-subtitle">
-            Unimos nutrição consciente, conveniência diária e respeito rigoroso pelo meio ambiente.
-          </p>
-        </div>
-
-        <div class="features-grid-4">
-          <!-- Pilar 1 -->
-          <div class="feature-card">
-            <div class="feature-icon-box">
-              <img src="./assets/icones/ingredientes_biologicos.jpeg" alt="Ícone Ingredientes Biológicos">
-            </div>
-            <h3 class="feature-title">Ingredientes 100% Biológicos</h3>
-            <p class="feature-desc">
-              Fornecidos exclusivamente por produtores parceiros identificados (Quinta da Serra, Horta do Vale e Sabor do Campo), sem pesticidas sintéticos nem aditivos artificiais.
-            </p>
-          </div>
-
-          <!-- Pilar 2 -->
-          <div class="feature-card">
-            <div class="feature-icon-box">
-              <img src="./assets/icones/entrega_flexivel.jpeg" alt="Ícone Entrega Flexível">
-            </div>
-            <h3 class="feature-title">Entrega Agendada à Medida</h3>
-            <p class="feature-desc">
-              Horário, dia e morada combinados de acordo com a conveniência do cliente no Grande Porto (domicílio ou trabalho), com ajuste livre até 48h antes da entrega.
-            </p>
-          </div>
-
-          <!-- Pilar 3 -->
-          <div class="feature-card">
-            <div class="feature-icon-box">
-              <img src="./assets/icones/embalagens_sustentaveis.jpeg" alt="Ícone Embalagens Sustentáveis">
-            </div>
-            <h3 class="feature-title">Embalagens Circulares</h3>
-            <p class="feature-desc">
-              Bioplástico vegetal 100% compostável (EN 13432). A devolução não é obrigatória: incentivamos a economia circular recolhendo-as gratuitamente na entrega seguinte para compostagem.
-            </p>
-          </div>
-
-          <!-- Pilar 4 -->
-          <div class="feature-card">
-            <div class="feature-icon-box">
-              <img src="./assets/icones/mais_saude_e_bem_estar.jpeg" alt="Ícone Mais Saúde e Bem-Estar">
-            </div>
-            <h3 class="feature-title">Pronto em 3 Minutos</h3>
-            <p class="feature-desc">
-              Refeições de 400 a 550 kcal desenhadas para manter saciedade e energia estável, com durabilidade de 7 dias no frigorífico (2°C a 4°C).
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ======================================================================
-         SEÇÃO: COMO FUNCIONA (4 PASSOS VISUAIS)
-         ====================================================================== -->
-    <section class="section section-alt">
+    <section class="section section-white" id="como-funciona">
       <div class="container">
         <div class="section-header">
           <span class="badge">Simples, Transparente &amp; Sem Desperdício</span>
@@ -389,6 +328,138 @@
               </p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         SEÇÃO: MENU SEMANAL (CARROSSEL MINIMALISTA DE PRODUTOS)
+         ====================================================================== -->
+    <section class="section section-alt" id="menu-semanal">
+      <div class="container">
+        <div class="section-header">
+          <span class="badge">🌱 Pratos Frescos da Semana</span>
+          <h2 class="section-title">Menu Semanal BioMarmita</h2>
+          <p class="section-subtitle">
+            Refeições biológicas confecionadas por chefs locais com produtos frescos da época. Escolha e alterne semanalmente com total flexibilidade.
+          </p>
+        </div>
+
+        <div class="weekly-carousel-wrapper">
+          <button type="button" class="weekly-nav-btn prev" id="weeklyPrevBtn" aria-label="Prato anterior">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+
+          <div class="weekly-carousel-viewport" id="weeklyCarouselViewport">
+            <div class="weekly-carousel-track" id="weeklyCarouselTrack">
+              <!-- Prato 1 -->
+              <article class="weekly-dish-card">
+                <div class="weekly-dish-img-wrap">
+                  <img src="./assets/imagens/menu-tradicional.jpeg" alt="Frango do Campo Grelhado" loading="lazy">
+                  <span class="weekly-dish-badge">🍗 Carne Magra</span>
+                </div>
+                <div class="weekly-dish-body">
+                  <h3 class="weekly-dish-title">Frango do Campo Grelhado</h3>
+                  <p class="weekly-dish-desc">Com arroz integral e legumes rústicos assados da horta</p>
+                  <div class="weekly-dish-footer">
+                    <span class="weekly-dish-meta">⏱️ 3 min • 🔥 480 kcal</span>
+                    <a href="menu.html" class="weekly-dish-link" aria-label="Ver Frango do Campo Grelhado no Menu">Ver no Menu →</a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Prato 2 -->
+              <article class="weekly-dish-card">
+                <div class="weekly-dish-img-wrap">
+                  <img src="./assets/imagens/prato-bacalhau-grao.jpeg" alt="Lombo de Bacalhau com Grão" loading="lazy">
+                  <span class="weekly-dish-badge">🐟 Peixe Nobre</span>
+                </div>
+                <div class="weekly-dish-body">
+                  <h3 class="weekly-dish-title">Lombo de Bacalhau com Grão</h3>
+                  <p class="weekly-dish-desc">Em cama de esmagada de grão e couve coração fresca</p>
+                  <div class="weekly-dish-footer">
+                    <span class="weekly-dish-meta">⏱️ 3 min • 🔥 490 kcal</span>
+                    <a href="menu.html" class="weekly-dish-link" aria-label="Ver Lombo de Bacalhau com Grão no Menu">Ver no Menu →</a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Prato 3 -->
+              <article class="weekly-dish-card">
+                <div class="weekly-dish-img-wrap">
+                  <img src="./assets/imagens/prato-caril-grao.jpeg" alt="Caril de Grão & Espinafres" loading="lazy">
+                  <span class="weekly-dish-badge">🌱 100% Vegan Bio</span>
+                </div>
+                <div class="weekly-dish-body">
+                  <h3 class="weekly-dish-title">Caril de Grão &amp; Espinafres</h3>
+                  <p class="weekly-dish-desc">Com arroz basmati perfumado e leite de coco biológico</p>
+                  <div class="weekly-dish-footer">
+                    <span class="weekly-dish-meta">⏱️ 3 min • 🔥 430 kcal</span>
+                    <a href="menu.html" class="weekly-dish-link" aria-label="Ver Caril de Grão & Espinafres no Menu">Ver no Menu →</a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Prato 4 -->
+              <article class="weekly-dish-card">
+                <div class="weekly-dish-img-wrap">
+                  <img src="./assets/imagens/prato-peru-espinafres.jpeg" alt="Peito de Peru Recheado" loading="lazy">
+                  <span class="weekly-dish-badge">🍗 Carne Magra</span>
+                </div>
+                <div class="weekly-dish-body">
+                  <h3 class="weekly-dish-title">Peito de Peru Recheado</h3>
+                  <p class="weekly-dish-desc">Espinafres frescos salteados e batata-doce assada no forno</p>
+                  <div class="weekly-dish-footer">
+                    <span class="weekly-dish-meta">⏱️ 3 min • 🔥 460 kcal</span>
+                    <a href="menu.html" class="weekly-dish-link" aria-label="Ver Peito de Peru Recheado no Menu">Ver no Menu →</a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Prato 5 -->
+              <article class="weekly-dish-card">
+                <div class="weekly-dish-img-wrap">
+                  <img src="./assets/imagens/menu-fitness.jpeg" alt="Salmão Fresco & Quinoa Real" loading="lazy">
+                  <span class="weekly-dish-badge">🐟 Fitness &amp; Ómega-3</span>
+                </div>
+                <div class="weekly-dish-body">
+                  <h3 class="weekly-dish-title">Salmão Fresco &amp; Quinoa Real</h3>
+                  <p class="weekly-dish-desc">Ao perfume de limão com raminhos de brócolos ao vapor</p>
+                  <div class="weekly-dish-footer">
+                    <span class="weekly-dish-meta">⏱️ 3 min • 🔥 510 kcal</span>
+                    <a href="menu.html" class="weekly-dish-link" aria-label="Ver Salmão Fresco & Quinoa Real no Menu">Ver no Menu →</a>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Prato 6 -->
+              <article class="weekly-dish-card">
+                <div class="weekly-dish-img-wrap">
+                  <img src="./assets/imagens/menu-vegetariano.jpeg" alt="Bowl de Tofu & Abacate" loading="lazy">
+                  <span class="weekly-dish-badge">🥑 Plant-Based</span>
+                </div>
+                <div class="weekly-dish-body">
+                  <h3 class="weekly-dish-title">Bowl de Tofu &amp; Abacate</h3>
+                  <p class="weekly-dish-desc">Tofu marinado grelhado, edamame e vinagrete balsâmico</p>
+                  <div class="weekly-dish-footer">
+                    <span class="weekly-dish-meta">⏱️ 3 min • 🔥 420 kcal</span>
+                    <a href="menu.html" class="weekly-dish-link" aria-label="Ver Bowl de Tofu & Abacate no Menu">Ver no Menu →</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <button type="button" class="weekly-nav-btn next" id="weeklyNextBtn" aria-label="Próximo prato">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+
+        <!-- Indicadores / Dots da Navegação -->
+        <div class="weekly-carousel-dots" id="weeklyCarouselDots" aria-label="Navegação de pratos"></div>
+
+        <div style="text-align: center; margin-top: 36px;">
+          <a href="menu.html" class="btn btn-primary btn-lg">Explorar Todos os Pratos &amp; Planos de Subscrição →</a>
         </div>
       </div>
     </section>

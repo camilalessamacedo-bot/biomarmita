@@ -1116,4 +1116,114 @@ document.addEventListener('DOMContentLoaded', function () {
     showSlide(0);
     startAutoPlay();
   }
+
+  /* --------------------------------------------------------------------------
+     14. Carrossel Minimalista do Menu Semanal (Página Inicial)
+     -------------------------------------------------------------------------- */
+  const weeklyViewport = document.getElementById('weeklyCarouselViewport');
+  const weeklyPrevBtn = document.getElementById('weeklyPrevBtn');
+  const weeklyNextBtn = document.getElementById('weeklyNextBtn');
+  const weeklyDotsContainer = document.getElementById('weeklyCarouselDots');
+
+  if (weeklyViewport) {
+    const weeklyCards = weeklyViewport.querySelectorAll('.weekly-dish-card');
+    const totalCards = weeklyCards.length;
+
+    // Criar indicadores de navegação (dots)
+    if (weeklyDotsContainer && totalCards > 0) {
+      weeklyDotsContainer.innerHTML = '';
+      weeklyCards.forEach(function (_, idx) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'weekly-dot' + (idx === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Ir para o prato ' + (idx + 1));
+        dot.setAttribute('data-index', idx);
+        dot.addEventListener('click', function (e) {
+          e.preventDefault();
+          scrollToCard(idx);
+        });
+        weeklyDotsContainer.appendChild(dot);
+      });
+    }
+
+    const dots = weeklyDotsContainer ? weeklyDotsContainer.querySelectorAll('.weekly-dot') : [];
+
+    function updateActiveDot(activeIndex) {
+      dots.forEach(function (dot, idx) {
+        if (idx === activeIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    function getCardWidth() {
+      if (weeklyCards.length === 0) return 320;
+      const card = weeklyCards[0];
+      const track = weeklyViewport.querySelector('.weekly-carousel-track');
+      let gap = 24;
+      if (track) {
+        const style = window.getComputedStyle(track);
+        gap = parseFloat(style.gap) || 24;
+      }
+      return card.getBoundingClientRect().width + gap;
+    }
+
+    function scrollToCard(index) {
+      if (index < 0) index = 0;
+      if (index >= totalCards) index = totalCards - 1;
+      const card = weeklyCards[index];
+      if (card) {
+        const offset = card.offsetLeft - weeklyViewport.offsetLeft;
+        weeklyViewport.scrollTo({
+          left: offset,
+          behavior: 'smooth'
+        });
+        updateActiveDot(index);
+      }
+    }
+
+    if (weeklyPrevBtn) {
+      weeklyPrevBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const cardWidth = getCardWidth();
+        weeklyViewport.scrollBy({
+          left: -cardWidth,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    if (weeklyNextBtn) {
+      weeklyNextBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        const cardWidth = getCardWidth();
+        weeklyViewport.scrollBy({
+          left: cardWidth,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    // Atualizar os dots durante o scroll com debounce
+    let scrollDebounce;
+    weeklyViewport.addEventListener('scroll', function () {
+      clearTimeout(scrollDebounce);
+      scrollDebounce = setTimeout(function () {
+        const scrollLeft = weeklyViewport.scrollLeft;
+        let closestIndex = 0;
+        let minDiff = Infinity;
+        weeklyCards.forEach(function (card, idx) {
+          const cardOffset = card.offsetLeft - weeklyViewport.offsetLeft;
+          const diff = Math.abs(cardOffset - scrollLeft);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIndex = idx;
+          }
+        });
+        updateActiveDot(closestIndex);
+      }, 50);
+    }, { passive: true });
+  }
 });

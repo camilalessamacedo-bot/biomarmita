@@ -519,41 +519,274 @@ button, input, textarea, select {
   box-shadow: var(--shadow-lg);
 }
 
+/* --------------------------------------------------------------------------
+   HERO DISH CAROUSEL (CARROSSEL AUTOMÁTICO DE PRATOS REAIS)
+   -------------------------------------------------------------------------- */
+.hero-carousel-wrapper {
+  position: relative;
+}
+
+.hero-carousel-container {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+  background-color: var(--color-primary-dark);
+}
+
+.hero-carousel-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  z-index: 1;
+}
+
+.hero-carousel-slide.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+.hero-carousel-slide .hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  box-shadow: none;
+  display: block;
+}
+
+.hero-carousel-slide .img-dish-chicken,
+.hero-carousel-slide .hero-img[src*="banner-home"] {
+  object-position: right center !important;
+}
+
+.hero-slide-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(14, 28, 16, 0.72) 0%,
+    rgba(14, 28, 16, 0.22) 36%,
+    rgba(0, 0, 0, 0.04) 55%,
+    rgba(14, 28, 16, 0.65) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-slide-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 22px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  z-index: 4;
+}
+
+.hero-slide-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.hero-slide-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(18, 54, 22, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #86efac;
+  border: 1px solid rgba(134, 239, 172, 0.28);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.hero-slide-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.22;
+  margin: 10px 0 4px 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65);
+}
+
+.hero-slide-desc {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 500;
+  margin: 0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.65);
+}
+
+.hero-slide-cta {
+  background: #d97757;
+  color: #ffffff !important;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(217, 119, 87, 0.38);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.hero-slide-cta:hover {
+  background: #c56546;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(217, 119, 87, 0.5);
+}
+
+.hero-carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  z-index: 5;
+  color: #1e3a24;
+  transition: all 0.2s ease;
+}
+
+.hero-carousel-nav-btn:hover {
+  background: #ffffff;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.24);
+  color: var(--color-primary-dark);
+}
+
+.hero-carousel-nav-btn.prev {
+  left: 16px;
+}
+
+.hero-carousel-nav-btn.next {
+  right: 16px;
+}
+
+.hero-carousel-dots-capsule {
+  position: absolute;
+  bottom: 18px;
+  right: 20px;
+  z-index: 5;
+  background: rgba(14, 28, 16, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 30px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.hero-carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.hero-carousel-dot:hover {
+  background: rgba(255, 255, 255, 0.85);
+  transform: scale(1.15);
+}
+
+.hero-carousel-dot.active {
+  width: 22px;
+  height: 8px;
+  border-radius: 4px;
+  background: #84cc16;
+  cursor: default;
+}
+
 .hero-floating-card {
   position: absolute;
-  bottom: -20px;
-  left: -20px;
-  background: rgba(255, 255, 255, 0.95);
+  bottom: -14px;
+  left: -14px;
+  background: #ffffff;
   backdrop-filter: blur(8px);
-  padding: 16px 22px;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  border: 1px solid var(--color-border);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 12px 20px;
+  border-radius: 18px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   display: flex;
   align-items: center;
   gap: 14px;
+  z-index: 6;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero-floating-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
 }
 
 .floating-icon {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: var(--color-primary-soft);
+  background: #eaf5ea;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
+  color: #2d5a27;
+  flex-shrink: 0;
 }
 
 .floating-text strong {
   display: block;
   font-size: 0.95rem;
-  color: var(--color-primary-dark);
+  font-weight: 700;
+  color: #1a4314;
+  margin-bottom: 2px;
 }
 
 .floating-text span {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  color: #47684d;
+  font-weight: 500;
+  display: block;
 }
 
 /* Header Padrão das Subpáginas */
@@ -1874,9 +2107,53 @@ textarea.form-control {
     gap: 10px;
   }
 
+  .hero-carousel-container {
+    height: 420px;
+    border-radius: 20px;
+  }
+
+  .hero-slide-header {
+    padding: 16px 18px;
+    gap: 12px;
+  }
+
+  .hero-slide-title {
+    font-size: 1.3rem;
+  }
+
+  .hero-slide-desc {
+    font-size: 0.82rem;
+  }
+
+  .hero-slide-cta {
+    padding: 7px 14px;
+    font-size: 0.82rem;
+  }
+
+  .hero-carousel-nav-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hero-carousel-nav-btn.prev {
+    left: 10px;
+  }
+
+  .hero-carousel-nav-btn.next {
+    right: 10px;
+  }
+
+  .hero-carousel-dots-capsule {
+    bottom: 12px;
+    right: 12px;
+    padding: 5px 10px;
+  }
+
   .hero-floating-card {
     position: static;
     margin-top: 16px;
+    width: 100%;
+    justify-content: center;
   }
 
   .contact-form-card {

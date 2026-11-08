@@ -975,4 +975,145 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   }
+
+  // ------------------------------------------------------------------------
+  // CARROSSEL DE PRATOS REAIS NA PÁGINA INICIAL (HERO DISH CAROUSEL)
+  // ------------------------------------------------------------------------
+  const heroCarousel = document.getElementById('heroDishCarousel');
+  if (heroCarousel) {
+    const slides = heroCarousel.querySelectorAll('.hero-carousel-slide');
+    const dots = heroCarousel.querySelectorAll('.hero-carousel-dot');
+    const prevBtn = document.getElementById('heroCarouselPrev');
+    const nextBtn = document.getElementById('heroCarouselNext');
+    let currentIndex = 0;
+    let autoPlayTimer = null;
+    const intervalMs = 5000;
+
+    function showSlide(index) {
+      if (!slides.length) return;
+      if (index < 0) {
+        currentIndex = slides.length - 1;
+      } else if (index >= slides.length) {
+        currentIndex = 0;
+      } else {
+        currentIndex = index;
+      }
+
+      slides.forEach(function (slide, idx) {
+        if (idx === currentIndex) {
+          slide.classList.add('active');
+          slide.setAttribute('aria-hidden', 'false');
+        } else {
+          slide.classList.remove('active');
+          slide.setAttribute('aria-hidden', 'true');
+        }
+      });
+
+      dots.forEach(function (dot, idx) {
+        if (idx === currentIndex) {
+          dot.classList.add('active');
+          dot.setAttribute('aria-selected', 'true');
+        } else {
+          dot.classList.remove('active');
+          dot.setAttribute('aria-selected', 'false');
+        }
+      });
+    }
+
+    function nextSlide() {
+      showSlide(currentIndex + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentIndex - 1);
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      autoPlayTimer = setInterval(nextSlide, intervalMs);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayTimer) {
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = null;
+      }
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        prevSlide();
+        startAutoPlay();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        nextSlide();
+        startAutoPlay();
+      });
+    }
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const targetIndex = parseInt(dot.getAttribute('data-slide'), 10);
+        if (!isNaN(targetIndex)) {
+          showSlide(targetIndex);
+          startAutoPlay();
+        }
+      });
+    });
+
+    // Pausar na passagem do cursor e retomar ao sair
+    heroCarousel.addEventListener('mouseenter', stopAutoPlay);
+    heroCarousel.addEventListener('mouseleave', startAutoPlay);
+
+    // Navegação acessível por teclado
+    heroCarousel.setAttribute('tabindex', '0');
+    heroCarousel.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevSlide();
+        startAutoPlay();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextSlide();
+        startAutoPlay();
+      }
+    });
+
+    // Suporte a gestos touch (swipe) em dispositivos móveis
+    let touchStartX = 0;
+    let touchEndX = 0;
+    heroCarousel.addEventListener('touchstart', function (e) {
+      if (e.changedTouches && e.changedTouches[0]) {
+        touchStartX = e.changedTouches[0].screenX;
+      }
+    }, { passive: true });
+
+    heroCarousel.addEventListener('touchend', function (e) {
+      if (e.changedTouches && e.changedTouches[0]) {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+          startAutoPlay();
+        }
+      }
+    }, { passive: true });
+
+    // Iniciar no primeiro slide e ativar o autoplay
+    showSlide(0);
+    startAutoPlay();
+  }
 });

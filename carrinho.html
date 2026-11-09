@@ -123,9 +123,9 @@
         <div class="form-group" style="margin-bottom: 24px;">
           <label for="selectPlano" style="font-weight: 700; color: var(--color-primary-dark); font-size: 1rem;">1. Selecione o Seu Plano Semanal:</label>
           <select id="selectPlano" class="form-control" style="font-size: 1.05rem; font-weight: 600;">
-            <option value="individual" data-price="39.90" data-meals="5">Plano Individual — 5 refeições/itens + 🎁 2 lanches de brinde (39,90 € / semana)</option>
-            <option value="casal" data-price="74.90" data-meals="10" selected>Plano Casal — 10 refeições/itens + 🎁 2 lanches de brinde (74,90 € / semana)</option>
-            <option value="familia" data-price="104.90" data-meals="15">Plano Família — 15 refeições/itens + 🎁 2 lanches de brinde (104,90 € / semana)</option>
+            <option value="individual" data-price="39.90" data-meals="5">Plano Individual — 5 refeições/itens + 🎁 1 lanche de oferta (39,90 € / semana)</option>
+            <option value="casal" data-price="74.90" data-meals="10" selected>Plano Casal — 10 refeições/itens + 🎁 2 lanches de oferta (74,90 € / semana)</option>
+            <option value="familia" data-price="104.90" data-meals="15">Plano Família — 15 refeições/itens + 🎁 4 lanches de oferta (104,90 € / semana)</option>
           </select>
         </div>
 
@@ -184,29 +184,29 @@
           </div>
 
           <!-- ================================================================
-               SECÇÃO 3: 🎁 OFERTA ESPECIAL — 2 LANCHES BIOLÓGICOS DE BRINDE (GRÁTIS!)
+               SECÇÃO 3: 🎁 OFERTA ESPECIAL — LANCHES BIOLÓGICOS DE OFERTA (GRÁTIS!)
                ================================================================ -->
           <div class="gift-builder-container" id="giftBuilderContainer">
             <div class="gift-header">
               <div>
-                <h4>🎁 3. Escolha os Seus 2 Lanches Biológicos de Brinde</h4>
-                <p>Oferta especial incluída em todas as subscrições. Selecione 2 lanches biológicos da sua preferência inteiramente grátis!</p>
+                <h4>🎁 3. Escolha os Seus Lanches Biológicos de Oferta</h4>
+                <p>Oferta especial incluída na sua subscrição. Selecione os seus lanches biológicos inteiramente grátis (0,00 €)!</p>
               </div>
               <span class="gift-badge-free">✨ OFERTA GRÁTIS (0,00 €)</span>
             </div>
 
-            <!-- Painel de Contador do Brinde -->
+            <!-- Painel de Contador da Oferta -->
             <div class="box-counter-row">
               <span class="box-counter-label" style="color: #92400e;">
-                Lanches de Brinde Selecionados: <strong id="giftSnacksCountDisplay">0 / 2</strong>
+                Lanches de Oferta Selecionados: <strong id="giftSnacksCountDisplay">0 / 2</strong>
               </span>
-              <span id="giftStatusPill" class="gift-status-pill warning">Escolha 2 lanches grátis</span>
+              <span id="giftStatusPill" class="gift-status-pill warning">Escolha os lanches de oferta</span>
             </div>
             <div class="box-progress-bar">
               <div class="box-progress-fill" id="giftProgressBar" style="width: 0%; background: linear-gradient(90deg, #e9c46a 0%, #e07a5f 100%);"></div>
             </div>
 
-            <!-- Grade com os 4 lanches para escolher os 2 brindes -->
+            <!-- Grade com os 4 lanches para escolher as ofertas -->
             <div class="gift-items-grid" id="giftItemsGrid">
               <!-- Preenchido dinamicamente pelo JavaScript com os 4 lanches -->
             </div>
@@ -231,7 +231,7 @@
             </tr>
             <tr>
               <td>
-                <span style="font-weight: 600; color: #b45309;">🎁 2x Lanches Biológicos de Brinde (Oferta Especial)</span>
+                <span style="font-weight: 600; color: #b45309;" id="cartGiftRowTitle">🎁 Lanches Biológicos de Oferta Especial</span>
               </td>
               <td style="text-align: right; color: #2e7d32; font-weight: 700;">Grátis (0,00 €)</td>
             </tr>
@@ -324,7 +324,7 @@
           <div>
             <strong style="color: var(--color-primary-dark); font-size: 0.95rem; display: block;">🍱 A Sua Caixa da 1ª Semana:</strong>
             <span id="step2BoxSummary" style="font-size: 0.88rem; color: var(--color-text-muted);">A carregar refeições...</span>
-            <div id="step2GiftSummary" style="font-size: 0.85rem; color: #b45309; font-weight: 600; margin-top: 4px;">🎁 Brinde: A carregar lanches de oferta...</div>
+            <div id="step2GiftSummary" style="font-size: 0.85rem; color: #b45309; font-weight: 600; margin-top: 4px;">🎁 Oferta: A carregar lanches de oferta...</div>
           </div>
           <div style="text-align: right;">
             <span style="font-size: 0.82rem; color: var(--color-text-muted); display: block;">Total 1ª Semana:</span>
@@ -506,7 +506,7 @@
               <!-- Preenchido pelo JavaScript com as quantidades e pratos escolhidos -->
             </ul>
             <h5 style="margin-top: 14px; color: #b45309; font-size: 0.95rem; display: flex; align-items: center; gap: 6px;">
-              <span>🎁</span> 2 Lanches Biológicos de Brinde (Oferta Grátis):
+              <span>🎁</span> Lanches Biológicos de Oferta (Grátis):
             </h5>
             <ul class="confirmed-meals-list" id="confGiftList">
               <!-- Preenchido pelo JavaScript com os 2 lanches de oferta -->

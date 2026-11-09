@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     ];
 
-    // Os 4 Lanches Biológicos disponíveis para os 2 Brindes de Oferta
+    // Os 4 Lanches Biológicos disponíveis para as Ofertas Gratuitas
     const giftSnacks = catalogItems.filter(item => item.category === 'lanche');
 
     // Estado da Seleção:
@@ -262,35 +262,35 @@ document.addEventListener('DOMContentLoaded', function () {
     const boxQuantities = {};
     catalogItems.forEach(item => { boxQuantities[item.id] = 0; });
 
-    // giftQuantities: armazena os 2 lanches de brinde gratuito
+    // giftQuantities: armazena os lanches de oferta gratuita
     const giftQuantities = {};
     giftSnacks.forEach(item => { giftQuantities[item.id] = 0; });
 
-    // Dados dos Planos (Cada plano inclui a sua quota de refeições/itens + 🎁 2 Lanches Grátis)
+    // Dados dos Planos (Cada plano inclui a sua quota de refeições/itens + Ofertas Grátis)
     const planosData = {
       individual: {
-        nome: 'Plano Individual (5 Refeições/Lanches + 🎁 2 Brindes)',
+        nome: 'Plano Individual (5 Refeições/Lanches + 🎁 1 Oferta)',
         precoBase: 39.90,
         desconto: 5.99,
         total: 33.91,
         maxRefeicoes: 5,
-        maxBrindes: 2
+        maxOfertas: 1
       },
       casal: {
-        nome: 'Plano Casal (10 Refeições/Lanches + 🎁 2 Brindes)',
+        nome: 'Plano Casal (10 Refeições/Lanches + 🎁 2 Ofertas)',
         precoBase: 74.90,
         desconto: 11.24,
         total: 63.66,
         maxRefeicoes: 10,
-        maxBrindes: 2
+        maxOfertas: 2
       },
       familia: {
-        nome: 'Plano Família (15 Refeições/Lanches + 🎁 2 Brindes)',
+        nome: 'Plano Família (15 Refeições/Lanches + 🎁 4 Ofertas)',
         precoBase: 104.90,
         desconto: 15.74,
         total: 89.16,
         maxRefeicoes: 15,
-        maxBrindes: 2
+        maxOfertas: 4
       }
     };
 
@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function () {
       return catalogItems.reduce((sum, item) => sum + (boxQuantities[item.id] || 0), 0);
     }
 
-    // Contagem dos lanches de brinde (máximo 2)
+    // Contagem dos lanches de oferta
     function getTotalGiftSnacksCount() {
       return giftSnacks.reduce((sum, item) => sum + (giftQuantities[item.id] || 0), 0);
     }
@@ -312,11 +312,15 @@ document.addEventListener('DOMContentLoaded', function () {
       if (cartDiscount) cartDiscount.innerText = '- ' + plano.desconto.toFixed(2).replace('.', ',') + ' €';
       if (cartFinalTotal) cartFinalTotal.innerText = plano.total.toFixed(2).replace('.', ',') + ' €';
       if (planTargetDisplay) planTargetDisplay.innerText = plano.maxRefeicoes;
+      const cartGiftRowTitle = document.getElementById('cartGiftRowTitle');
+      if (cartGiftRowTitle) {
+        cartGiftRowTitle.innerText = `🎁 ${plano.maxOfertas}x Lanche${plano.maxOfertas > 1 ? 's' : ''} Biológico${plano.maxOfertas > 1 ? 's' : ''} de Oferta Especial`;
+      }
       updatePaymentExplanation();
       renderBoxBuilder();
     }
 
-    // Sugestão Automática Equilibrada do Chef (preenche a caixa e os 2 brindes)
+    // Sugestão Automática Equilibrada do Chef (preenche a caixa e os lanches de oferta)
     function fillChefSuggestion() {
       catalogItems.forEach(item => { boxQuantities[item.id] = 0; });
       giftSnacks.forEach(item => { giftQuantities[item.id] = 0; });
@@ -329,16 +333,15 @@ document.addEventListener('DOMContentLoaded', function () {
         boxQuantities['caril'] = 1;
         boxQuantities['frango'] = 1;
         boxQuantities['salmao'] = 1;
-        // 2 Brindes de Oferta
+        // 1 Lanche de Oferta
         giftQuantities['chia'] = 1;
-        giftQuantities['tostas'] = 1;
       } else if (currentPlan === 'casal') {
         boxQuantities['peru'] = 2;
         boxQuantities['bacalhau'] = 2;
         boxQuantities['caril'] = 2;
         boxQuantities['frango'] = 2;
         boxQuantities['salmao'] = 2;
-        // 2 Brindes de Oferta
+        // 2 Lanches de Oferta
         giftQuantities['chia'] = 1;
         giftQuantities['panquecas'] = 1;
       } else if (currentPlan === 'familia') {
@@ -348,7 +351,9 @@ document.addEventListener('DOMContentLoaded', function () {
         boxQuantities['frango'] = 3;
         boxQuantities['salmao'] = 2;
         boxQuantities['panquecas'] = 2; // lanche delicioso para crianças dentro da caixa!
-        // 2 Brindes de Oferta
+        // 4 Lanches de Oferta (Kit Familiar Completo)
+        giftQuantities['chia'] = 1;
+        giftQuantities['panquecas'] = 1;
         giftQuantities['tostas'] = 1;
         giftQuantities['humus'] = 1;
       }
@@ -362,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function () {
       renderBoxBuilder();
     }
 
-    // Renderizar e Atualizar o Construtor de Caixa e Brindes
+    // Renderizar e Atualizar o Construtor de Caixa e Ofertas
     function renderBoxBuilder() {
       const plan = planosData[selectPlano.value] || planosData.casal;
       const totalMeals = getTotalMealsCount();
@@ -388,21 +393,22 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       }
 
-      // 2. Atualizar progresso dos 2 lanches de brinde
-      if (giftSnacksCountDisplay) giftSnacksCountDisplay.innerText = `${totalGifts} / 2`;
-      const giftPercent = Math.min(100, Math.round((totalGifts / 2) * 100));
+      // 2. Atualizar progresso dos lanches de oferta
+      const maxGifts = plan.maxOfertas;
+      if (giftSnacksCountDisplay) giftSnacksCountDisplay.innerText = `${totalGifts} / ${maxGifts}`;
+      const giftPercent = Math.min(100, Math.round((totalGifts / maxGifts) * 100));
       if (giftProgressBar) giftProgressBar.style.width = `${giftPercent}%`;
 
-      if (totalGifts >= 2) {
+      if (totalGifts >= maxGifts) {
         if (giftStatusPill) {
           giftStatusPill.className = 'gift-status-pill success';
-          giftStatusPill.innerText = '✓ 2 Lanches de Oferta Escolhidos!';
+          giftStatusPill.innerText = `✓ ${maxGifts} Lanche${maxGifts > 1 ? 's' : ''} de Oferta Escolhido${maxGifts > 1 ? 's' : ''}!`;
         }
       } else {
-        const diffGifts = 2 - totalGifts;
+        const diffGifts = maxGifts - totalGifts;
         if (giftStatusPill) {
           giftStatusPill.className = 'gift-status-pill warning';
-          giftStatusPill.innerText = `Escolha ${diffGifts} lanche${diffGifts > 1 ? 's' : ''} de brinde`;
+          giftStatusPill.innerText = `Escolha ${diffGifts} lanche${diffGifts > 1 ? 's' : ''} de oferta`;
         }
       }
 
@@ -461,12 +467,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
       }
 
-      // 4. Renderizar Grade de Lanches de Brinde (4 opções para escolher 2 grátis)
+      // 4. Renderizar Grade de Lanches de Oferta
       if (giftItemsGrid) {
         giftItemsGrid.innerHTML = '';
+        const maxGifts = plan.maxOfertas;
         giftSnacks.forEach(item => {
           const giftQty = giftQuantities[item.id] || 0;
-          const canAddGift = totalGifts < 2;
+          const canAddGift = totalGifts < maxGifts;
 
           const giftCard = document.createElement('div');
           giftCard.className = `gift-item-card ${giftQty > 0 ? 'has-qty' : ''}`;
@@ -482,15 +489,15 @@ document.addEventListener('DOMContentLoaded', function () {
               <div class="box-item-origin" style="font-size: 0.72rem;">📍 ${item.origin}</div>
             </div>
             <div class="box-item-qty">
-              <button type="button" class="qty-btn btn-gift-minus" data-id="${item.id}" ${giftQty === 0 ? 'disabled' : ''} aria-label="Remover 1 brinde">-</button>
+              <button type="button" class="qty-btn btn-gift-minus" data-id="${item.id}" ${giftQty === 0 ? 'disabled' : ''} aria-label="Remover 1 oferta">-</button>
               <span class="qty-value" style="color: #b45309;">${giftQty}</span>
-              <button type="button" class="qty-btn btn-gift-plus" data-id="${item.id}" ${!canAddGift ? 'disabled' : ''} aria-label="Adicionar 1 brinde">+</button>
+              <button type="button" class="qty-btn btn-gift-plus" data-id="${item.id}" ${!canAddGift ? 'disabled' : ''} aria-label="Adicionar 1 oferta">+</button>
             </div>
           `;
           giftItemsGrid.appendChild(giftCard);
         });
 
-        // Eventos dos botões de brinde
+        // Eventos dos botões de oferta
         giftItemsGrid.querySelectorAll('.btn-gift-minus').forEach(btn => {
           btn.addEventListener('click', function () {
             const id = this.getAttribute('data-id');
@@ -504,7 +511,8 @@ document.addEventListener('DOMContentLoaded', function () {
         giftItemsGrid.querySelectorAll('.btn-gift-plus').forEach(btn => {
           btn.addEventListener('click', function () {
             const id = this.getAttribute('data-id');
-            if (totalGifts < 2) {
+            const currentMax = (planosData[selectPlano.value] || planosData.casal).maxOfertas;
+            if (getTotalGiftSnacksCount() < currentMax) {
               giftQuantities[id]++;
               renderBoxBuilder();
             }
@@ -533,7 +541,7 @@ document.addEventListener('DOMContentLoaded', function () {
           if (selectedGifts.length > 0) {
             html += selectedGifts.map(it => `
               <span class="box-selection-tag" style="background-color: #fef3c7; color: #92400e; border-color: #fcd34d;">
-                <strong>🎁 ${giftQuantities[it.id]}x (Brinde)</strong> ${it.name}
+                <strong>🎁 ${giftQuantities[it.id]}x (Oferta)</strong> ${it.name}
               </span>
             `).join('');
           }
@@ -645,12 +653,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const totalGifts = getTotalGiftSnacksCount();
 
       const mealsMissing = plan.maxRefeicoes - totalMeals;
-      const giftsMissing = 2 - totalGifts;
+      const giftsMissing = plan.maxOfertas - totalGifts;
 
       if (mealsMissing > 0 || giftsMissing > 0) {
         let msg = 'A sua caixa ainda tem vagas por preencher:';
         if (mealsMissing > 0) msg += `\n• Faltam ${mealsMissing} refeição(ões) / lanche(s) da subscrição.`;
-        if (giftsMissing > 0) msg += `\n• Faltam ${giftsMissing} lanche(s) de brinde gratuito (0,00 €).`;
+        if (giftsMissing > 0) msg += `\n• Faltam ${giftsMissing} lanche(s) de oferta gratuita (0,00 €).`;
         msg += '\n\nDeseja preencher automaticamente com a nossa Sugestão do Chef para avançar para a morada e pagamento?';
 
         const aceitaChef = window.confirm(msg);
@@ -672,7 +680,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const selectedGifts = giftSnacks.filter(it => (giftQuantities[it.id] || 0) > 0);
       const giftsText = selectedGifts.map(it => `${giftQuantities[it.id]}x ${it.name}`).join(', ');
-      if (step2GiftSummary) step2GiftSummary.innerText = giftsText ? `🎁 Brinde Grátis: ${giftsText}` : '🎁 2x Lanches de Brinde Incluídos';
+      if (step2GiftSummary) step2GiftSummary.innerText = giftsText ? `🎁 Oferta Grátis: ${giftsText}` : `🎁 ${plan.maxOfertas}x Lanches de Oferta Incluídos`;
 
       if (step2TotalSummary) step2TotalSummary.innerText = plan.total.toFixed(2).replace('.', ',') + ' €';
 
@@ -822,7 +830,7 @@ document.addEventListener('DOMContentLoaded', function () {
         `).join('');
       }
 
-      // Preencher a lista de lanches de brinde gratuito
+      // Preencher a lista de lanches de oferta gratuita
       const confGiftList = document.getElementById('confGiftList');
       if (confGiftList) {
         const selectedGifts = giftSnacks.filter(it => (giftQuantities[it.id] || 0) > 0);

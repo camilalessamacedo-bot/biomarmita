@@ -101,22 +101,29 @@ document.addEventListener('DOMContentLoaded', function () {
   const checkoutStep1 = document.getElementById('checkoutStep1');
   const checkoutStep2 = document.getElementById('checkoutStep2');
   const checkoutStep3 = document.getElementById('checkoutStep3');
+  const checkoutStep4 = document.getElementById('checkoutStep4');
+  const checkoutStep5 = document.getElementById('checkoutStep5');
 
-  if (checkoutStep1 && checkoutStep2 && checkoutStep3) {
+  if (checkoutStep1) {
+    let currentStep = 1;
     const stepTab1 = document.getElementById('stepTab1');
     const stepTab2 = document.getElementById('stepTab2');
     const stepTab3 = document.getElementById('stepTab3');
+    const stepTab4 = document.getElementById('stepTab4');
 
     const selectPlano = document.getElementById('selectPlano');
     const cartPlanTitle = document.getElementById('cartPlanTitle');
     const cartPlanPrice = document.getElementById('cartPlanPrice');
     const cartDiscount = document.getElementById('cartDiscount');
     const cartFinalTotal = document.getElementById('cartFinalTotal');
-    const paymentExplainBox = document.getElementById('paymentExplainBox');
 
     const paymentMethodCards = document.querySelectorAll('.payment-method-card');
     const btnGoToStep2 = document.getElementById('btnGoToStep2');
     const btnBackToStep1 = document.getElementById('btnBackToStep1');
+    const btnGoToStep3 = document.getElementById('btnGoToStep3');
+    const btnBackToStep2 = document.getElementById('btnBackToStep2');
+    const btnBackToStep3 = document.getElementById('btnBackToStep3');
+    const step3AddressForm = document.getElementById('step3AddressForm');
     const paymentFieldsContainer = document.getElementById('paymentFieldsContainer');
     const checkoutFinalForm = document.getElementById('checkoutFinalForm');
 
@@ -136,9 +143,9 @@ document.addEventListener('DOMContentLoaded', function () {
       estimatedDeliveryText.textContent = estimatedDeliveryDateStr;
     }
 
-    const step2DeliveryDate = document.getElementById('step2DeliveryDate');
-    if (step2DeliveryDate) {
-      step2DeliveryDate.textContent = estimatedDeliveryDateStr;
+    const step3DeliveryDate = document.getElementById('step3DeliveryDate') || document.getElementById('step2DeliveryDate');
+    if (step3DeliveryDate) {
+      step3DeliveryDate.textContent = estimatedDeliveryDateStr;
     }
 
     // Elementos do Construtor de Caixa Semanal
@@ -168,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
         category: 'refeicao',
         typeLabel: 'Carne Magra',
         kcal: 460,
-        origin: 'Quinta da Serra (Paredes)',
+        origin: 'Quinta da Bouça Bio (Vila Verde)',
         img: './assets/imagens/prato-peru-espinafres.jpeg'
       },
       {
@@ -177,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
         category: 'refeicao',
         typeLabel: 'Peixe Sustentável',
         kcal: 490,
-        origin: 'Horta do Vale (Vila do Conde)',
+        origin: 'Maré Viva (Lota de Matosinhos)',
         img: './assets/imagens/prato-bacalhau-grao.jpeg'
       },
       {
@@ -195,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
         category: 'refeicao',
         typeLabel: 'Carne Magra',
         kcal: 480,
-        origin: 'Quinta da Serra (Paredes)',
+        origin: 'Quinta da Bouça Bio (Vila Verde)',
         img: './assets/imagens/menu-tradicional.jpeg'
       },
       {
@@ -204,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
         category: 'refeicao',
         typeLabel: 'Peixe Sustentável',
         kcal: 510,
-        origin: 'Horta do Vale (Vila do Conde)',
+        origin: 'Maré Viva (Lota de Matosinhos)',
         img: './assets/imagens/menu-fitness.jpeg'
       },
       {
@@ -316,7 +323,6 @@ document.addEventListener('DOMContentLoaded', function () {
       if (cartGiftRowTitle) {
         cartGiftRowTitle.innerText = `🎁 ${plano.maxOfertas}x Lanche${plano.maxOfertas > 1 ? 's' : ''} Biológico${plano.maxOfertas > 1 ? 's' : ''} de Oferta Especial`;
       }
-      updatePaymentExplanation();
       renderBoxBuilder();
     }
 
@@ -573,41 +579,62 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    // Leitura de parâmetros de URL (ex: ?plano=individual&item=peru)
-    const urlParams = new URLSearchParams(window.location.search);
-    const planoParam = urlParams.get('plano');
-    const itemParam = urlParams.get('item');
+    // ------------------------------------------------------------------------
+    // SELEÇÃO INTERATIVA DE PLANOS (CARTÕES VISUAIS + SELECT)
+    // ------------------------------------------------------------------------
+    const planCards = document.querySelectorAll('.checkout-plan-card');
 
-    if (planoParam && planosData[planoParam]) {
-      selectPlano.value = planoParam;
-    }
+    function selectPlan(planKey, keepQuantities) {
+      if (!planKey || !planosData[planKey]) return;
 
-    if (itemParam && boxQuantities.hasOwnProperty(itemParam)) {
-      boxQuantities[itemParam] = 1;
-      const targetItem = catalogItems.find(it => it.id === itemParam);
-      if (boxNoticeBanner && boxNoticeText && targetItem) {
-        boxNoticeText.innerText = `Adicionámos 1x "${targetItem.name}" à sua caixa! Selecione as restantes refeições para completar o seu plano.`;
-        boxNoticeBanner.style.display = 'flex';
+      // Sincronizar select escondido
+      if (selectPlano) {
+        selectPlano.value = planKey;
       }
-    } else {
-      // Se entrou no carrinho diretamente sem item específico, pré-preencher com a Sugestão do Chef para máxima comodidade
-      fillChefSuggestion();
+
+      // Atualizar classe visual dos cartões de plano
+      planCards.forEach(card => {
+        if (card.getAttribute('data-plan') === planKey) {
+          card.classList.add('selected');
+        } else {
+          card.classList.remove('selected');
+        }
+      });
+
+      // Atualizar valores de preço, meta de refeições e ofertas
+      updateCartValues(planKey);
+
+      // Ajustar automaticamente a caixa para evitar inconsistências (ex: 10 pratos num plano de 5)
+      if (!keepQuantities) {
+        fillChefSuggestion();
+      } else {
+        renderBoxBuilder();
+      }
     }
 
-    updateCartValues(selectPlano.value);
-
-    selectPlano.addEventListener('change', function () {
-      updateCartValues(this.value);
+    planCards.forEach(card => {
+      card.addEventListener('click', function () {
+        const planKey = this.getAttribute('data-plan');
+        selectPlan(planKey, false);
+      });
     });
 
-    // Seleção visual da forma de pagamento no Passo 1
+    if (selectPlano) {
+      selectPlano.addEventListener('change', function () {
+        selectPlan(this.value, false);
+      });
+    }
+
+    // ------------------------------------------------------------------------
+    // MÉTODOS DE PAGAMENTO & CAMPOS ENCRIPTADOS
+    // ------------------------------------------------------------------------
     paymentMethodCards.forEach(function (card) {
       card.addEventListener('click', function () {
         paymentMethodCards.forEach(c => c.classList.remove('selected'));
         this.classList.add('selected');
         const radio = this.querySelector('input[type="radio"]');
         if (radio) radio.checked = true;
-        updatePaymentExplanation();
+        renderPaymentFields();
       });
     });
 
@@ -616,143 +643,57 @@ document.addEventListener('DOMContentLoaded', function () {
       return checked ? checked.value : 'mbway';
     }
 
-    function updatePaymentExplanation() {
-      if (!paymentExplainBox) return;
-      const method = getSelectedPaymentMethod();
-      const plano = planosData[selectPlano.value] || planosData.casal;
-      const totalStr = plano.total.toFixed(2).replace('.', ',') + ' €';
-
-      if (method === 'mbway') {
-        paymentExplainBox.innerHTML = `
-          <strong style="color: var(--color-primary-dark); display: block; margin-bottom: 4px;">Método Selecionado: MB WAY</strong>
-          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin: 0;">
-            No próximo passo, solicitaremos o seu número de telemóvel para receber o pedido de autorização de <strong>${totalStr}</strong> diretamente na sua app MB WAY.
-          </p>
-        `;
-      } else if (method === 'card') {
-        paymentExplainBox.innerHTML = `
-          <strong style="color: var(--color-primary-dark); display: block; margin-bottom: 4px;">Método Selecionado: Cartão de Crédito / Débito</strong>
-          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin: 0;">
-            No próximo passo, após o registo da conta e endereço, abrirão os campos encriptados para inserir os dados do seu cartão (Visa/Mastercard) com débito semanal de <strong>${totalStr}</strong>.
-          </p>
-        `;
-      } else {
-        paymentExplainBox.innerHTML = `
-          <strong style="color: var(--color-primary-dark); display: block; margin-bottom: 4px;">Método Selecionado: Referência Multibanco</strong>
-          <p style="font-size: 0.9rem; color: var(--color-text-muted); margin: 0;">
-            Após indicar o endereço de entrega no passo seguinte, geraremos a Entidade e Referência Multibanco de <strong>${totalStr}</strong> com prazo de liquidação de 24 horas.
-          </p>
-        `;
-      }
-    }
-
-    // Avançar para o Passo 2 (Identificação e Entrega) com Validação Inteligente
-    btnGoToStep2.addEventListener('click', function () {
-      const plan = planosData[selectPlano.value] || planosData.casal;
-      const totalMeals = getTotalMealsCount();
-      const totalGifts = getTotalGiftSnacksCount();
-
-      const mealsMissing = plan.maxRefeicoes - totalMeals;
-      const giftsMissing = plan.maxOfertas - totalGifts;
-
-      if (mealsMissing > 0 || giftsMissing > 0) {
-        let msg = 'A sua caixa ainda tem vagas por preencher:';
-        if (mealsMissing > 0) msg += `\n• Faltam ${mealsMissing} refeição(ões) / lanche(s) da subscrição.`;
-        if (giftsMissing > 0) msg += `\n• Faltam ${giftsMissing} lanche(s) de oferta gratuita (0,00 €).`;
-        msg += '\n\nDeseja preencher automaticamente com a nossa Sugestão do Chef para avançar para a morada e pagamento?';
-
-        const aceitaChef = window.confirm(msg);
-        if (aceitaChef) {
-          fillChefSuggestion();
-        } else {
-          return; // Utilizador escolhe continuar a selecionar manualmente
-        }
-      }
-
-      // Preencher o resumo visual da caixa no Passo 2
-      const step2BoxSummary = document.getElementById('step2BoxSummary');
-      const step2GiftSummary = document.getElementById('step2GiftSummary');
-      const step2TotalSummary = document.getElementById('step2TotalSummary');
-
-      const selectedList = catalogItems.filter(it => (boxQuantities[it.id] || 0) > 0);
-      const summaryText = selectedList.map(it => `${boxQuantities[it.id]}x ${it.name}`).join(', ');
-      if (step2BoxSummary) step2BoxSummary.innerText = summaryText || plan.nome;
-
-      const selectedGifts = giftSnacks.filter(it => (giftQuantities[it.id] || 0) > 0);
-      const giftsText = selectedGifts.map(it => `${giftQuantities[it.id]}x ${it.name}`).join(', ');
-      if (step2GiftSummary) step2GiftSummary.innerText = giftsText ? `🎁 Oferta Grátis: ${giftsText}` : `🎁 ${plan.maxOfertas}x Lanches de Oferta Incluídos`;
-
-      if (step2TotalSummary) step2TotalSummary.innerText = plan.total.toFixed(2).replace('.', ',') + ' €';
-
-      checkoutStep1.style.display = 'none';
-      checkoutStep2.style.display = 'block';
-
-      stepTab1.classList.remove('active');
-      stepTab1.classList.add('completed');
-      stepTab2.classList.add('active');
-
-      renderPaymentFields();
-      window.scrollTo({ top: checkoutStep2.offsetTop - 100, behavior: 'smooth' });
-    });
-
-    // Voltar para o Passo 1
-    btnBackToStep1.addEventListener('click', function () {
-      checkoutStep2.style.display = 'none';
-      checkoutStep1.style.display = 'block';
-
-      stepTab2.classList.remove('active');
-      stepTab1.classList.remove('completed');
-      stepTab1.classList.add('active');
-
-      window.scrollTo({ top: checkoutStep1.offsetTop - 100, behavior: 'smooth' });
-    });
-
-    // Renderizar campos de pagamento específicos no Passo 2
     function renderPaymentFields() {
+      if (!paymentFieldsContainer) return;
       const method = getSelectedPaymentMethod();
       const plano = planosData[selectPlano.value] || planosData.casal;
       const totalStr = plano.total.toFixed(2).replace('.', ',') + ' €';
+      const clienteTel = document.getElementById('clienteTelefone');
+      const telValue = clienteTel ? clienteTel.value.trim() : '';
 
       if (method === 'card') {
         paymentFieldsContainer.innerHTML = `
-          <div style="background-color: #ffffff; border: 2px solid var(--color-primary); border-radius: var(--radius-md); padding: 22px;">
+          <div style="background-color: #ffffff; border: 2px solid var(--color-primary); border-radius: var(--radius-md); padding: 22px; box-shadow: var(--shadow-sm);">
             <h4 style="color: var(--color-primary-dark); font-size: 1.15rem; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
               <span>💳</span> Dados do Cartão de Pagamento (${totalStr})
             </h4>
             <div class="form-group">
-              <label for="cartaoNumero">Número do Cartão *</label>
+              <label for="cartaoNumero" style="font-weight: 600;">Número do Cartão *</label>
               <input type="text" id="cartaoNumero" class="form-control" placeholder="4000 1234 5678 9010" maxlength="19" required>
             </div>
             <div class="form-grid-2">
               <div class="form-group">
-                <label for="cartaoNome">Nome Impresso no Cartão *</label>
+                <label for="cartaoNome" style="font-weight: 600;">Nome Impresso no Cartão *</label>
                 <input type="text" id="cartaoNome" class="form-control" placeholder="Como consta no cartão" required>
               </div>
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
                 <div class="form-group">
-                  <label for="cartaoValidade">Validade *</label>
+                  <label for="cartaoValidade" style="font-weight: 600;">Validade *</label>
                   <input type="text" id="cartaoValidade" class="form-control" placeholder="MM/AA" maxlength="5" required>
                 </div>
                 <div class="form-group">
-                  <label for="cartaoCvv">CVV *</label>
+                  <label for="cartaoCvv" style="font-weight: 600;">CVV *</label>
                   <input type="text" id="cartaoCvv" class="form-control" placeholder="123" maxlength="4" required>
                 </div>
               </div>
             </div>
-            <span style="font-size: 0.8rem; color: var(--color-text-muted);">
-              🔒 Transação cifrada por protocolo SSL de 256 bits. Faturação automática semanal com cancelamento livre.
+            <span style="font-size: 0.8rem; color: var(--color-text-muted); display: block; margin-top: 6px;">
+              🔒 Transação cifrada por protocolo SSL de 256 bits. Faturação automática semanal com cancelamento livre a qualquer momento.
             </span>
           </div>
         `;
       } else if (method === 'mbway') {
         paymentFieldsContainer.innerHTML = `
-          <div style="background-color: var(--color-primary-soft); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 20px;">
+          <div style="background-color: var(--color-primary-soft); border: 1px solid rgba(45, 90, 39, 0.2); border-radius: var(--radius-md); padding: 20px;">
             <h4 style="color: var(--color-primary-dark); font-size: 1.15rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
               <span>📱</span> Confirmação MB WAY (${totalStr})
             </h4>
-            <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 12px;">
-              Utilizaremos o telemóvel cadastrado acima para enviar o pedido de confirmação de ${totalStr} para a sua app MB WAY assim que clicar no botão abaixo.
+            <p style="font-size: 0.92rem; color: var(--color-text-main); margin-bottom: 8px; line-height: 1.5;">
+              Ao clicar no botão de confirmação, enviaremos o pedido de pagamento de <strong>${totalStr}</strong> para o telemóvel <strong>${telValue || '(indicado na morada)'}</strong>.
             </p>
+            <small style="font-size: 0.82rem; color: #166534; font-weight: 600; display: block;">
+              ⚡ Terá 5 minutos para validar o pedido na sua aplicação MB WAY.
+            </small>
           </div>
         `;
       } else {
@@ -761,12 +702,240 @@ document.addEventListener('DOMContentLoaded', function () {
             <h4 style="color: var(--color-primary-dark); font-size: 1.15rem; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
               <span>🏦</span> Emissão de Referência Multibanco (${totalStr})
             </h4>
-            <p style="font-size: 0.9rem; color: var(--color-text-muted); margin: 0;">
-              A Entidade e a Referência Multibanco serão geradas imediatamente após a submissão e enviadas por e-mail e SMS para liquidação em qualquer terminal Multibanco ou Homebanking em 24h.
+            <p style="font-size: 0.92rem; color: var(--color-text-main); margin-bottom: 6px; line-height: 1.5;">
+              A Entidade e Referência Multibanco no valor de <strong>${totalStr}</strong> serão geradas no ecrã seguinte e enviadas por SMS e e-mail.
             </p>
+            <small style="font-size: 0.82rem; color: var(--color-text-muted); display: block;">
+              ⏳ Prazo de liquidação: 24 horas em qualquer terminal Multibanco ou Homebanking.
+            </small>
           </div>
         `;
       }
+    }
+
+    // ------------------------------------------------------------------------
+    // ATUALIZAÇÃO DO RESUMO CONSOLIDADO NA ETAPA 4 (ORDER REVIEW)
+    // ------------------------------------------------------------------------
+    function updateOrderReview() {
+      const plano = planosData[selectPlano.value] || planosData.casal;
+      const totalStr = plano.total.toFixed(2).replace('.', ',') + ' €';
+
+      const reviewPlanName = document.getElementById('reviewPlanName');
+      if (reviewPlanName) {
+        reviewPlanName.innerHTML = `<strong>${plano.nome}</strong> • ${totalStr}/sem.`;
+      }
+
+      const reviewAddress = document.getElementById('reviewAddress');
+      const rua = document.getElementById('entregaRua') ? document.getElementById('entregaRua').value : '';
+      const andar = document.getElementById('entregaAndar') ? document.getElementById('entregaAndar').value : '';
+      const concelho = document.getElementById('entregaConcelho') ? document.getElementById('entregaConcelho').value : 'porto';
+      const concelhoLabel = concelho.charAt(0).toUpperCase() + concelho.slice(1);
+      const codPostal = document.getElementById('entregaCodPostal') ? document.getElementById('entregaCodPostal').value : '';
+
+      if (reviewAddress) {
+        let addrStr = rua;
+        if (andar) addrStr += ` (${andar})`;
+        if (codPostal) addrStr += `, ${codPostal}`;
+        addrStr += ` - Porto`;
+        reviewAddress.textContent = addrStr || 'Porto';
+      }
+
+      const reviewDeliveryWindow = document.getElementById('reviewDeliveryWindow');
+      const entregaJanelaSelect = document.getElementById('entregaJanela');
+      const janelaText = entregaJanelaSelect ? entregaJanelaSelect.options[entregaJanelaSelect.selectedIndex].text : '';
+      if (reviewDeliveryWindow) {
+        reviewDeliveryWindow.textContent = `🚚 1ª Entrega: ${estimatedDeliveryDateStr} • ${janelaText}`;
+      }
+
+      const reviewFinalTotal = document.getElementById('reviewFinalTotal');
+      if (reviewFinalTotal) {
+        reviewFinalTotal.textContent = totalStr;
+      }
+      const btnSubmitTotalDisplay = document.getElementById('btnSubmitTotalDisplay');
+      if (btnSubmitTotalDisplay) {
+        btnSubmitTotalDisplay.textContent = totalStr;
+      }
+
+      const reviewDishesList = document.getElementById('reviewDishesList');
+      if (reviewDishesList) {
+        const selectedMeals = catalogItems.filter(it => (boxQuantities[it.id] || 0) > 0);
+        const selectedGifts = giftSnacks.filter(it => (giftQuantities[it.id] || 0) > 0);
+
+        let html = selectedMeals.map(it => `
+          <li>
+            <span><strong>${boxQuantities[it.id]}x</strong> ${it.name}</span>
+            <span style="color: var(--color-primary); font-size: 0.8rem; font-weight: 600;">${it.kcal} kcal</span>
+          </li>
+        `).join('');
+
+        if (selectedGifts.length > 0) {
+          html += selectedGifts.map(it => `
+            <li style="color: #92400e; font-weight: 600;">
+              <span>🎁 <strong>${giftQuantities[it.id]}x</strong> ${it.name} (Oferta)</span>
+              <span style="color: #2e7d32; font-weight: 700;">Grátis</span>
+            </li>
+          `).join('');
+        }
+        reviewDishesList.innerHTML = html;
+      }
+    }
+
+    // ------------------------------------------------------------------------
+    // NAVEGAÇÃO ENTRE ETAPAS (WIZARD DE 4 PASSOS + SUCESSO)
+    // ------------------------------------------------------------------------
+    function canGoToStep(targetStep) {
+      if (targetStep <= currentStep) return true; // Sempre permitido retroceder livremente
+
+      // Passo 1 -> 2
+      if (targetStep === 2) return true;
+
+      // Passo 2 -> 3 (Exige caixa completa de refeições e ofertas)
+      if (targetStep === 3) {
+        const plan = planosData[selectPlano.value] || planosData.casal;
+        const totalMeals = getTotalMealsCount();
+        const totalGifts = getTotalGiftSnacksCount();
+        const mealsMissing = plan.maxRefeicoes - totalMeals;
+        const giftsMissing = plan.maxOfertas - totalGifts;
+
+        if (mealsMissing > 0 || giftsMissing > 0) {
+          let msg = 'A sua caixa semanal ainda tem vagas por preencher:';
+          if (mealsMissing > 0) msg += `\n• Faltam ${mealsMissing} refeição(ões) / prato(s) da subscrição.`;
+          if (giftsMissing > 0) msg += `\n• Faltam ${giftsMissing} lanche(s) de oferta gratuita (0,00 €).`;
+          msg += '\n\nDeseja preencher automaticamente com a nossa Sugestão do Chef para avançar para a morada?';
+          if (window.confirm(msg)) {
+            fillChefSuggestion();
+            return true;
+          }
+          return false;
+        }
+        return true;
+      }
+
+      // Passo 3 -> 4 (Exige dados da morada válidos)
+      if (targetStep === 4) {
+        if (!canGoToStep(3)) return false;
+        if (step3AddressForm && !step3AddressForm.checkValidity()) {
+          step3AddressForm.reportValidity();
+          return false;
+        }
+        return true;
+      }
+
+      return true;
+    }
+
+    function setStepActive(stepNum) {
+      currentStep = stepNum;
+
+      // Alternar visualização dos cartões das etapas
+      const allSteps = [checkoutStep1, checkoutStep2, checkoutStep3, checkoutStep4, checkoutStep5];
+      allSteps.forEach((stepEl, idx) => {
+        if (stepEl) {
+          stepEl.style.display = (idx + 1 === stepNum) ? 'block' : 'none';
+        }
+      });
+
+      // Atualizar abas de progresso superiores (1 a 4)
+      const tabs = [stepTab1, stepTab2, stepTab3, stepTab4];
+      tabs.forEach((tab, idx) => {
+        if (!tab) return;
+        const tabNum = idx + 1;
+        tab.classList.remove('active', 'completed');
+        if (tabNum < stepNum) {
+          tab.classList.add('completed');
+        } else if (tabNum === stepNum) {
+          tab.classList.add('active');
+        }
+      });
+
+      // No ecrã de confirmação 5, marcar todos os 4 passos como concluídos
+      if (stepNum === 5) {
+        tabs.forEach(tab => { if (tab) tab.classList.add('completed'); });
+      }
+
+      // Se entrou no Passo 4, atualizar resumo da encomenda e campos de pagamento
+      if (stepNum === 4) {
+        updateOrderReview();
+        renderPaymentFields();
+      }
+
+      // Scroll suave até ao topo do cartão ativo
+      const targetCard = document.getElementById(`checkoutStep${stepNum}`);
+      if (targetCard) {
+        window.scrollTo({ top: targetCard.offsetTop - 90, behavior: 'smooth' });
+      }
+    }
+
+    // Expor globalmente para suporte a chamadas diretas
+    window.setStepActive = setStepActive;
+
+    // Navegação ao clicar diretamente nas abas de progresso do topo
+    const tabsList = [
+      { tab: stepTab1, step: 1 },
+      { tab: stepTab2, step: 2 },
+      { tab: stepTab3, step: 3 },
+      { tab: stepTab4, step: 4 }
+    ];
+
+    tabsList.forEach(item => {
+      if (item.tab) {
+        item.tab.addEventListener('click', function () {
+          if (canGoToStep(item.step)) {
+            setStepActive(item.step);
+          }
+        });
+        item.tab.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            if (canGoToStep(item.step)) {
+              setStepActive(item.step);
+            }
+          }
+        });
+      }
+    });
+
+    // Botão Etapa 1 -> Etapa 2
+    if (btnGoToStep2) {
+      btnGoToStep2.addEventListener('click', function () {
+        setStepActive(2);
+      });
+    }
+
+    // Botões Etapa 2
+    if (btnBackToStep1) {
+      btnBackToStep1.addEventListener('click', function () {
+        setStepActive(1);
+      });
+    }
+    if (btnGoToStep3) {
+      btnGoToStep3.addEventListener('click', function () {
+        if (canGoToStep(3)) {
+          setStepActive(3);
+        }
+      });
+    }
+
+    // Botões Etapa 3
+    if (btnBackToStep2) {
+      btnBackToStep2.addEventListener('click', function () {
+        setStepActive(2);
+      });
+    }
+    if (step3AddressForm) {
+      step3AddressForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (canGoToStep(4)) {
+          setStepActive(4);
+        }
+      });
+    }
+
+    // Botão Voltar da Etapa 4 para Etapa 3
+    if (btnBackToStep3) {
+      btnBackToStep3.addEventListener('click', function () {
+        setStepActive(3);
+      });
     }
 
     // Alternar modo de login / registo
@@ -786,72 +955,120 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    // Submissão Final do Checkout
-    checkoutFinalForm.addEventListener('submit', function (e) {
-      e.preventDefault();
+    // Submissão Final do Checkout (Etapa 4 -> Etapa 5 Confirmação)
+    if (checkoutFinalForm) {
+      checkoutFinalForm.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-      const plano = planosData[selectPlano.value] || planosData.casal;
-      const totalStr = plano.total.toFixed(2).replace('.', ',') + ' €';
-      const method = getSelectedPaymentMethod();
-      const methodLabels = {
-        mbway: 'MB WAY',
-        card: 'Cartão de Débito/Crédito',
-        multibanco: 'Referência Multibanco'
-      };
+        const rgpdConsent = document.getElementById('rgpdCheckoutConsent');
+        if (rgpdConsent && !rgpdConsent.checked) {
+          alert('Por favor, aceite a Política de Privacidade & RGPD para confirmar o seu pedido.');
+          rgpdConsent.focus();
+          return;
+        }
 
-      const rua = document.getElementById('entregaRua').value;
-      const concelho = document.getElementById('entregaConcelho').value;
-      const concelhoLabel = concelho.charAt(0).toUpperCase() + concelho.slice(1);
+        const method = getSelectedPaymentMethod();
+        if (method === 'card') {
+          const num = document.getElementById('cartaoNumero');
+          const nome = document.getElementById('cartaoNome');
+          const val = document.getElementById('cartaoValidade');
+          const cvv = document.getElementById('cartaoCvv');
+          if (!num || !num.value.trim() || !nome || !nome.value.trim() || !val || !val.value.trim() || !cvv || !cvv.value.trim()) {
+            alert('Por favor, preencha todos os campos do cartão de crédito/débito.');
+            return;
+          }
+        }
 
-      // Preencher ecrã de confirmação
-      document.getElementById('confOrderCode').innerText = Math.floor(1000 + Math.random() * 9000);
-      document.getElementById('confPlanName').innerText = plano.nome;
-      document.getElementById('confPlanPrice').innerText = totalStr;
-      document.getElementById('confPayMethod').innerText = methodLabels[method] || 'MB WAY';
-      document.getElementById('confAddress').innerText = rua + ', ' + concelhoLabel + ' (Grande Porto)';
+        const plano = planosData[selectPlano.value] || planosData.casal;
+        const totalStr = plano.total.toFixed(2).replace('.', ',') + ' €';
+        const methodLabels = {
+          mbway: 'MB WAY',
+          card: 'Cartão de Débito/Crédito',
+          multibanco: 'Referência Multibanco'
+        };
 
-      // Horário preferencial agendado e data de entrega calculada em 48h
-      const entregaJanelaSelect = document.getElementById('entregaJanela');
-      const janelaText = entregaJanelaSelect ? entregaJanelaSelect.options[entregaJanelaSelect.selectedIndex].text : '';
-      const confDeliveryDate = document.getElementById('confDeliveryDate');
-      if (confDeliveryDate) {
-        confDeliveryDate.textContent = `${estimatedDeliveryDateStr} • ${janelaText}`;
+        const rua = document.getElementById('entregaRua') ? document.getElementById('entregaRua').value : '';
+        const concelho = document.getElementById('entregaConcelho') ? document.getElementById('entregaConcelho').value : 'porto';
+        const concelhoLabel = concelho.charAt(0).toUpperCase() + concelho.slice(1);
+
+        // Preencher ecrã de confirmação
+        const confOrderCode = document.getElementById('confOrderCode');
+        if (confOrderCode) confOrderCode.innerText = Math.floor(1000 + Math.random() * 9000);
+
+        const confPlanName = document.getElementById('confPlanName');
+        if (confPlanName) confPlanName.innerText = plano.nome;
+
+        const confPlanPrice = document.getElementById('confPlanPrice');
+        if (confPlanPrice) confPlanPrice.innerText = totalStr;
+
+        const confPayMethod = document.getElementById('confPayMethod');
+        if (confPayMethod) confPayMethod.innerText = methodLabels[method] || 'MB WAY';
+
+        const confAddress = document.getElementById('confAddress');
+        if (confAddress) confAddress.innerText = rua ? (rua + ', Porto') : 'Porto';
+
+        const entregaJanelaSelect = document.getElementById('entregaJanela');
+        const janelaText = entregaJanelaSelect ? entregaJanelaSelect.options[entregaJanelaSelect.selectedIndex].text : '';
+        const confDeliveryDate = document.getElementById('confDeliveryDate');
+        if (confDeliveryDate) {
+          confDeliveryDate.textContent = `${estimatedDeliveryDateStr} • ${janelaText}`;
+        }
+
+        // Preencher a lista de refeições da subscrição confirmadas
+        const confMealsList = document.getElementById('confMealsList');
+        if (confMealsList) {
+          const selectedList = catalogItems.filter(it => (boxQuantities[it.id] || 0) > 0);
+          confMealsList.innerHTML = selectedList.map(it => `
+            <li>
+              <span><strong>${boxQuantities[it.id]}x</strong> ${it.name} <em style="font-size:0.8rem; color:var(--color-text-muted);">(${it.kcal} kcal)</em></span>
+              <span style="color:var(--color-primary); font-size:0.85rem; font-weight:600;">${it.origin.split(' ')[0]} ${it.origin.split(' ')[1] || ''}</span>
+            </li>
+          `).join('');
+        }
+
+        // Preencher a lista de lanches de oferta gratuita confirmados
+        const confGiftList = document.getElementById('confGiftList');
+        if (confGiftList) {
+          const selectedGifts = giftSnacks.filter(it => (giftQuantities[it.id] || 0) > 0);
+          confGiftList.innerHTML = selectedGifts.map(it => `
+            <li style="color: #92400e; background: #fffdf5; padding: 6px 8px; border-radius: 4px; margin-bottom: 4px; display: flex; justify-content: space-between;">
+              <span><strong>🎁 ${giftQuantities[it.id]}x (Oferta Grátis)</strong> ${it.name}</span>
+              <span style="font-weight: 700; color: #b45309;">0,00 €</span>
+            </li>
+          `).join('');
+        }
+
+        // Exibir ecrã de sucesso (Etapa 5)
+        setStepActive(5);
+      });
+    }
+
+    // ------------------------------------------------------------------------
+    // INICIALIZAÇÃO DO CARRINHO (PARÂMETROS DE URL OU PLANO PADRÃO)
+    // ------------------------------------------------------------------------
+    const urlParams = new URLSearchParams(window.location.search);
+    const planoParam = urlParams.get('plano');
+    const itemParam = urlParams.get('item');
+
+    let initialPlan = 'casal';
+    if (planoParam && planosData[planoParam]) {
+      initialPlan = planoParam;
+    }
+
+    if (itemParam && boxQuantities.hasOwnProperty(itemParam)) {
+      selectPlan(initialPlan, true);
+      boxQuantities[itemParam] = 1;
+      const targetItem = catalogItems.find(it => it.id === itemParam);
+      if (boxNoticeBanner && boxNoticeText && targetItem) {
+        boxNoticeText.innerText = `Adicionámos 1x "${targetItem.name}" à sua caixa! Selecione as restantes refeições para completar o seu plano.`;
+        boxNoticeBanner.style.display = 'flex';
       }
-
-      // Preencher a lista de refeições da subscrição
-      const confMealsList = document.getElementById('confMealsList');
-      if (confMealsList) {
-        const selectedList = catalogItems.filter(it => (boxQuantities[it.id] || 0) > 0);
-        confMealsList.innerHTML = selectedList.map(it => `
-          <li>
-            <span><strong>${boxQuantities[it.id]}x</strong> ${it.name} <em style="font-size:0.8rem; color:var(--color-text-muted);">(${it.kcal} kcal)</em></span>
-            <span style="color:var(--color-primary); font-size:0.85rem; font-weight:600;">${it.origin.split(' ')[0]} ${it.origin.split(' ')[1] || ''}</span>
-          </li>
-        `).join('');
-      }
-
-      // Preencher a lista de lanches de oferta gratuita
-      const confGiftList = document.getElementById('confGiftList');
-      if (confGiftList) {
-        const selectedGifts = giftSnacks.filter(it => (giftQuantities[it.id] || 0) > 0);
-        confGiftList.innerHTML = selectedGifts.map(it => `
-          <li style="color: #92400e; background: #fffdf5; padding: 6px 8px; border-radius: 4px; margin-bottom: 4px; display: flex; justify-content: space-between;">
-            <span><strong>🎁 ${giftQuantities[it.id]}x (Oferta Grátis)</strong> ${it.name}</span>
-            <span style="font-weight: 700; color: #b45309;">0,00 €</span>
-          </li>
-        `).join('');
-      }
-
-      // Alternar ecrãs
-      checkoutStep2.style.display = 'none';
-      checkoutStep3.style.display = 'block';
-
-      stepTab2.classList.remove('active');
-      stepTab2.classList.add('completed');
-      stepTab3.classList.add('active');
-
-      window.scrollTo({ top: checkoutStep3.offsetTop - 100, behavior: 'smooth' });
-    });
+      renderBoxBuilder();
+      setStepActive(2); // Avança diretamente para a caixa para o cliente continuar a personalização
+    } else {
+      selectPlan(initialPlan, false);
+      setStepActive(1);
+    }
   }
 
   // ------------------------------------------------------------------------
@@ -933,6 +1150,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (!hasConsented) {
+    document.body.classList.add('has-cookie-banner');
     const cookieBanner = document.createElement('div');
     cookieBanner.id = 'cookieConsentBanner';
     cookieBanner.className = 'cookie-banner-container';
@@ -940,16 +1158,18 @@ document.addEventListener('DOMContentLoaded', function () {
     cookieBanner.setAttribute('aria-label', 'Gestão de Cookies e Privacidade');
     cookieBanner.innerHTML = `
       <div class="cookie-banner-header">
-        <span style="font-size: 1.4rem;" aria-hidden="true">🍪</span>
-        <h4>Privacidade &amp; Cookies</h4>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 1.25rem;" aria-hidden="true">🍪</span>
+          <h4>Privacidade &amp; Cookies</h4>
+        </div>
+        <button type="button" id="btnCloseCookieBanner" class="cookie-banner-close" aria-label="Fechar aviso">&times;</button>
       </div>
       <p class="cookie-banner-text">
-        Valorizamos a sua privacidade tanto quanto os ingredientes biológicos. Utilizamos cookies essenciais para o funcionamento do seu carrinho e da sua conta, e cookies analíticos para melhorar a sua experiência, em conformidade com o <strong>RGPD</strong>.
+        Utilizamos cookies essenciais e analíticos para o funcionamento do carrinho e melhor experiência de navegação (RGPD). <a href="privacidade.html#cookies">Saber mais</a>
       </p>
       <div class="cookie-banner-actions">
         <button type="button" id="btnAcceptAllCookies" class="cookie-btn-primary">Aceitar Todos</button>
         <button type="button" id="btnEssentialCookies" class="cookie-btn-outline">Apenas Essenciais</button>
-        <a href="privacidade.html#cookies" style="font-size: 0.85rem; color: var(--color-primary); font-weight: 700; margin-left: 6px;">Saber Mais</a>
       </div>
     `;
     document.body.appendChild(cookieBanner);
@@ -960,6 +1180,7 @@ document.addEventListener('DOMContentLoaded', function () {
       } catch (e) {
         // Fallback caso localStorage esteja bloqueado no browser
       }
+      document.body.classList.remove('has-cookie-banner');
       cookieBanner.classList.add('hide-banner');
       setTimeout(function () {
         if (cookieBanner.parentNode) {
@@ -970,6 +1191,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const btnAccept = document.getElementById('btnAcceptAllCookies');
     const btnEssential = document.getElementById('btnEssentialCookies');
+    const btnClose = document.getElementById('btnCloseCookieBanner');
 
     if (btnAccept) {
       btnAccept.addEventListener('click', function () {
@@ -979,6 +1201,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (btnEssential) {
       btnEssential.addEventListener('click', function () {
+        dismissCookieBanner('essential');
+      });
+    }
+
+    if (btnClose) {
+      btnClose.addEventListener('click', function () {
         dismissCookieBanner('essential');
       });
     }
@@ -1295,4 +1523,102 @@ document.addEventListener('DOMContentLoaded', function () {
     // Inicializar os dots com a contagem exata de slides
     buildDots();
   }
+
+  // ========================================================================
+  // 15. AUTO-INICIALIZAÇÃO DE CARROSSEIS MÓVEIS (SWIPE CAROUSELS)
+  // Transforma grelhas de cartões em carrosséis fluidos com dots sincronizados
+  // ========================================================================
+  function initMobileCarousels() {
+    const carouselSelectors = [
+      '.steps-visual-grid',
+      '#porque-escolher .features-grid-4',
+      '.plans-grid',
+      '.checkout-plans-grid',
+      '.nutrition-grid',
+      '.producers-grid',
+      '.producers-grid-2',
+      '.recycling-steps-grid',
+      '.cert-detailed-grid',
+      '.strategic-grid',
+      '.blog-grid',
+      '.mobile-carousel-container'
+    ];
+
+    carouselSelectors.forEach(function (selector) {
+      const containers = document.querySelectorAll(selector);
+      containers.forEach(function (container) {
+        if (!container) return;
+
+        const items = Array.from(container.children).filter(function (el) {
+          return el.nodeType === 1 && !el.classList.contains('mobile-carousel-dots');
+        });
+        if (items.length <= 1) return;
+
+        // Identificador limpo para o data-attribute
+        const idKey = selector.replace(/[^a-zA-Z0-9_-]/g, '_');
+        let dotsContainer = container.parentNode.querySelector('.mobile-carousel-dots[data-carousel="' + idKey + '"]');
+        if (!dotsContainer) {
+          dotsContainer = document.createElement('div');
+          dotsContainer.className = 'mobile-carousel-dots';
+          dotsContainer.setAttribute('data-carousel', idKey);
+          dotsContainer.setAttribute('aria-label', 'Navegação de cartões');
+
+          items.forEach(function (_, idx) {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'mobile-dot' + (idx === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Ir para o cartão ' + (idx + 1));
+            dot.addEventListener('click', function () {
+              const targetItem = items[idx];
+              if (targetItem) {
+                const targetLeft = targetItem.offsetLeft - container.offsetLeft - 16;
+                container.scrollTo({ left: Math.max(0, targetLeft), behavior: 'smooth' });
+              }
+            });
+            dotsContainer.appendChild(dot);
+          });
+
+          // Inserir logo após o container
+          if (container.nextElementSibling) {
+            container.parentNode.insertBefore(dotsContainer, container.nextElementSibling);
+          } else {
+            container.parentNode.appendChild(dotsContainer);
+          }
+        }
+
+        // Sincronizar active dot ao deslizar
+        let scrollDebounce;
+        container.addEventListener('scroll', function () {
+          clearTimeout(scrollDebounce);
+          scrollDebounce = setTimeout(function () {
+            const scrollLeft = container.scrollLeft;
+            const containerCenter = scrollLeft + container.clientWidth / 2;
+            let closestIndex = 0;
+            let minDiff = Infinity;
+
+            items.forEach(function (item, idx) {
+              const itemCenter = item.offsetLeft - container.offsetLeft + item.offsetWidth / 2;
+              const diff = Math.abs(containerCenter - itemCenter);
+              if (diff < minDiff) {
+                minDiff = diff;
+                closestIndex = idx;
+              }
+            });
+
+            const dots = dotsContainer.querySelectorAll('.mobile-dot');
+            dots.forEach(function (d, i) {
+              if (i === closestIndex) {
+                d.classList.add('active');
+              } else {
+                d.classList.remove('active');
+              }
+            });
+          }, 40);
+        }, { passive: true });
+      });
+    });
+  }
+
+  // Inicializar carrosséis móveis
+  initMobileCarousels();
 });

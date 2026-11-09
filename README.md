@@ -2,7 +2,7 @@
 
 > **Slogan:** *"Da natureza ao prato, com sabor e confiança."*  
 > **Contexto:** Projeto Prático — UFCD 11007 (Plano de Marketing Digital)  
-> **Âmbito Territorial:** Grande Porto (Porto, Vila Nova de Gaia, Matosinhos, Maia e Gondomar)  
+> **Âmbito Territorial:** Porto  
 > **Stack:** HTML5 Semântico, CSS3 Moderno e Responsivo, JavaScript Vanilla (sem dependências pesadas, 100% estático).
 
 ---
@@ -24,7 +24,7 @@ A **BioMarmita** é um serviço inovador de subscrição semanal de refeições 
 
 | Ficheiro | Secção | Descrição |
 | :--- | :--- | :--- |
-| `index.html` | **Página Inicial** | Hero banner, proposta de valor, 4 pilares da marca, funcionamento ilustrado em 4 passos, showcase da persona Mariana Ferreira e tabela comparativa concorrencial. |
+| `index.html` | **Página Inicial** | Hero banner, proposta de valor, 4 pilares da marca, funcionamento ilustrado em 4 passos, showcase da persona Mariana Santos e tabela comparativa concorrencial. |
 | `sobre.html` | **Sobre Nós** | História de fundação, cartões com Missão, Visão e Valores éticos, e compromisso com os pequenos agricultores. |
 | `menu.html` | **Menu & Planos** | Filtro interativo de categorias (Carne, Peixe, Vegan e Lanches), 10 itens com fotos reais e tabelas nutricionais (kcal e macros), e os 3 planos de subscrição. |
 | `produtores.html` | **Produtores Locais** | Apresentação detalhada das quintas parceiras no Norte de Portugal. |
@@ -32,7 +32,7 @@ A **BioMarmita** é um serviço inovador de subscrição semanal de refeições 
 | `faq.html` | **FAQ** | Perguntas frequentes sanfonadas (accordion) com termos e condições operacionais reais. |
 | `blog.html` | **Blog & Dicas** | Artigos educativos sobre alimentação equilibrada, sustentabilidade e gestão de tempo em teletrabalho. |
 | `contactos.html` | **Contactos** | Formulário interativo de contacto, mapa de atendimento, dados institucionais e atalho para o WhatsApp. |
-| `carrinho.html` | **Checkout Multi-Step** | (1) Escolha do plano + Construtor de caixa interativo + Seleção dos 2 lanches de brinde grátis + Pagamento (MB WAY, Cartão, Multibanco); (2) Identificação & Morada no Grande Porto; (3) Confirmação formal com resumo dos pratos escolhidos. |
+| `carrinho.html` | **Checkout Multi-Step** | (1) Escolha do plano + Construtor de caixa interativo + Seleção dos 2 lanches de brinde grátis + Pagamento (MB WAY, Cartão, Multibanco); (2) Identificação & Morada no Porto; (3) Confirmação formal com resumo dos pratos escolhidos. |
 
 ---
 

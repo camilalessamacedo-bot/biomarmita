@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Área de Cliente da BioMarmita: gira a sua subscrição semanal, salte semanas, altere pratos e consulte o histórico de entregas.">
   <title>Área de Cliente — BioMarmita</title>
-  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/style.css?v=2.6">
 </head>
 <body>
 
@@ -77,6 +77,9 @@
           <a href="sustentabilidade.html" class="nav-link">Sustentabilidade</a>
           <a href="faq.html" class="nav-link">FAQ</a>
           <a href="blog.html" class="nav-link">Blog</a>
+          <a href="contactos.html" class="nav-link nav-mobile-only">Contactos</a>
+          <a href="area-cliente.html" class="nav-link nav-mobile-only active">Área de Cliente</a>
+          <a href="carrinho.html" class="nav-link nav-mobile-only">Carrinho</a>
           <a href="carrinho.html" class="btn btn-accent btn-sm nav-cta">Subscrever</a>
         </nav>
       </div>
@@ -105,13 +108,13 @@
               <div style="font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
                 <span>💡</span> Acesso Rápido de Demonstração
               </div>
-              Basta clicar em <strong>"Entrar na Conta"</strong> sem preencher nada para aceder de imediato ao perfil de subscritora da <strong>Mariana Ferreira</strong>.
+              Basta clicar em <strong>"Entrar na Conta"</strong> sem preencher nada para aceder de imediato ao perfil de subscritora da <strong>Mariana Santos</strong>.
             </div>
 
             <form id="clientLoginForm">
               <div class="form-group" style="margin-bottom: 18px;">
                 <label for="loginEmail">E-mail ou Telemóvel</label>
-                <input type="text" id="loginEmail" class="form-control" placeholder="mariana.ferreira@email.pt" value="mariana.ferreira@email.pt" autocomplete="email">
+                <input type="text" id="loginEmail" class="form-control" placeholder="mariana.santos@email.pt" value="mariana.santos@email.pt" autocomplete="email">
               </div>
 
               <div class="form-group" style="margin-bottom: 14px;">
@@ -151,8 +154,8 @@
             <div class="account-hero-top">
               <div class="account-user-info">
                 <span class="badge" id="heroStatusBadge" style="background: rgba(255,255,255,0.2); color: #ffffff; margin-bottom: 8px;">Subscritora Ativa</span>
-                <h2>Olá, Mariana Ferreira! 🌱</h2>
-                <p class="account-user-meta">Membro desde Outubro 2026 • Entrega no Grande Porto (Rua de Santa Catarina)</p>
+                <h2>Olá, Mariana Santos! 🌱</h2>
+                <p class="account-user-meta">Membro desde Outubro 2026 • Entrega no Porto (Rua de Santa Catarina)</p>
               </div>
               <div class="account-hero-actions">
                 <button type="button" id="btnLogout" class="btn-logout" title="Terminar sessão demonstrativa">
@@ -222,30 +225,38 @@
                   <h4 class="account-actions-title">
                     <span>⚡</span> Gestão da Subscrição
                   </h4>
-                  <span class="account-actions-badge">Sem fidelização</span>
+                  <span class="account-actions-badge">Sem fidelização • 100% Flexível</span>
+                </div>
+
+                <!-- Aviso Explícito de Custo Zero e Sem Penalizações -->
+                <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-left: 4px solid #16a34a; border-radius: var(--radius-sm); padding: 13px 16px; margin-bottom: 18px; font-size: 0.88rem; color: #166534; line-height: 1.55;">
+                  <div style="font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+                    <span>🛡️</span> Zero Custos, Zero Penalizações e Total Liberdade
+                  </div>
+                  Pode <strong>Saltar a Próxima Semana</strong>, <strong>Pausar a Subscrição</strong> ou <strong>Cancelar o Plano</strong> a qualquer momento sem qualquer custo (0,00 €), sem taxas de rescisão e sem nenhum prejuízo ou perda de ofertas para a sua conta.
                 </div>
 
                 <div class="account-actions-grid">
                   <a href="menu.html" id="btnCustomMenu" class="sub-action-btn sub-action-primary" title="Personalizar refeições da próxima entrega">
                     ✏️ Personalizar Próximo Menu
                   </a>
-                  <button type="button" id="btnSkipWeek" class="sub-action-btn sub-action-outline" title="Saltar entrega da próxima semana">
-                    ⏭️ Saltar Próxima Semana
+                  <button type="button" id="btnSkipWeek" class="sub-action-btn sub-action-outline" title="Saltar entrega da próxima semana sem qualquer custo (0,00 €)">
+                    ⏭️ Saltar Próxima Semana (0,00 €)
                   </button>
-                  <button type="button" id="btnPauseSub" class="sub-action-btn sub-action-outline" title="Pausar entregas temporariamente">
-                    ⏸️ Pausar Subscrição
+                  <button type="button" id="btnPauseSub" class="sub-action-btn sub-action-outline" title="Pausar entregas temporariamente sem qualquer custo">
+                    ⏸️ Pausar Subscrição (Custo 0 €)
                   </button>
-                  <button type="button" id="btnEditAddress" class="sub-action-btn sub-action-outline" title="Alterar horário ou morada de entrega no Grande Porto">
+                  <button type="button" id="btnEditAddress" class="sub-action-btn sub-action-outline" title="Alterar horário ou morada de entrega no Porto">
                     📍 Alterar Horário / Morada
                   </button>
                 </div>
 
                 <div class="account-actions-footer">
                   <p class="account-actions-note">
-                    <span>🌱</span> Precisa de uma pausa? Pode pausar ou saltar semanas sem perder o histórico nem ofertas.
+                    <span>🌱</span> <strong>Sem Custos nem Prejuízo:</strong> Precisa de uma pausa? Saltar semanas ou pausar não tem custos (0 €) e mantém sempre o seu histórico intacto.
                   </p>
-                  <button type="button" id="btnCancelSub" class="btn-cancel-sub" title="Cancelar subscrição semanal sem custos">
-                    🚫 Cancelar Subscrição
+                  <button type="button" id="btnCancelSub" class="btn-cancel-sub" title="Cancelar subscrição semanal sem custos nem penalizações">
+                    🚫 Cancelar Subscrição (Sem Custos)
                   </button>
                 </div>
               </div>
@@ -312,6 +323,9 @@
                 <h3><span>📜</span> Histórico de Entregas & Faturas</h3>
               </div>
 
+              <div class="table-scroll-hint">
+                <span>👈 Deslize a tabela para o lado para ver o histórico completo 👉</span>
+              </div>
               <table class="account-table">
                 <thead>
                   <tr>
@@ -383,8 +397,8 @@
                 <span>👤</span> Dados Pessoais &amp; RGPD
               </h4>
               <div style="font-size: 0.88rem; line-height: 1.7; color: var(--color-text); margin-bottom: 14px;">
-                <strong>Nome:</strong> Mariana Ferreira<br>
-                <strong>E-mail:</strong> mariana.ferreira@email.pt<br>
+                <strong>Nome:</strong> Mariana Santos<br>
+                <strong>E-mail:</strong> mariana.santos@email.pt<br>
                 <strong>Telemóvel:</strong> +351 912 345 678<br>
                 <strong>Preferência:</strong> Plano Família (15 Refeições + Lanches Matilde)<br>
                 <strong>Consentimento RGPD:</strong> Ativo desde 28/10/2026
@@ -435,7 +449,7 @@
             <img src="./assets/imagens/logo-biomarmita-horizontal.png" alt="BioMarmita — Da natureza ao prato, com sabor e confiança." class="footer-brand-logo-img">
           </a>
           <p>
-            Serviço de subscrição semanal de marmitas biológicas equilibradas, prontas a aquecer e consumir no Grande Porto. Respeitamos a sua saúde e o planeta.
+            Serviço de subscrição semanal de marmitas biológicas equilibradas, prontas a aquecer e consumir no Porto. Respeitamos a sua saúde e o planeta.
           </p>
         </div>
 
@@ -457,7 +471,7 @@
           <h4>Atendimento & Entregas</h4>
           <p style="font-size: 0.92rem; color: rgba(255,255,255,0.78); margin-bottom: 12px;">
             <strong>Área de Entrega:</strong><br>
-            Grande Porto (Porto, Matosinhos, Gaia, Maia e Gondomar).
+            Porto.
           </p>
           <p style="font-size: 0.92rem; color: rgba(255,255,255,0.78); margin-bottom: 12px;">
             <strong>Horário e Local de Entrega:</strong><br>
@@ -509,7 +523,7 @@
           <!-- Selo 1: Euro-Folha UE -->
           <a href="sustentabilidade.html#certificacoes" class="cert-logo-item" role="listitem" title="Euro-Folha UE: 100% Bio • Sem Pesticidas nem OGM">
             <div class="cert-logo-circle euroleaf" aria-hidden="true">
-              <img src="./assets/imagens/selo-euro-folha.png" alt="Euro-Folha UE" class="cert-logo-img">
+              <img src="./assets/imagens/selo-euro-folha.png" alt="Euro-Folha UE" class="cert-logo-img" loading="lazy" decoding="async">
             </div>
             <div class="cert-logo-tooltip" role="tooltip">
               <strong class="cert-tooltip-title">Euro-Folha UE</strong>
@@ -521,7 +535,7 @@
           <!-- Selo 2: Higiene e Segurança HACCP -->
           <a href="sustentabilidade.html#certificacoes" class="cert-logo-item" role="listitem" title="HACCP &amp; Higiene: Segurança Alimentar Certificada">
             <div class="cert-logo-circle haccp" aria-hidden="true">
-              <img src="./assets/imagens/selo-haccp.png" alt="HACCP" class="cert-logo-img">
+              <img src="./assets/imagens/selo-haccp.png" alt="HACCP" class="cert-logo-img" loading="lazy" decoding="async">
             </div>
             <div class="cert-logo-tooltip" role="tooltip">
               <strong class="cert-tooltip-title">HACCP &amp; Higiene</strong>
@@ -533,7 +547,7 @@
           <!-- Selo 3: Bioplástico Compostável EN 13432 -->
           <a href="sustentabilidade.html#certificacoes" class="cert-logo-item" role="listitem" title="Norma EN 13432: Bioplástico 100% Compostável">
             <div class="cert-logo-circle compost" aria-hidden="true">
-              <img src="./assets/imagens/selo-en-13432.png" alt="Norma EN 13432" class="cert-logo-img">
+              <img src="./assets/imagens/selo-en-13432.png" alt="Norma EN 13432" class="cert-logo-img" loading="lazy" decoding="async">
             </div>
             <div class="cert-logo-tooltip" role="tooltip">
               <strong class="cert-tooltip-title">Norma EN 13432</strong>
@@ -545,7 +559,7 @@
           <!-- Selo 4: Cadeia Curta / Origem Nacional -->
           <a href="produtores.html" class="cert-logo-item" role="listitem" title="Cadeia Curta (< 60 km): Produtores Locais do Norte">
             <div class="cert-logo-circle local" aria-hidden="true">
-              <img src="./assets/imagens/selo-cadeia-curta.png" alt="Cadeia Curta" class="cert-logo-img">
+              <img src="./assets/imagens/selo-cadeia-curta.png" alt="Cadeia Curta" class="cert-logo-img" loading="lazy" decoding="async">
             </div>
             <div class="cert-logo-tooltip" role="tooltip">
               <strong class="cert-tooltip-title">Cadeia Curta (&lt; 60 km)</strong>
@@ -563,6 +577,7 @@
           <a href="faq.html">Política de Entrega &amp; FAQ</a>
           <a href="sustentabilidade.html">Certificação Biológica</a>
           <a href="contactos.html">Apoio ao Cliente</a>
+          <a href="https://www.livroreclamacoes.pt" target="_blank" rel="noopener noreferrer" title="Livro de Reclamações Eletrónico Oficial">Livro de Reclamações</a>
         </div>
       </div>
     </div>
@@ -584,7 +599,7 @@
     </svg>
   </button>
 
-  <script src="./js/script.js"></script>
+  <script src="./js/script.js?v=2.6"></script>
 
   <!-- Script Interativo Exclusivo da Área de Cliente -->
   <script>
@@ -619,7 +634,7 @@
             loginView.style.display = 'none';
             dashboardView.style.display = 'block';
             window.scrollTo({ top: 0, behavior: 'smooth' });
-            showAlert('Sessão iniciada com sucesso! Bem-vinda de volta, Mariana Ferreira 🌱');
+            showAlert('Sessão iniciada com sucesso! Bem-vinda de volta, Mariana Santos 🌱');
           }
         });
       }
@@ -643,10 +658,10 @@
             btnSkip.textContent = '↩️ Desfazer e Receber Semana';
             btnSkip.classList.remove('sub-action-outline');
             btnSkip.classList.add('sub-action-accent');
-            nextDate.innerHTML = '<span style="color:#d97724;">Semana saltada (0,00 €)</span> • Retoma a 18 de Novembro';
-            showAlert('Semana de 11 de Novembro saltada com sucesso! Não haverá qualquer cobrança e as entregas serão retomadas automaticamente a 18 de Novembro.');
+            nextDate.innerHTML = '<span style="color:#d97724;">Semana saltada (Custo: 0,00 €)</span> • Retoma a 18 de Novembro';
+            showAlert('Semana de 11 de Novembro saltada sem qualquer custo (0,00 €)! Não haverá cobrança nem entrega, e as entregas serão retomadas a 18 de Novembro sem qualquer prejuízo para a sua conta.');
           } else {
-            btnSkip.textContent = '⏭️ Saltar Próxima Semana';
+            btnSkip.textContent = '⏭️ Saltar Próxima Semana (0,00 €)';
             btnSkip.classList.remove('sub-action-accent');
             btnSkip.classList.add('sub-action-outline');
             nextDate.textContent = 'Segunda-feira, 11 de Novembro (09:00 - 12:00)';
@@ -663,9 +678,9 @@
             btnPause.textContent = '▶️ Retomar Subscrição';
             btnPause.classList.remove('sub-action-outline');
             btnPause.classList.add('sub-action-accent');
-            showAlert('Subscrição pausada temporariamente. O seu plano está congelado e não haverá cobranças até que decida reativá-lo.');
+            showAlert('Subscrição pausada com sucesso (Custo: 0,00 €). O seu plano está congelado e não haverá cobranças nem taxas até que decida reativá-lo.');
           } else {
-            btnPause.textContent = '⏸️ Pausar Subscrição';
+            btnPause.textContent = '⏸️ Pausar Subscrição (Custo 0 €)';
             btnPause.classList.remove('sub-action-accent');
             btnPause.classList.add('sub-action-outline');
             showAlert('Subscrição reativada! A sua rotina de refeições biológicas frescas está pronta.');
@@ -675,7 +690,7 @@
 
       if (btnAddress) {
         btnAddress.addEventListener('click', function () {
-          showAlert('Simulação: janela de alteração de morada e horário para o Grande Porto aberta com sucesso.');
+          showAlert('Simulação: janela de alteração de morada e horário para o Porto aberta com sucesso.');
         });
       }
 
@@ -686,7 +701,8 @@
           if (!isCancelled) {
             const confirmed = confirm(
               "Tem a certeza de que deseja cancelar a sua subscrição semanal da BioMarmita?\n\n" +
-              "Lembre-se: não há qualquer fidelização. Se vai viajar ou precisa de uma pausa, pode simplesmente saltar uma semana ou pausar a subscrição temporariamente sem perder o histórico nem as ofertas."
+              "🛡️ Zero custos ou penalizações: O cancelamento é 100% gratuito (0,00 €), sem taxas ocultas nem período de fidelização obrigatório.\n\n" +
+              "Dica: Se vai viajar ou precisa de uma pausa temporária, pode simplesmente saltar uma semana (0,00 €) ou pausar a subscrição sem perder o histórico nem as ofertas."
             );
             if (confirmed) {
               isCancelled = true;
@@ -704,13 +720,13 @@
                 heroStatusBadge.style.background = 'rgba(239, 68, 68, 0.4)';
               }
               if (nextDate) {
-                nextDate.innerHTML = '<span style="color:#b91c1c;">Nenhuma entrega agendada (Subscrição cancelada)</span>';
+                nextDate.innerHTML = '<span style="color:#b91c1c;">Nenhuma entrega agendada (Subscrição cancelada a custo zero)</span>';
               }
-              showAlert('A sua subscrição semanal foi cancelada com sucesso. Não haverá novas cobranças nem entregas. Poderá reativar o seu plano a qualquer momento!');
+              showAlert('A sua subscrição semanal foi cancelada com sucesso. Não haverá novas cobranças, taxas nem entregas. Poderá reativar o seu plano a qualquer momento sem qualquer penalização!');
             }
           } else {
             isCancelled = false;
-            btnCancel.textContent = '🚫 Cancelar Subscrição';
+            btnCancel.textContent = '🚫 Cancelar Subscrição (Sem Custos)';
             btnCancel.className = 'btn-cancel-sub';
 
             if (subStatusBadge) {
@@ -745,7 +761,7 @@
         btnDelete.addEventListener('click', function () {
           const confirmForget = confirm(
             "AVISO LEGAL DE PROTEÇÃO DE DADOS (Art. 17.º RGPD):\n\n" +
-            "Ao exercer o Direito ao Esquecimento, a sua conta da BioMarmita será cancelada e todos os seus dados pessoais (nome, morada no Grande Porto, telefone e histórico) serão anonimizados e eliminados permanentemente dos nossos servidores.\n\n" +
+            "Ao exercer o Direito ao Esquecimento, a sua conta da BioMarmita será cancelada e todos os seus dados pessoais (nome, morada no Porto, telefone e histórico) serão anonimizados e eliminados permanentemente dos nossos servidores.\n\n" +
             "Deseja confirmar a eliminação definitiva dos seus dados?"
           );
           if (confirmForget) {
